@@ -1,0 +1,104 @@
+<section class="vh-100" class="wrapper">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px; margin: 25px">
+          <div class="card-body p-md-5">
+            <form [formGroup]="form">
+            <div class="datepickers">
+                <mat-form-field appearance="fill" class="datepicker">
+                  <mat-label>Начална дата на застраховката</mat-label>
+                  <input matInput [matDatepicker]="startDate" [min]="minDate" [max]="maxDate" (dateChange)="chosenDate($event)" formControlName="startDate"/>
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="startDate"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #startDate></mat-datepicker>
+                </mat-form-field>
+           
+                <mat-form-field appearance="fill" class="datepicker">
+                  <mat-label>Крайна дата на застраховката</mat-label>
+                  <input matInput [matDatepicker]="endDate" formControlName="endDate" [disabled]="true"/>
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="endDate"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #endDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+          </form>
+
+
+
+            <div class="row align-items-center colums-wrapper">
+              <p class="section-title">Допълнителни предложения</p>
+              <div class="col">
+                <div class="align-items-stretch">
+                  <div class="icon-box">
+                    <div class="icon"><fa-icon [icon]="faBandageIcon"></fa-icon></div>
+                    <h4 class="title">Увеличен пакет Извънболнична помощ</h4>
+                    <button type="button" class="btn add" (click)="addPack('outOfHospitalLimit')"  *ngIf="additionalPack!=='outOfHospitalLimit'">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                    <button type="button" class="btn add" (click)="addPack('')" *ngIf="additionalPack=='outOfHospitalLimit'">
+                    <mat-icon>remove_circle_outline</mat-icon>
+                    </button>
+                  </div>
+                </div>
+            </div>
+              <div class="col">
+                <div class="align-items-stretch">
+                  <div class="icon-box">
+                    <div class="icon"><fa-icon [icon]="faHospitalIcon"></fa-icon></div>
+                    <h4 class="title">Увеличен пакет Болнична помощ</h4>
+                    <button type="button" class="btn add" (click)="addPack('hospitalLimit')" *ngIf="additionalPack!=='hospitalLimit'">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                    <button type="button" class="btn add" (click)="addPack('')" *ngIf="additionalPack=='hospitalLimit'">
+                      <mat-icon>remove_circle_outline</mat-icon>
+                      </button>
+                  </div>
+                </div>
+            </div>
+              <div class="col">
+                <div class="align-items-stretch">
+                  <div class="icon-box">
+                    <div class="icon"><span class="material-icons">medication</span></div>
+                    <h4 class="title">Увеличен пакет Здравни стоки и лекарства</h4>
+                    <button type="button" class="btn add" (click)="addPack('healthGoodsLimit')" *ngIf="additionalPack!=='healthGoodsLimit'">
+                       <mat-icon>add</mat-icon>
+                    </button>
+                    <button type="button" class="btn add" (click)="addPack('')" *ngIf="additionalPack=='healthGoodsLimit'">
+                      <mat-icon>remove_circle_outline</mat-icon>
+                      </button>
+                  </div>
+                </div>
+            </div>
+                <div class="col">
+                  <div class="align-items-stretch">
+                    <div class="icon-box">
+                      <div class="icon"><fa-icon [icon]="faToothIcon"></fa-icon></div>
+                      <h4 class="title">Увеличен пакет Дентална помощ</h4>
+                      <button type="button" class="btn add" (click)="addPack('dentalLimit')" *ngIf="additionalPack!=='dentalLimit'">
+                        <mat-icon>add</mat-icon>
+                      </button>
+                      <button type="button" class="btn add" (click)="addPack('')" *ngIf="additionalPack=='dentalLimit'">
+                        <mat-icon>remove_circle_outline</mat-icon>
+                        </button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            
+
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+              <button type="button" class="btn submit" (click)="continue()" [disabled]="form.status!=='VALID'">
+                Продължи
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

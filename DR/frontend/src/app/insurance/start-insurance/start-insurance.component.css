@@ -1,0 +1,97 @@
+.datepicker{
+    width: 300px;
+}
+.circle{
+    height: 60px;
+    background-color: #ff8a65;
+    width: 60px;
+    display: flex;
+    border-radius: 50px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.circle-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-wrapper{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.colums-wrapper{
+    margin-top: 50px;
+    margin-bottom:50px;
+}
+
+.section-title{
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    font-size: 25px;
+    font-weight: 700;
+    color: #4e4039;
+}
+
+.card-suggestions{
+    border: 1px solid #ef7f4d;
+}
+
+.datepickers{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* .submit {
+    cursor: pointer;
+      border-radius: 5em;
+      color: #fff;
+      background: #EF814F;
+      border: 0;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      font-size: 14px;
+      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+
+  .submit:hover{
+    background-color: white;
+    color: #EF814F;
+    border: 1px solid #EF814F
+
+  } */
+
+  .add{
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: #EF814F;
+    border: 0;
+    padding-top: 10px;
+    font-size: 14px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+
+  .add:hover{
+    background-color: white;
+    color: #EF814F;
+    border: 1px solid #EF814F
+  }
+
+
+  ::ng-deep .mat-form-field-appearance-fill.mat-form-field-disabled .mat-form-field-flex{
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0,0,0,0.175);
+  }
+
+  .icon{
+    font-size: 24px;
+  }

@@ -1,0 +1,33 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="0cbc6611-f554-3bd0-809a-388dc95a615b" enabled="true" level="ERROR" enabled_by_default="true" editorAttributes="ERRORS_ATTRIBUTES" />
+    <inspection_tool class="6e44f3f6-fb74-3362-86d6-b799e4cf4c07" enabled="true" level="ERROR" enabled_by_default="true" editorAttributes="ERRORS_ATTRIBUTES" />
+    <inspection_tool class="MethodMayBeStatic" enabled="true" level="WARNING" enabled_by_default="true" editorAttributes="ERRORS_ATTRIBUTES">
+      <option name="m_onlyPrivateOrFinal" value="false" />
+      <option name="m_ignoreEmptyMethods" value="true" />
+    </inspection_tool>
+    <inspection_tool class="MissingOverrideAnnotation" enabled="true" level="WARNING" enabled_by_default="true" editorAttributes="ERRORS_ATTRIBUTES">
+      <option name="ignoreObjectMethods" value="true" />
+      <option name="ignoreAnonymousClassMethods" value="false" />
+    </inspection_tool>
+    <inspection_tool class="SSBasedInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <replaceConfiguration name="Find fields defined as implementations of List" uuid="0cbc6611-f554-3bd0-809a-388dc95a615b" text="class $Class$ {&#10;    $Type$&lt;$ParamType$&gt; $Field$ = $Init$;&#10;}" recursive="false" caseInsensitive="false" type="JAVA" pattern_context="default" reformatAccordingToStyle="true" shortenFQN="true" replacement="List&lt;$ParamType$&gt; $Field$ = $Init$;">
+        <constraint name="__context__" within="" contains="" />
+        <constraint name="Class" script="&quot;!__context__.interface &amp;&amp; !__context__.enum &amp;&amp; !__context__.record&quot;" within="" contains="" />
+        <constraint name="Field" withinHierarchy="true" target="true" within="" contains="" />
+        <constraint name="Init" minCount="0" within="" contains="" />
+        <constraint name="ParamType" within="" contains="" />
+        <constraint name="Type" regexp="ArrayList|LinkedList" within="" contains="" />
+      </replaceConfiguration>
+      <replaceConfiguration name="Find local variable declarations for implementations of List" uuid="6e44f3f6-fb74-3362-86d6-b799e4cf4c07" text="$Type$&lt;$ParameterType$&gt; $Var$ = $Value$;" recursive="false" caseInsensitive="false" type="JAVA" pattern_context="default" reformatAccordingToStyle="true" shortenFQN="true" replacement="List&lt;$ParameterType$&gt; $Var$ = $Value$;">
+        <constraint name="__context__" within="" contains="" />
+        <constraint name="Type" regexp="ArrayList|LinkedList" within="" contains="" />
+        <constraint name="Var" target="true" within="" contains="" />
+        <constraint name="Value" nameOfExprType="Object" exprTypeWithinHierarchy="true" minCount="0" within="" contains="" />
+        <constraint name="ParameterType" within="" contains="" />
+      </replaceConfiguration>
+    </inspection_tool>
+    <inspection_tool class="SerializableHasSerialVersionUIDField" enabled="true" level="WARNING" enabled_by_default="true" />
+  </profile>
+</component>

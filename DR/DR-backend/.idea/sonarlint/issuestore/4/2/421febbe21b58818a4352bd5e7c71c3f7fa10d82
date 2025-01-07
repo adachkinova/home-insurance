@@ -1,0 +1,49 @@
+
+[	java:S112>"FDefine and throw a dedicated exception instead of using a generic one.(Ò¬²Û
+[	java:S112O"FDefine and throw a dedicated exception instead of using a generic one.(åÉ–¾
+J
+java:S37401"/Provide the parametrized type for this generic.(ÁÕÖ„ùÿÿÿÿ
+E
+java:S3740>"/Provide the parametrized type for this generic.(Ò¬²Û
+E
+java:S3740O"/Provide the parametrized type for this generic.(åÉ–¾
+E
+java:S3740u"/Provide the parametrized type for this generic.(œ‡‘˜
+F
+java:S3740€"/Provide the parametrized type for this generic.(ßµ­
+K
+java:S3740§"/Provide the parametrized type for this generic.(¸öŸÔÿÿÿÿÿ
+Ÿ
+java:S11927"ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 5 times.( ï…üÿÿÿÿ
+P
+java:S1141X"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+X
+java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ
+7
+java:S11816"!Catch Exception instead of Error.(¹¨“«
+V
+java:S4684>"@Replace this persistent entity with a simple POJO or DTO object.(Ò¬²Û
+‚
+java:S1130>"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Ò¬²Û
+W
+java:S4684€"@Replace this persistent entity with a simple POJO or DTO object.(ßµ­
+H
+java:S1481"1Remove this unused "updatedClaim" local variable.(ï™†
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+M
+java:S1128"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ
+J
+java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ
+X
+java:S1128	"BRemove this unused import 'com.app.exception.BadRequestException'.(çè—ö
+X
+java:S1128"=Remove this unused import 'com.app.model.model.PersonPolicy'.(õ‹ŒÅùÿÿÿÿ
+N
+java:S1128"3Remove this unused import 'org.hibernate.Criteria'.(öÏ¨ÿÿÿÿÿ

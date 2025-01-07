@@ -1,0 +1,35 @@
+    <section>
+    <div class="header-wrapper">
+        <div class="inner-wrapper">
+          <p class="header">Моите претенции</p>
+          <div class="teab-wrapper" >
+            <p type="button" (click)="activateTab(1)" [ngClass]="currentIndex == 1 ? 'tab active' : ' tab unactive'">Отворени</p>
+            <p type="button"  (click)="activateTab(2)" [ngClass]="currentIndex == 2 ?'tab active' : ' tab unactive'">Приключени</p>
+          </div>
+        </div>
+            <button type="button" class="header-button">
+            <span class="button-text" (click)="newClaim()">Заяви нова претенция
+            </span>
+          </button>
+      </div>
+              <div *ngIf="currentIndex == 2" style="text-align: center;">
+                <b *ngIf="claimdDataClosed!==undefined && claimdDataClosed.length==0">Няма приключени претенции</b>
+                <div *ngIf="claimdDataClosed!==undefined && claimdDataClosed.length>0"  class="list-wrapper">
+                  <div *ngFor=" let claim of claimdDataClosed">
+                    <app-claims-list-item [claim]="claim" [opened]="false">
+                    </app-claims-list-item>
+                  </div>
+                </div>
+            </div>  
+     
+          <div *ngIf="currentIndex == 1" style="text-align: center;">
+            <b *ngIf="claimsDataOpened!==undefined && claimsDataOpened.length==0">Няма отворени претенции</b>
+            <div *ngIf="claimsDataOpened!==undefined && claimsDataOpened.length>0" class="list-wrapper">
+              <div *ngFor=" let claim of claimsDataOpened" >
+                <app-claims-list-item [claim]="claim" [opened]="true">
+                </app-claims-list-item>
+              </div>
+            </div>
+          </div>  
+
+        </section>

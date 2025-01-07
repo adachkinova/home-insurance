@@ -1,0 +1,110 @@
+<div class="section">
+
+<div class="card">
+    <div class="wrapper header">
+    <div class="wrapper-text header-text">
+        Статус
+    </div>
+    <div class="bubble-wrapper ">
+      <span class="bubble-text"  *ngIf="opened==false && claim.description===''">Платена</span>
+      <span class="bubble-text" *ngIf="opened==false && claim.description!==''">Отказана</span>
+      <span class="bubble-text" *ngIf="opened==true">Отворена</span>
+
+    </div>
+    </div>
+  
+  
+      <div class="content">
+        <div class="column">
+          Претенция номер
+        </div>
+        <div class="column">
+          {{claim.claimNumber}}/{{claim.id}}
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="column">
+         Застраховано лице
+        </div>
+        <div class="column">
+          {{claim.name}}
+        </div>
+      </div>
+  
+  
+      <div class="content">
+        <div class="column">
+          Вид на претенцията
+        </div>
+        <div class="column">
+          {{claim.category}}
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="column">
+          Детайли на претенцията
+        </div>
+        <div class="column">
+          {{claim.type}}
+        </div>
+      </div>
+  
+  
+      <div class="content">
+        <div class="column">
+          Дата на претенцията
+        </div>
+        <div class="column">
+          {{claim.claimDate | date: 'dd.MM.yyyy'}}
+        </div>
+      </div>
+  
+  
+      <div class="content" *ngIf="opened==false">
+        <div class="column">
+          Дата на плащане
+        </div>
+        <div class="column">
+          {{claim.paidDate | date: 'dd.MM.yyyy'}}
+        </div>
+      </div>
+  
+  
+      <div class="content" *ngIf="opened==false && claim.description===''">
+        <div class="column">
+          Платена сума
+        </div>
+        <div class="column">
+          {{claim.paidSum}}
+        </div>
+      </div>
+
+      <div class="content" *ngIf="opened==false && claim.description!==''">
+        <div class="column">
+         Отказана поради
+        </div>
+        <div class="column">
+          <mat-icon type="button" (click)="showStatus=true" *ngIf="!showStatus">keyboard_arrow_down</mat-icon>
+          <mat-icon type="button" (click)="showStatus=false" *ngIf="showStatus">keyboard_arrow_up</mat-icon>
+        </div>
+      </div>
+      <div class="column" style="padding-top:0px" *ngIf="opened==false && claim.description!=='' && showStatus">
+        {{claim.description}}
+      </div>
+  
+  
+  
+  
+    <div class="wrapper content">
+      <div class="wrapper-text column">
+        <div type="button" (click)="viewAttachedDocs()" *ngIf="claim.files" >Вижте прикачени документи</div>
+        <div *ngIf="!claim.files">Няма прикачени документи</div>
+      </div>
+    </div>
+  
+  
+  </div>
+</div>
+  

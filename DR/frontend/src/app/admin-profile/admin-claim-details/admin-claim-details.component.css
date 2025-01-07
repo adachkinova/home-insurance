@@ -1,0 +1,108 @@
+.wrapper{
+    background-color: #fef8f5;
+}
+
+.image-wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+
+.un {
+    width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: "Helvetica Neue", sans-serif;
+  }
+    
+    /* .submit {
+        cursor: pointer;
+          border-radius: 5em;
+          color: #fff;
+          background: #EF814F;
+          border: 0;
+          padding-left: 40px;
+          padding-right: 40px;
+          padding-bottom: 10px;
+          padding-top: 10px;
+          font-family: "Helvetica Neue", sans-serif;
+          font-size: 14px;
+          box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+      }
+    
+      .submit:hover{
+        background-color: white;
+        color: #EF814F;
+        border: 1px solid #EF814F
+    
+      } */
+      .form-header{
+        color: #4e4039;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .mat-form-field{
+        text-align: center;
+        width: 300px;
+        margin-top: -20px;
+      }
+
+      .info-box{
+        margin-bottom: 32.5px;
+        /* display: flex; */
+        width: 100%;
+        /* justify-content: space-around; */
+        font-size: 16px;
+        color: #414141;
+      }
+
+      .info-line{
+        display: flex;
+        gap: 20px;
+        justify-content: space-evenly;
+      }
+
+      p{
+        font-weight: bold;
+      }
+
+      .header-text{
+        font-size: 25px;
+      }
+
+      .subheader-text{
+        font-size: 16px;
+      }
+
+      .kids-column{
+        display: flex;
+        flex-direction: column;
+      }
+
+      .editing{
+        justify-content: space-between;
+      }
+
+      .info-data{
+        margin-bottom: 12px;
+      }
+
+      .button-wrapper{
+        display: flex;
+        justify-content: space-evenly;
+      }

@@ -1,0 +1,33 @@
+
+h1 {
+    margin: 20px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #4e4039;
+    font-family: "Helvetica Neue", sans-serif;
+  }
+  p {
+    color: #404F5E;
+    font-size:20px;
+    margin: 10px;
+  }
+i {
+  color: #eb5d1e;
+  font-size: 100px;
+  line-height: 200px;
+}
+.card {
+  background: white;
+  padding: 60px;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px #C8D0D8;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,83 @@
+<section class="vh-100" class="wrapper">
+              <section>
+                <div class="container-fluid">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm-4" *ngFor="let pack of packageList">
+                        <div class="card text-center">
+                          <div class="title">
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                            <h2>{{pack.packType}}</h2>
+                          </div>
+                          <div class="price">
+                            <h4><b>{{pack.price}}</b><span>лв.</span></h4>
+                          </div>
+                          <div class="option">
+                            <ul>
+                            <li> <i class="fa fa-check" aria-hidden="true"></i> Извънболнична помощ - <span>{{pack.outOfHospitalLimit}}</span>лв.</li>
+                            <li> <i class="fa fa-check" aria-hidden="true"></i> Болнична помощ -  <span>{{pack.hospitalLimit}}</span>лв. </li>
+                            <li> <i class="fa fa-check" aria-hidden="true"></i> Дентална помощ  -  <span>{{pack.dentalLimit}}</span>лв.</li>
+                            <li> <i class="fa fa-check" aria-hidden="true"></i> ЗДРАВНИ СТОКИ -  <span>{{pack.healthGoodsLimit}}</span>лв. </li>
+                            </ul>
+                          </div>
+                          <button type="button" class="btn submit" (click)="choosePackage(pack.index)" *ngIf="chosenPackage!==pack.index">Избери пакет</button>
+                          <button type="button" class="btn submit" (click)="continue(pack)" *ngIf="chosenPackage===pack.index">Продължи</button>
+                        </div>
+                      </div>
+                      <!-- END Col one -->
+                      <!-- <div class="col-sm-4">
+                        <div class="card text-center">
+                          <div class="title">
+                            <i class="fa fa-plane" aria-hidden="true"></i>
+                            <h2>Плюс</h2>
+                          </div>
+                          <div class="price">
+                            <h4>50 <span>лв.</span></h4>
+                          </div>
+                          <div class="option">
+                            <ul>
+                              <li> <i class="fa fa-check" aria-hidden="true"></i> Извънболнична помощ - 600 лв</li>
+                              <li> <i class="fa fa-check" aria-hidden="true"></i> Болнична помощ - 4500 лв</li>
+                              <li> <i class="fa fa-check" aria-hidden="true"></i> Дентална помощ  - 200лв  </li>
+                              <li> <i class="fa fa-times" aria-hidden="true"></i> ЗДРАВНИ СТОКИ - 200лв </li>
+                            </ul>
+                          </div>
+                          <button type="button" class="btn submit" (click)="choosePackage(2)" *ngIf="chosenPackage!==2">Избери пакет</button>
+                          <button type="button" class="btn submit" (click)="continue()" *ngIf="chosenPackage===2">Продължи</button>
+
+                        </div>
+                      </div> -->
+                      <!-- END Col two -->
+                      <!-- <div class="col-sm-4">
+                        <div class="card text-center">
+                          <div class="title">
+                            <i class="fa fa-rocket" aria-hidden="true"></i>
+                            <h2>Макс</h2>
+                          </div>
+                          <div class="price">
+                            <h4>100 <span>лв.</span></h4>
+                          </div>
+                          <div class="option">
+                            <ul>
+                              <li> <i class="fa fa-check" aria-hidden="true"></i> Извънболнична помощ - 800 лв</li>
+                              <li> <i class="fa fa-check" aria-hidden="true"></i> Болнична помощ  - 5500 лв</li>
+                              <li> <i class="fa fa-check" aria-hidden="true"></i> Дентална помощ - 350 лв</li>
+                              <li> <i class="fa fa-times" aria-hidden="true"></i> ЗДРАВНИ СТОКИ - 350 лв </li>
+                            </ul>
+                          </div>
+                          <button type="button" class="btn submit" (click)="choosePackage(3)" *ngIf="chosenPackage!==3">Избери пакет</button>
+                          <button type="button" class="btn submit" (click)="continue()" *ngIf="chosenPackage===3">Продължи</button>
+                        </div>
+                      </div> -->
+                      <!-- END Col three -->
+                    </div>
+                  </div>
+                </div>
+              </section>
+            <!-- </div> -->
+          <!-- </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</section>
