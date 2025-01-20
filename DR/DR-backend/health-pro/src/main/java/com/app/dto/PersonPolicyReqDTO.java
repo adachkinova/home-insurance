@@ -1,7 +1,7 @@
 package com.app.dto;
 
 import com.app.model.model.Person;
-import com.app.model.model.Policy;
+import com.app.model.model.PolicyOld;
 import lombok.Data;
 
 @Data
@@ -11,5 +11,5 @@ public class PersonPolicyReqDTO {
 
     public Person insured;
 
-    public Policy policy;
+    public PolicyOld policyOld;
 }

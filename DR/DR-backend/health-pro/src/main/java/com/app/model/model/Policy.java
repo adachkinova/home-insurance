@@ -1,45 +1,54 @@
 package com.app.model.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
 
-@Data
 @Entity
-@Table(name = "policy")
+@Getter
+@Setter
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "POLICY")
 public class Policy {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
+    @JsonProperty("startDate")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "start_date")
-    private Date startDate;
+    private LocalDate startDate;
 
+    @JsonProperty("endDate")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "end_date")
-    private Date endDate;
+    private LocalDate endDate;
 
-    @Column(name = "policy_number")
+    @JsonProperty("policyNumber")
+    @Column(name = "policyNumber", unique = true)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "policy_number_seq")
+    @SequenceGenerator(name = "policy_number_seq", sequenceName = "policy_number_seq", allocationSize = 1)
     private long policyNumber;
 
-    @Column(name = "dental_limit")
-    private BigDecimal dentalLimit;
+    @JsonProperty("coveragePackage")
+    @Column(name = "coverage_package")
+    private String coveragePackage;
 
-    @Column(name = "hospital_limit")
-    private BigDecimal hospitalLimit;
+    @JsonProperty("insuranceAmount")
+    @Column(name = "insurance_amount")
+    private Integer insuranceAmount;
 
-    @Column(name = "out_of_hospital_limit")
-    private BigDecimal outOfHospitalLimit;
+    @JsonProperty("insuranceMovablePropertyAmount")
+    @Column(name = "insurance_movable_property_amount")
+    private Integer insuranceMovablePropertyAmount;
 
-    @Column(name = "health_goods_limit")
-    private BigDecimal healthGoodsLimit;
-
+    @JsonProperty("price")
     @Column(name = "price")
     private BigDecimal price;
-
 }

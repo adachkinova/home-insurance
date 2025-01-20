@@ -17,7 +17,7 @@ public class PersonPolicy {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToOne
     @JoinColumn(name = "policy_id")
-    private Policy policyId;
+    private PolicyOld policyOldId;
 
 //    @ManyToOne
     @Column(name = "insurer_id")

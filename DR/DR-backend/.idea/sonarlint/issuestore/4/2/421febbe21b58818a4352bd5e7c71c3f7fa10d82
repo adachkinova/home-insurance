@@ -1,49 +1,38 @@
 
-[	java:S112>"FDefine and throw a dedicated exception instead of using a generic one.(Ò¬²Û
-[	java:S112O"FDefine and throw a dedicated exception instead of using a generic one.(åÉ–¾
-J
-java:S37401"/Provide the parametrized type for this generic.(ÁÕÖ„ùÿÿÿÿ
-E
-java:S3740>"/Provide the parametrized type for this generic.(Ò¬²Û
-E
-java:S3740O"/Provide the parametrized type for this generic.(åÉ–¾
-E
-java:S3740u"/Provide the parametrized type for this generic.(œ‡‘˜
-F
-java:S3740€"/Provide the parametrized type for this generic.(ßµ­
-K
-java:S3740§"/Provide the parametrized type for this generic.(¸öŸÔÿÿÿÿÿ
-Ÿ
-java:S11927"ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 5 times.( ï…üÿÿÿÿ
-P
-java:S1141X"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
-X
-java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ
-X
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ
-X
-java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ
-X
-java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ
-7
-java:S11816"!Catch Exception instead of Error.(¹¨“«
-V
-java:S4684>"@Replace this persistent entity with a simple POJO or DTO object.(Ò¬²Û
-‚
-java:S1130>"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Ò¬²Û
-W
-java:S4684€"@Replace this persistent entity with a simple POJO or DTO object.(ßµ­
-H
-java:S1481"1Remove this unused "updatedClaim" local variable.(ï™†
-F
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
-M
-java:S1128"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ
-J
-java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ
-X
-java:S1128	"BRemove this unused import 'com.app.exception.BadRequestException'.(çè—ö
-X
-java:S1128"=Remove this unused import 'com.app.model.model.PersonPolicy'.(õ‹ŒÅùÿÿÿÿ
-N
-java:S1128"3Remove this unused import 'org.hibernate.Criteria'.(öÏ¨ÿÿÿÿÿ
+	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(Ò¬²ÛJ$6d76f87a-399b-4389-b1b6-9c52e438985f
+	java:S112I"FDefine and throw a dedicated exception instead of using a generic one.(åÉ–¾J$bde54bb9-201e-4b9b-a325-1c5b0965fb89
+p
+java:S3740+"/Provide the parametrized type for this generic.(ÁÕÖ„ùÿÿÿÿJ$af6bdf39-f4ca-4dcf-bde2-a681addab581
+k
+java:S37408"/Provide the parametrized type for this generic.(Ò¬²ÛJ$25f3a8fc-9099-42bc-87f8-d900bb9d9c4e
+k
+java:S3740I"/Provide the parametrized type for this generic.(åÉ–¾J$3e1c9dc8-6442-4d16-aa61-e45b909d5b80
+k
+java:S3740o"/Provide the parametrized type for this generic.(œ‡‘˜J$cb9c5860-e349-484c-a155-4e1db1c6bedf
+k
+java:S3740z"/Provide the parametrized type for this generic.(ßµ­J$a01a36fc-328f-4769-b12d-05925de8a0fb
+q
+java:S3740¡"/Provide the parametrized type for this generic.(¸öŸÔÿÿÿÿÿJ$67f87fa2-e019-4298-9d39-392a7663434e
+Å
+java:S11921"ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 5 times.( ï…üÿÿÿÿJ$e6f37af8-20c0-483c-9e39-59b8cdb66d3d
+v
+java:S1141R"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿJ$767f994f-a8c5-444c-8118-19ce4d05981e
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$fd69f969-a73b-41b0-be59-395094904dda
+~
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞJ$f3626372-aceb-412a-b633-bea97ce3e0fd
+~
+java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞJ$06f08362-95dc-439f-a1a2-c29f1f666ff9
+…
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8ê‚Ä2J$4f63d271-bd7d-4f15-86d7-707b69902d02
+]
+java:S11810"!Catch Exception instead of Error.(¹¨“«J$dc46f725-2b4d-4fb4-9aef-3564a632baa1
+|
+java:S46848"@Replace this persistent entity with a simple POJO or DTO object.(Ò¬²ÛJ$8220075f-c0e8-4b7c-b583-24e30f7230a2
+¨
+java:S11308"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Ò¬²ÛJ$ac7239ca-fd23-468e-9c53-057449a59d60
+|
+java:S4684z"@Replace this persistent entity with a simple POJO or DTO object.(ßµ­J$888d02ed-37c9-491b-b68b-7d18afe0daea
+^	java:S125“"<This block of commented-out lines of code should be removed.(÷İ§¢ıÿÿÿÿ8Ú¦é¤Ç2
+n
+java:S1481—"1Remove this unused "updatedClaim" local variable.(ï™†J$a264ca8f-e5b8-4ee8-9c1a-dc9900683126

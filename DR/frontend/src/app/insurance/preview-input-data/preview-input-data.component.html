@@ -1,0 +1,108 @@
+<section class="vh-100 wrapper">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px; margin: 25px; overflow-y: auto;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-8 col-xl-7 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 form-header">
+                  ПРЕГЛЕД НА ВЪВЕДЕНИТЕ ДАННИ
+                </p>
+                <div class="col">
+                  <div class="align-items-stretch">
+                <div class="preview-box">
+                  <div class="preview-field-bold">
+                    <label>Избрано покритие:</label>
+                    <p>{{ form.value.policy.coveragePackage }}</p>
+                  </div>
+                  <hr class="hr-divider" />
+                  <div class="preview-field-bold">
+                    <label>Застрахователна сума:</label>
+                    <p>{{ form.value.policy.insuranceAmount | number }} лв.</p>
+                  </div>
+                  <div class="preview-field-bold" *ngIf="form.value.insuranceMovablePropertyAmount > 0">
+                    <label>Застрахователна сума за движимо имущество:</label>
+                    <p>{{ form.value.policy.insuranceMovablePropertyAmount | number }} лв.</p>
+                  </div>
+                  <hr class="hr-divider" />
+                  <div class="preview-field-bold">
+                  <label >Имот:</label>
+                  </div>
+                  <div class="preview-field">
+                    <label>Тип:</label>
+                    <p>{{ form.value.insuredProperty.propertyType }}</p>
+                  </div>
+                  <div class="preview-field">
+                    <label>Град:</label>
+                    <p>{{ form.value.insuredProperty.city }}</p>
+                  </div>
+                  <div class="preview-field">
+                    <label>Адрес:</label>
+                    <p>{{ form.value.insuredProperty.address }}</p>
+                  </div>
+                  <div class="preview-field">
+                    <label>Площ:</label>
+                    <p>{{ form.value.insuredProperty.size }} кв.м.</p>
+                  </div>
+                  <hr class="hr-divider" />
+                  <div class="preview-field-bold">
+                  <label>Собственик:</label>
+                  </div>
+                  <div class="preview-field">
+                    <label>Име: </label>
+                    <p>{{ form.value.propertyOwner.name }}</p>
+                  </div>
+                  <div class="preview-field">
+                    <label>Презиме:</label>
+                    <p>{{ form.value.propertyOwner.middleName }}</p>
+                  </div>
+                  <div class="preview-field">
+                    <label>Фамилия:</label>
+                    <p>{{ form.value.propertyOwner.surname }}</p>
+                  </div>
+                  <div class="preview-field">
+                    <label>ЕГН:</label>
+                    <p>{{ form.value.propertyOwner.egn }}</p>
+                  </div>
+                  <div class="preview-field">
+                    <label>Телефон:</label>
+                    <p>{{ form.value.propertyOwner.phoneNumber }}</p>
+                  </div>
+                  <div class="preview-field">
+                    <label>Имейл:</label>
+                    <p>{{ form.value.propertyOwner.email }}</p>
+                  </div>
+                  <hr class="hr-divider" />
+                  <div class="preview-field-bold">
+                  <label>Валидност:</label>
+                  </div>
+                  <div class="preview-field">
+                    <label>От: </label>
+                    <p>{{ form.value.policy.startDate | date: 'dd.MM.yyyy' }}</p>
+                  </div>
+                  <div class="preview-field">
+                    <label>До:</label>
+                    <p>{{ form.value.policy.endDate | date: 'dd.MM.yyyy' }}</p>
+                  </div>
+                  <hr class="hr-divider" />
+                  <div class="preview-field-bold">
+                    <label>Сума за плащане:</label>
+                    <p>{{ form.value.policy.policyPrice | number }} лв.</p>
+                  </div>
+                </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                  <button type="button" class="btn submit" (click)="continue()">
+                    Продължи
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

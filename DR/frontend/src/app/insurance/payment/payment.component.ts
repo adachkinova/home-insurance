@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormServiceInsurance } from 'src/app/services/formServiceInsurance.service';
 import { PolicyService } from 'src/app/services/policy.service';
 import { sharedService } from 'src/app/services/sharedService.service';
+import {FormServiceInsuranceData} from "../../services/formServiceInsuranceData.service";
 
 @Component({
   selector: 'app-payment',
@@ -18,15 +19,15 @@ export class PaymentComponent implements OnInit {
   constructor(
     private router: Router,
     private toastrService: ToastrService,
-    private formService: FormServiceInsurance,
+    private formService: FormServiceInsuranceData,
     private policyService: PolicyService,
     private sharedService: sharedService
   ) {
-  
+
   }
 
   ngOnInit(): void {
-    
+
     this.paymentForm = new FormGroup({
       cardHolderName: new FormControl ("", Validators.required),
       cvv: new FormControl ("", {validators:[Validators.required, Validators.minLength(3), Validators.maxLength(3)]}),
@@ -54,28 +55,32 @@ export class PaymentComponent implements OnInit {
   }
 
   continue() {
-    let policyForm = {
-      insurer: this.formService.getInsurerForm(),
-      insured: this.formService.getInsuredForm(),
-      policy: this.formService.getPolicyForm().value,
-    };
-
-    policyForm.policy.startDate = this.formatDate(policyForm.policy.startDate);
-    policyForm.policy.endDate = this.formatDate(policyForm.policy.endDate);
-
     this.sharedService.isLoading(true);
-    this.policyService.savePolicy(policyForm).subscribe(
-      (res: any) => {
+    // this.router.navigate(['/successful', 1]);
+    // this.policyService.savePolicy(this.formService.getForm()).subscribe(
+    //   (res: any) => {
+    //     this.sharedService.isLoading(false);
+    //     this.sharedService.setPolicy(res);
+    //     this.router.navigate(['/successful', res.policyNumber]);
+    //   },
+    //   (err) => {
+    //     this.sharedService.isLoading(false);
+    //     this.toastrService.error(err.error);
+    //     //this.router.navigate(['/error'])
+    //   }
+    // );
+
+    this.policyService.savePolicy(this.formService.getForm().value).subscribe({
+      next: (response: any) => {
         this.sharedService.isLoading(false);
-        this.sharedService.setPolicy(res);
-        this.router.navigate(['/successful', res.policyNumber]);
+        this.sharedService.setPolicy(response);
+        this.router.navigate(['/successful', response.policyNumber]);
       },
-      (err) => {
+      error: (err) => {
         this.sharedService.isLoading(false);
         this.toastrService.error(err.error);
-        //this.router.navigate(['/error'])
       }
-    );
+    });
   }
 }
 

@@ -1,8 +1,6 @@
 package com.app.dto;
 
 import com.app.model.model.Claim;
-import com.app.model.model.Person;
-import com.app.model.model.Policy;
 import lombok.Data;
 
 import java.math.BigDecimal;

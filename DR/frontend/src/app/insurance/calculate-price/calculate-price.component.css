@@ -1,0 +1,206 @@
+.datepicker{
+    width: 300px;
+}
+.circle{
+    height: 60px;
+    background-color: #ff8a65;
+    width: 60px;
+    display: flex;
+    border-radius: 50px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.circle-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-wrapper{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.colums-wrapper{
+    margin-top: 50px;
+    margin-bottom:50px;
+}
+
+.section-title{
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    font-size: 25px;
+    font-weight: 700;
+    color: #4e4039;
+}
+
+.card-suggestions{
+    border: 1px solid #ef7f4d;
+}
+
+.datepickers{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* .submit {
+    cursor: pointer;
+      border-radius: 5em;
+      color: #fff;
+      background: #EF814F;
+      border: 0;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      font-size: 14px;
+      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+
+  .submit:hover{
+    background-color: white;
+    color: #EF814F;
+    border: 1px solid #EF814F
+
+  } */
+
+  .add{
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: #EF814F;
+    border: 0;
+    padding-top: 10px;
+    font-size: 14px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+
+  .add:hover{
+    background-color: white;
+    color: #EF814F;
+    border: 1px solid #EF814F
+  }
+
+
+  ::ng-deep .mat-form-field-appearance-fill.mat-form-field-disabled .mat-form-field-flex{
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0,0,0,0.175);
+  }
+
+  .icon{
+    font-size: 24px;
+  }
+
+.description {
+  font-size: 12px;
+}
+
+.icon-box {
+  transition: background-color 0.3s ease;
+}
+
+.icon-box.active {
+  background-color: rgba(243, 166, 166, 0.62); /* Highlight color */
+}
+
+/* Center the card body content */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Center the content horizontally */
+  justify-content: center; /* Center the content vertically */
+}
+
+/* Center the card body content */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Center the content horizontally */
+  justify-content: center; /* Center the content vertically */
+}
+
+/* Center the card body content */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Center the content horizontally */
+  justify-content: center; /* Center the content vertically */
+}
+
+/* Style for the list */
+.risks-list {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+  max-width: 80%;  /* Limit the width of the list */
+  margin: 0 auto; /* Center the list inside the container */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Automatically create columns */
+  gap: 20px; /* Add space between columns */
+  margin-top: 50px;
+}
+
+/* Style for each list item */
+.risks-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  /* Ensure the list item is properly aligned with the checkmark icon */
+}
+
+/* Style for the green check icon */
+.check-icon {
+  color: green;
+  margin-right: 10px;
+}
+
+/* Make sure the list is displayed in a single column for smaller screens */
+@media (max-width: 767px) {
+  .risks-list {
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
+}
+
+/* Style for the price box */
+.price-box {
+  background-color: #6f9a72; /* Green background */
+  color: white;
+  padding: 20px 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better focus */
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto; /* Center the box */
+}
+
+/* Style for the price text */
+.policy-price {
+  font-size: 36px; /* Larger font size for price */
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Make the price box responsive for smaller screens */
+@media (max-width: 767px) {
+  .price-box {
+    width: 80%;
+    padding: 15px 30px;
+  }
+
+  .policy-price {
+    font-size: 28px; /* Slightly smaller font size for smaller screens */
+  }
+}
+
+
+
+
+
+
+

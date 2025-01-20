@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AbstractControl, ValidatorFn } from "@angular/forms";
-import { BehaviorSubject } from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
     providedIn: 'root',
@@ -20,12 +20,14 @@ export class sharedService {
     this.policyInfo$.next(info);
   }
 
+  policyPrice;
+
     //Проверка дали лицето е над 18 години
      isAdult(egn ) : any {
       let date = this.getBirhtDay(egn)
         var diff_ms = Date.now() - date.getTime();
-        var age_dt = new Date(diff_ms); 
-      
+        var age_dt = new Date(diff_ms);
+
         return Math.abs(age_dt.getUTCFullYear() - 1970);
     }
 
@@ -35,23 +37,23 @@ export class sharedService {
         let monthBorn = this.getNums(egnNum, 2, 2);
         const dayBorn = this.getNums(egnNum, 4, 2);
         var year_flag = 1900;
-      
+
         if (monthBorn > 40) {
           year_flag += 100;
         } else if (monthBorn > 20) {
           year_flag -= 100;
         }
-      
+
         monthBorn = (monthBorn % 20) - 1;
 
         return (
           new Date(year_flag + this.getNums(egnNum, 0, 2), monthBorn, dayBorn)
         );
       };
-      
+
        getNums (str , start , simbolNum ) {
         return str.substr(start, simbolNum) * 1;
-      };    
+      };
 
       isLoading(bool:boolean){
         this.loading.next(bool)
@@ -70,5 +72,24 @@ export class sharedService {
         window.document.write('<iframe src="' + base64str  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
         }
       }
-    
+
+  private propertySizeSubject = new BehaviorSubject<number>(0); // Initial size set to 0
+  propertySize$ = this.propertySizeSubject.asObservable(); // Observable for subscribing
+
+  setPropertySize(size: number): void {
+    this.propertySizeSubject.next(size); // Update the size
+  }
+
+  getPropertySize(): Observable<number> {
+    return this.propertySize$; // Expose the observable for other components to subscribe to
+  }
+
+  setPolicyPrice(price: number) {
+    this.policyInfo$.next(price);
+  }
+
+  getPolicyPrice(): Observable<number> {
+    return this.policyPrice;
+  }
+
 }

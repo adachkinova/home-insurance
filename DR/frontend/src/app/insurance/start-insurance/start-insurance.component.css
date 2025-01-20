@@ -95,3 +95,18 @@
   .icon{
     font-size: 24px;
   }
+
+.description {
+  font-size: 12px;
+}
+
+.icon-box {
+  transition: background-color 0.3s ease;
+}
+
+.icon-box.active {
+  background-color: rgba(243, 166, 166, 0.62); /* Highlight color */
+}
+
+
+

@@ -15,7 +15,7 @@
                   ></mat-datepicker-toggle>
                   <mat-datepicker #startDate></mat-datepicker>
                 </mat-form-field>
-           
+
                 <mat-form-field appearance="fill" class="datepicker">
                   <mat-label>Крайна дата на застраховката</mat-label>
                   <input matInput [matDatepicker]="endDate" formControlName="endDate" [disabled]="true"/>
@@ -31,30 +31,44 @@
 
 
             <div class="row align-items-center colums-wrapper">
-              <p class="section-title">Допълнителни предложения</p>
+              <p class="section-title">Изберете покритие</p>
               <div class="col">
                 <div class="align-items-stretch">
-                  <div class="icon-box">
-                    <div class="icon"><fa-icon [icon]="faBandageIcon"></fa-icon></div>
-                    <h4 class="title">Увеличен пакет Извънболнична помощ</h4>
-                    <button type="button" class="btn add" (click)="addPack('outOfHospitalLimit')"  *ngIf="additionalPack!=='outOfHospitalLimit'">
+                  <div class="icon-box" [class.active]="isActive">
+                    <div class="icon"><span class="material-icons">home</span></div>
+                    <h3 class="title">Стандартно покритие</h3>
+                    <i class="description">Пожар, мълня, експлозия, имплозия, удар от летателен апарат или от предмет, паднал от него; буря, пороен дъжд, градушка, наводнение</i>
+                    <hr>
+                    <button
+                      type="button"
+                      class="btn add"
+                      (click)="togglePack('STANDART')"
+                      *ngIf="coveragePackage !== 'STANDART'"
+                    >
                       <mat-icon>add</mat-icon>
                     </button>
-                    <button type="button" class="btn add" (click)="addPack('')" *ngIf="additionalPack=='outOfHospitalLimit'">
-                    <mat-icon>remove_circle_outline</mat-icon>
+                    <button
+                      type="button"
+                      class="btn add"
+                      (click)="togglePack('')"
+                      *ngIf="coveragePackage === 'STANDART'"
+                    >
+                      <mat-icon>remove_circle_outline</mat-icon>
                     </button>
                   </div>
                 </div>
-            </div>
+              </div>
               <div class="col">
                 <div class="align-items-stretch">
                   <div class="icon-box">
-                    <div class="icon"><fa-icon [icon]="faHospitalIcon"></fa-icon></div>
-                    <h4 class="title">Увеличен пакет Болнична помощ</h4>
-                    <button type="button" class="btn add" (click)="addPack('hospitalLimit')" *ngIf="additionalPack!=='hospitalLimit'">
+                    <div class="icon"><span class="material-icons">home</span></div>
+                    <h3 class="title">Оптимално покритие</h3>
+                    <i class="description">Стандартно покритие + злоумишлени действия на трети лица, вандализъм, ВиК авария, счупване на стъкла, кражба чрез влом и грабеж за движимо имущество</i>
+                    <hr>
+                    <button type="button" class="btn add" (click)="addPack('OPTIMAL')" *ngIf="coveragePackage!=='OPTIMAL'">
                       <mat-icon>add</mat-icon>
                     </button>
-                    <button type="button" class="btn add" (click)="addPack('')" *ngIf="additionalPack=='hospitalLimit'">
+                    <button type="button" class="btn add" (click)="addPack('')" *ngIf="coveragePackage=='OPTIMAL'">
                       <mat-icon>remove_circle_outline</mat-icon>
                       </button>
                   </div>
@@ -63,33 +77,21 @@
               <div class="col">
                 <div class="align-items-stretch">
                   <div class="icon-box">
-                    <div class="icon"><span class="material-icons">medication</span></div>
-                    <h4 class="title">Увеличен пакет Здравни стоки и лекарства</h4>
-                    <button type="button" class="btn add" (click)="addPack('healthGoodsLimit')" *ngIf="additionalPack!=='healthGoodsLimit'">
+                    <div class="icon"><span class="material-icons">home</span></div>
+                    <h3 class="title">Максимално покритие</h3>
+                    <i class="description">Оптимално покритие + земетресение, удар от ППС, щети вследствие на индиректно попадане на мълня</i>
+                    <hr>
+                    <button type="button" class="btn add" (click)="addPack('MAXIMUM')" *ngIf="coveragePackage!=='MAXIMUM'">
                        <mat-icon>add</mat-icon>
                     </button>
-                    <button type="button" class="btn add" (click)="addPack('')" *ngIf="additionalPack=='healthGoodsLimit'">
+                    <button type="button" class="btn add" (click)="addPack('')" *ngIf="coveragePackage=='MAXIMUM'">
                       <mat-icon>remove_circle_outline</mat-icon>
                       </button>
                   </div>
                 </div>
             </div>
-                <div class="col">
-                  <div class="align-items-stretch">
-                    <div class="icon-box">
-                      <div class="icon"><fa-icon [icon]="faToothIcon"></fa-icon></div>
-                      <h4 class="title">Увеличен пакет Дентална помощ</h4>
-                      <button type="button" class="btn add" (click)="addPack('dentalLimit')" *ngIf="additionalPack!=='dentalLimit'">
-                        <mat-icon>add</mat-icon>
-                      </button>
-                      <button type="button" class="btn add" (click)="addPack('')" *ngIf="additionalPack=='dentalLimit'">
-                        <mat-icon>remove_circle_outline</mat-icon>
-                        </button>
-                    </div>
-                  </div>
-              </div>
             </div>
-            
+
 
             <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
               <button type="button" class="btn submit" (click)="continue()" [disabled]="form.status!=='VALID'">

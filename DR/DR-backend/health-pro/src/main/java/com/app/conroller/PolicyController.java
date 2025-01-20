@@ -1,26 +1,17 @@
 package com.app.conroller;
 
-import com.app.dto.PersonPolicyDTO;
-import com.app.dto.PersonPolicyReqDTO;
-import com.app.model.model.Person;
-import com.app.model.model.PersonPolicy;
-import com.app.model.model.Policy;
-import com.app.model.model.PolicyResponse;
-import com.app.repository.PersonPolicyRepository;
-import com.app.repository.PersonRepository;
-import com.app.repository.PolicyRepository;
+import com.app.model.enumeration.CovaragePackageEnum;
+import com.app.model.model.*;
+import com.app.repository.*;
 import com.app.service.PolicyService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
-import java.util.Date;
 import java.util.List;
 
 import static com.app.configuration.WebPath.API_VERSION_1;
@@ -43,9 +34,17 @@ public class PolicyController {
     @Autowired
     private PersonPolicyRepository personPolicyRepository;
 
+    @Autowired
+    private InsuredPropertyRepository insuredPropertyRepository;
+
+    @Autowired
+    private PropertyOwnerRepository propertyOwnerRepository;
+
+
     // create claim rest api
     @PostMapping("/policy-person")
-    public ResponseEntity createPolicyPerson (@RequestBody PersonPolicy policy) {
+    public ResponseEntity createPolicyPerson ( @RequestBody
+                                               PersonPolicy policy) {
     try {
         personPolicyRepository.save(policy);
         return ResponseEntity.ok().body(policy);
@@ -58,44 +57,32 @@ public class PolicyController {
 
     // create claim rest api
     @PostMapping("/policy")
-    public ResponseEntity createPolicy (@RequestBody PersonPolicyReqDTO policy) throws ParseException {
-        Person insuredPerson = personRepository.findByEgn(policy.insured.getEgn());
-        if(insuredPerson!=null) {
-            Policy policyId;
-            try {
-                policyId = personPolicyRepository.findByInsuredId(insuredPerson).getPolicyId();
-            } catch (Exception error) {
-                return ResponseEntity.badRequest().body("Лицето има сключена полица за периода.");
-            }
+    @Transactional
+    public ResponseEntity createPolicy (@RequestBody UserInputData userInputData) {
+        String address = userInputData.getInsuredProperty().getAddress();
+        LocalDate startDate = userInputData.getPolicy().getStartDate();
+        LocalDate endDate = userInputData.getPolicy().getEndDate();
+        InsuredProperty insuredProperty = insuredPropertyRepository.findDuplicateRequest(address, startDate, endDate);
 
-            System.out.print(policy.getPolicy().getStartDate() + " " + policyId.getEndDate() + " " + policy.getPolicy().getStartDate().before(policyId.getEndDate()));
-            if (policyService.compareStartDateEndDate(policy.getPolicy().getStartDate(), policyId.getEndDate())) {
-                return ResponseEntity.badRequest().body("Лицето има сключена полица за периода.");
-            }
+        if(insuredProperty != null) {
+            return ResponseEntity.badRequest().body("Имотът има сключена застраховка за периода:" +
+                                                            insuredProperty.getPolicy().getStartDate() +
+                                                            "до" + insuredProperty.getPolicy().getEndDate());
         }
-          try {
-                long policyNum = policyService.savePolicy(policy.policy);
-                System.out.print(policyNum);
-                boolean isCreatedNewUser = policyService.saveInsurerInsured(policy.insured, policy.insurer);
-                System.out.print(isCreatedNewUser);
-
-                policyService.saveConnectionPersonPolicy(policy.policy, policy.insured, policy.insurer);
-
-                PolicyResponse response = new PolicyResponse();
-                response.setPolicyNumber(policyNum);
-
-                response.setIsNewUserCreated(isCreatedNewUser);
-                System.out.print(response + " " + 1);
-
-                return ResponseEntity.ok().body(response);
-            } catch (Exception error) {
-                return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");
-            }
+        try {
+            Policy policy = policyService.savePolicyData(userInputData);
+            PolicyResponse policyResponse = new PolicyResponse();
+            policyResponse.setPolicyNumber(policy.getPolicyNumber());
+            return ResponseEntity.ok(policyResponse);
+        } catch(Exception error) {
+            return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");
+        }
     }
 
     // get policy by egn rest api
     @GetMapping("/policy-list/{egn}")
-    public ResponseEntity getPolicyListByEgn(@PathVariable String egn) {
+    public ResponseEntity getPolicyListByEgn(@PathVariable
+                                             String egn) {
         try {
             long personId = policyService.getPersonEGNId(egn);
             List<PersonPolicy> policyList = personPolicyRepository.findByInsurerId(personId);
@@ -109,11 +96,28 @@ public class PolicyController {
     // get titular by egn rest api
     @GetMapping("/policy-titular/{egn}")
     public Person getPolicyTitularByEgn(@PathVariable String egn) {
-        Person person = personRepository.findByEgn(egn);
-        return person;
+        return personRepository.findByEgn(egn);
     }
 
+    @PostMapping("/calculate-policy")
+    public Double calculatePolicy(@RequestBody UserInputData userInputData) {
+        Policy policy = userInputData.getPolicy();
+        CovaragePackageEnum coveragePackage = CovaragePackageEnum.fromString(policy.getCoveragePackage());
+        double coverageCoefficient = coveragePackage.getCoefficient();
+        double propertyCoefficient = 0.0015;
+        double movablePropertyCoefficient = 0.0025;
 
+        double policyPrice = policy.getInsuranceAmount() * propertyCoefficient;
 
+        if (policy.getInsuranceMovablePropertyAmount() > 0) {
+            policyPrice += policy.getInsuranceMovablePropertyAmount() * movablePropertyCoefficient;
+        }
 
+        policyPrice *= coverageCoefficient;
+
+        if (CovaragePackageEnum.MAXIMUM.equals(coveragePackage)) {
+            policyPrice *= userInputData.getInsuredProperty().getRisk();
+        }
+        return Math.round(policyPrice * 100.0) / 100.0;
+    }
 }

@@ -1,10 +1,7 @@
 package com.app.dto;
 
-import com.app.model.model.Policy;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-
-import java.util.Set;
 
 @Data
 public class PersonDTO {

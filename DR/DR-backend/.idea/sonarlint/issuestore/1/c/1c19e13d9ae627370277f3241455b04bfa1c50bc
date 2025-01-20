@@ -1,0 +1,23 @@
+
+£
+java:S14881"`Immediately return this expression instead of assigning it to the temporary variable "personId".(ØŒæä8äØÀ¨Ç2J$d29e0720-c81d-4c42-bbee-fa286d2d7938
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷ØÀ¨Ç2J$567e5302-734f-425c-a863-a1d1d217796c
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷ØÀ¨Ç2J$8954cfaf-044a-4e55-bdc8-8c1bca192196
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷ØÀ¨Ç2J$edc324d8-5244-41c0-bf7d-1589a6034268
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷ØÀ¨Ç2J$57052e94-3a03-4966-921a-d1ea28197c7d
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷ØÀ¨Ç2J$8bd4a338-5dc7-4c49-a054-251dc809a0c7
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8øØÀ¨Ç2J$5e3a585e-13bb-4013-9553-d58ee8fa5fd7
+…
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8øØÀ¨Ç2J$73535e5f-ba5b-470b-a89f-147b49f4b754
+…
+java:S6813%"BRemove this field injection and use constructor injection instead.(êæÄŞ8øØÀ¨Ç2J$f329be52-58f4-4319-880d-f9dfcdf28846
+ƒ	java:S125,"<This block of commented-out lines of code should be removed.(£Åšøÿÿÿÿ8ûØÀ¨Ç2J$3f750459-aecd-4260-8761-7dc643884a99
+~	java:S1256"<This block of commented-out lines of code should be removed.(ÓÃÁÚ8ıØÀ¨Ç2J$99c2b1db-d27f-487a-81f7-47f12131bd6d
+¹
+java:S1130R"qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(¾îâÃøÿÿÿÿ8ıØÀ¨Ç2J$5435ead7-523b-493a-8982-aef2f1b22931

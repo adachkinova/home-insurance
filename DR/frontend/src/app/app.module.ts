@@ -20,6 +20,7 @@ import { SuccessfulClaimComponent } from './claims/successful-claim/successful-c
 import { MyProfileComponent } from './customer-profile/my-profile/my-profile.component';
 import { MyClaimDetailsComponent } from './customer-profile/my-claim-details/my-claim-details.component';
 import { InsurerDataComponent } from './insurance/insurer-data/insurer-data.component';
+import { InsuredPropertyComponent } from './insurance/insured-property/insured-property.component';
 import { ClaimsListItemComponent } from './customer-profile/claims-list-item/claims-list-item.component';
 import { ProfileCardItemComponent } from './customer-profile/profile-card-item/profile-card-item.component';
 import { LogInComponent } from './log-in/log-in.component';
@@ -27,7 +28,7 @@ import { AdminPageClaimsComponent } from './admin-profile/admin-page-claims/admi
 import { AdminClaimDetailsComponent } from './admin-profile/admin-claim-details/admin-claim-details.component';
 import { ClaimAnswerComponent } from './admin-profile/claim-answer/claim-answer.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatOptionModule} from '@angular/material/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClaimApprovedComponent } from './admin-profile/claim-approved/claim-approved.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
@@ -36,6 +37,13 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { PreviewFileComponent } from './preview-file/preview-file.component';
 import { AdminsListComponent } from './admin-profile/admins-list/admins-list.component';
+import {InsuranceAmountComponent} from "./insurance/insurance-amount/insurance-amount.component";
+import {
+  InsuranceMovablePropertyAmount
+} from "./insurance/insurance-movable-property-amount/insurance-movable-property-amount";
+import {CalculatePriceComponent} from "./insurance/calculate-price/calculate-price.component";
+import {PropertyOwnerDataComponent} from "./insurance/property-owner-data/property-owner-data.component";
+import {PreviewInputDataComponent} from "./insurance/preview-input-data/preview-input-data.component";
 
 
 @NgModule({
@@ -47,6 +55,12 @@ import { AdminsListComponent } from './admin-profile/admins-list/admins-list.com
     GetInsuranceComponent,
     GuardianDataComponent,
     InsurerDataComponent,
+    InsuredPropertyComponent,
+    PropertyOwnerDataComponent,
+    PreviewInputDataComponent,
+    InsuranceAmountComponent,
+    CalculatePriceComponent,
+    InsuranceMovablePropertyAmount,
     PaymentComponent,
     StartInsuranceComponent,
     ErrorPageComponent,
@@ -74,6 +88,7 @@ import { AdminsListComponent } from './admin-profile/admins-list/admins-list.com
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    MatOptionModule,
     FontAwesomeModule,
     CurrencyMaskModule,
     ToastrModule.forRoot({

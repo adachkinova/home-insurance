@@ -1,0 +1,96 @@
+.wrapper{
+    background-color: #fef8f5;
+}
+
+.image-wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+
+.un {
+    width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: "Helvetica Neue", sans-serif;
+    margin-top: 16px;
+  }
+
+
+/* Slider Container */
+.slider-container {
+  width: 100%;
+  position: relative;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+/* Wider Slider */
+mat-slider {
+  width: 100%;
+}
+
+/* Styling for the Minimum and Maximum Values */
+.slider-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #1976d2;  /* Color for the values */
+}
+
+/* Minimum value */
+.slider-min {
+  text-align: left;
+}
+
+/* Maximum value */
+.slider-max {
+  text-align: right;
+}
+
+/* Value Box */
+.value-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #1976d2;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 25px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.value-display {
+  margin: 0 20px;
+}
+
+.adjust-button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.adjust-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}

@@ -1,23 +1,17 @@
 package com.app.conroller;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import com.app.dto.ClaimByIdDTO;
-import com.app.exception.BadRequestException;
 import com.app.exception.ResourceNotFoundException;
 import com.app.model.model.Claim;
 import com.app.model.model.Person;
-import com.app.model.model.PersonPolicy;
-import com.app.model.model.Policy;
+import com.app.model.model.PolicyOld;
 import com.app.repository.ClaimRepository;
 import com.app.repository.PersonPolicyRepository;
 import com.app.repository.PersonRepository;
 import com.app.repository.PolicyRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.hibernate.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -86,16 +80,16 @@ public class ClaimController {
 
             BigDecimal newLimit = null;
             try{
-            Policy policy = personPolicyRepository.findByInsuredId(personRepository.findByEgn(claim.getEgn())).getPolicyId();
+            PolicyOld policyOld = personPolicyRepository.findByInsuredId(personRepository.findByEgn(claim.getEgn())).getPolicyOldId();
 
                 if (claim.getCategory().equalsIgnoreCase("Дентална помощ")) {
-                    newLimit = policy.getDentalLimit();
+                    newLimit = policyOld.getDentalLimit();
                 } else if (claim.getCategory().equalsIgnoreCase("Болнична помощ")) {
-                    newLimit = policy.getHospitalLimit();
+                    newLimit = policyOld.getHospitalLimit();
                 } else if (claim.getCategory().equalsIgnoreCase("Здравни стоки")) {
-                    newLimit = policy.getHealthGoodsLimit();
+                    newLimit = policyOld.getHealthGoodsLimit();
                 } else if (claim.getCategory().equalsIgnoreCase("Извънболнична помощ")) {
-                    newLimit = policy.getOutOfHospitalLimit();
+                    newLimit = policyOld.getOutOfHospitalLimit();
                 }
 
                 claimData.setMaxLimitValue(newLimit);
@@ -135,22 +129,22 @@ public class ClaimController {
             claim.setDescription(claimDetails.getDescription());
 
             if (claimDetails.getPaidSum() != null) {
-                Policy policy = personPolicyRepository.findByInsuredId(personRepository.findByEgn(claim.getEgn())).getPolicyId();
+                PolicyOld policyOld = personPolicyRepository.findByInsuredId(personRepository.findByEgn(claim.getEgn())).getPolicyOldId();
 
                     if (claim.getCategory().equalsIgnoreCase("Дентална помощ")) {
-                        BigDecimal result = policy.getDentalLimit().subtract(claimDetails.getPaidSum());
-                        policy.setDentalLimit(result);
+                        BigDecimal result = policyOld.getDentalLimit().subtract(claimDetails.getPaidSum());
+                        policyOld.setDentalLimit(result);
                     } else if (claim.getCategory().equalsIgnoreCase("Болнична помощ")) {
-                        BigDecimal result = policy.getHospitalLimit().subtract(claimDetails.getPaidSum());
-                        policy.setHospitalLimit(result);
+                        BigDecimal result = policyOld.getHospitalLimit().subtract(claimDetails.getPaidSum());
+                        policyOld.setHospitalLimit(result);
                     } else if (claim.getCategory().equalsIgnoreCase("Здравни стоки")) {
-                        BigDecimal result = policy.getHealthGoodsLimit().subtract(claimDetails.getPaidSum());
-                        policy.setHealthGoodsLimit(result);
+                        BigDecimal result = policyOld.getHealthGoodsLimit().subtract(claimDetails.getPaidSum());
+                        policyOld.setHealthGoodsLimit(result);
                     } else if (claim.getCategory().equalsIgnoreCase("Извънболнична помощ")) {
-                        BigDecimal result = policy.getOutOfHospitalLimit().subtract(claimDetails.getPaidSum());
-                        policy.setOutOfHospitalLimit(result);
+                        BigDecimal result = policyOld.getOutOfHospitalLimit().subtract(claimDetails.getPaidSum());
+                        policyOld.setOutOfHospitalLimit(result);
                     }
-                    policyRepository.save(policy);
+                    //policyRepository.save(policyOld);
                 }
 
 

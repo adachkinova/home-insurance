@@ -8,9 +8,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Service
@@ -34,12 +31,18 @@ public class PolicyService {
     @Autowired
     private EmailSenderService senderService;
 
-    public Long savePolicy(Policy policy) {
+    @Autowired
+    private InsuredPropertyRepository insuredPropertyRepository;
+
+    @Autowired
+    private PropertyOwnerRepository propertyOwnerRepository;
+
+    public Long savePolicy(PolicyOld policyOld) {
         long policyLast = policyRepository.findLastPolicyNumber();
 
-        policy.setPolicyNumber(policyLast+1);
-        this.policyRepository.save(policy);
-       return policy.getPolicyNumber();
+        policyOld.setPolicyNumber(policyLast+1);
+       // this.policyRepository.save(policyOld);
+       return policyOld.getPolicyNumber();
     }
 
     public Long getPersonEGNId (String egn){
@@ -123,12 +126,35 @@ public class PolicyService {
         return createdNewUser;
     }
 
-    public void saveConnectionPersonPolicy(Policy policy, Person insuredPerson, Person insurerPerson) {
+    public void saveConnectionPersonPolicy(PolicyOld policyOld, Person insuredPerson, Person insurerPerson) {
         PersonPolicy personPolicyConnection = new PersonPolicy();
-        personPolicyConnection.setPolicyId(policy);
+        personPolicyConnection.setPolicyOldId(policyOld);
         personPolicyConnection.setInsuredId(personRepository.findByEgn(insuredPerson.getEgn()));
         personPolicyConnection.setInsurerId(personRepository.findByEgn(insurerPerson.getEgn()).getId());
         personPolicyRepository.save(personPolicyConnection);
+    }
+
+    public Policy savePolicyData(UserInputData userInputData) {
+        InsuredProperty insuredProperty = userInputData.getInsuredProperty();
+        Policy policy = userInputData.getPolicy();
+        PropertyOwner propertyOwner = userInputData.getPropertyOwner();
+
+        if (insuredProperty != null && policy != null && propertyOwner != null) {
+            // Save the Policy entity first
+            Policy savedPolicy = policyRepository.save(policy);
+            insuredProperty.setPolicy(savedPolicy);
+
+            // Save the PropertyOwner entity next
+            PropertyOwner savedOwner = propertyOwnerRepository.save(propertyOwner);
+            insuredProperty.setPropertyOwner(savedOwner);
+
+            // Now save the InsuredProperty entity
+            insuredPropertyRepository.save(insuredProperty);
+            return policy;
+        } else {
+            throw new IllegalArgumentException("Input data contains null values!");
+        }
+
     }
 
 

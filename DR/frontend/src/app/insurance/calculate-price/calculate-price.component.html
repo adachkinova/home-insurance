@@ -1,0 +1,42 @@
+<section class="vh-100" class="wrapper">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px; margin: 25px">
+          <div class="card-body p-md-5">
+            <div class="row align-items-center colums-wrapper">
+              <p class="section-title">Цена за застраховка на имуществото за период от една година</p>
+              <!-- Display the policy price -->
+              <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                <div class="price-box">
+                  <p class="policy-price"> {{ policyPrice }} лв. </p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="align-items-stretch">
+                  <div class="icon-box">
+                    <div class="icon"><span class="material-icons">home</span></div>
+                    <h2 class="title">Покрити рискове</h2>
+                    <i class="description"></i>
+                    <ul class="risks-list">
+                      <li *ngFor="let risk of coverageRisks">
+                        <span class="check-icon material-icons">check_circle</span> {{ risk }}
+                      </li>
+                    </ul>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+              <button type="button" class="btn submit" (click)="continue()">
+                Продължи
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

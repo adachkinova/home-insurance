@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { Router } from '@angular/router';
-import { faTooth } from '@fortawesome/free-solid-svg-icons';
-import { faHospital } from '@fortawesome/free-solid-svg-icons';
-import { faBandage } from '@fortawesome/free-solid-svg-icons';
-import { FormServiceInsurance } from 'src/app/services/formServiceInsurance.service';
-
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {FormServiceInsuranceData} from "../../services/formServiceInsuranceData.service";
+import {PolicyService} from "../../services/policy.service";
+import {sharedService} from "../../services/sharedService.service";
 
 
 @Component({
@@ -15,16 +12,15 @@ import { FormServiceInsurance } from 'src/app/services/formServiceInsurance.serv
   styleUrls: ['./start-insurance.component.css'],
 })
 export class StartInsuranceComponent implements OnInit {
-  constructor(private router: Router, private formService: FormServiceInsurance) {}
+  constructor(private router: Router,
+              private formService: FormServiceInsuranceData,
+              private policyService: PolicyService,
+              private sharedService: sharedService) {}
 
   minDate:Date=new Date();
   maxDate:Date = new Date(new Date().getFullYear()+0,11,31)
   form ;
-  additionalPack 
-  faToothIcon = faTooth;
-  faHospitalIcon = faHospital;
-  faBandageIcon = faBandage;
-  
+
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -42,21 +38,39 @@ export class StartInsuranceComponent implements OnInit {
     console.log(this.form)
   }
 
-  setOneYear(date ){
-    date.setFullYear(date.getFullYear() + 1);
-    return date;
-  }
-
   addPack(value:string){
-    this.additionalPack=value;
-  
+    this.coveragePackage=value;
+
   }
 
+  isActive = false;
+  coveragePackage = '';
+
+  togglePack(pack: string): void {
+    this.coveragePackage = pack;
+    this.isActive = this.coveragePackage === 'STANDART';
+  }
 
   continue() {
-    this.formService.setPolicyForm(this.form);
-    this.formService.setAdditionalPack(this.additionalPack);
-    this.router.navigate(['/packageSelection']);
+    this.formService.setValidity(this.form);
+    this.formService.setCoveragePackage(this.coveragePackage);
+
+    const policyForm = this.formService.getForm().value;
+
+    this.policyService.submitPolicyForm(policyForm).subscribe({
+      next: (response) => {
+        console.log("Policy submitted successfully:", response);
+        const policyPrice = Number(response);
+        this.sharedService.setPolicyPrice(policyPrice);
+        this.formService.setPolicyPrice(policyPrice);
+        this.router.navigate(['/calculate-price']);
+      },
+      error: (err) => {
+        console.error("Error submitting policy form:", err);
+      }
+    });
+
+    // this.router.navigate(['/calculate-price']);
   }
 }
 
