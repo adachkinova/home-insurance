@@ -17,7 +17,7 @@ export class authService {
     constructor(private http: HttpClient, private router: Router){}
 
     login(loginForm ){
-      return  this.http.post('/v1/login', loginForm )
+      return  this.http.post('http://localhost:8099/v1/login', loginForm )
     }
 
     getAdmins(){
@@ -35,7 +35,7 @@ export class authService {
     logout(){
       this.isLogged(false);
       this.adminCheck(false)
-      sessionStorage.removeItem('UserType'); 
+      sessionStorage.removeItem('UserType');
       this.router.navigate(['/']);
     }
 

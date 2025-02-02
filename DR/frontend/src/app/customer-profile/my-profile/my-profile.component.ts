@@ -16,7 +16,7 @@ export class MyProfileComponent implements OnInit, AfterViewInit {
   personalData : any;
   isEditing = false;
   titular: any;
-  children : any;
+  // children : any;
   titularHasPolicy: any;
   titularData ;
 
@@ -61,8 +61,8 @@ export class MyProfileComponent implements OnInit, AfterViewInit {
     )
     .subscribe(
       (res ) => {
-        this.titularData = res.filter((p ) => p.insuredId.egn === egn);
-        this.children = res.filter((p ) => p.insuredId.egn !== egn);
+        this.titularData = res.filter((p ) => p.propertyOwnerId.egn === egn);
+        // this.children = res.filter((p ) => p.insuredId.egn !== egn);
         this.sharedService.setUserClaimsInformation(res);
 
         if(this.titularData.length==0){
@@ -72,7 +72,7 @@ export class MyProfileComponent implements OnInit, AfterViewInit {
               if(err.status !== 200){
                 this.sharedService.isLoading(false);
                 this.tostrService.error(err.error);
-                
+
                 return EMPTY
               }
               else{
@@ -90,7 +90,7 @@ export class MyProfileComponent implements OnInit, AfterViewInit {
         else{
           this.titularHasPolicy = true;
           this.titularData=this.titularData[0]
-          this.titular = this.titularData.insuredId;
+          this.titular = this.titularData.propertyOwnerId;
           this.sharedService.isLoading(false);
         }
       }

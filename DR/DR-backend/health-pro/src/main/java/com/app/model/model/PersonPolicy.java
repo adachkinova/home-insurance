@@ -17,15 +17,15 @@ public class PersonPolicy {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToOne
     @JoinColumn(name = "policy_id")
-    private PolicyOld policyOldId;
+    private Policy policyId;
 
-//    @ManyToOne
-    @Column(name = "insurer_id")
-    private Long insurerId;
+////    @ManyToOne
+//    @Column(name = "insurer_id")
+//    private Long insurerId;
 
     @ManyToOne
     @JoinColumn(name = "insured_id")
-    private Person insuredId;
+    private PropertyOwner propertyOwnerId;
 
 
 }

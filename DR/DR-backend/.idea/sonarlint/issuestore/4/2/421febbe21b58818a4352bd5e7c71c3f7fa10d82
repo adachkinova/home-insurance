@@ -1,38 +1,28 @@
 
-	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(Ò¬²ÛJ$6d76f87a-399b-4389-b1b6-9c52e438985f
-	java:S112I"FDefine and throw a dedicated exception instead of using a generic one.(åÉ–¾J$bde54bb9-201e-4b9b-a325-1c5b0965fb89
+	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(Ò¬²ÛJ$957d2811-b21f-4ce9-9d9a-7f839897c565
 p
-java:S3740+"/Provide the parametrized type for this generic.(ÁÕÖ„ùÿÿÿÿJ$af6bdf39-f4ca-4dcf-bde2-a681addab581
+java:S3740("/Provide the parametrized type for this generic.(ÁÕÖ„ùÿÿÿÿJ$296ceedd-1404-4cad-86fb-a3dd5bde00f3
 k
-java:S37408"/Provide the parametrized type for this generic.(Ò¬²ÛJ$25f3a8fc-9099-42bc-87f8-d900bb9d9c4e
+java:S37405"/Provide the parametrized type for this generic.(Ò¬²ÛJ$9155a4ae-4474-47b4-a8ad-970bfc0f708c
 k
-java:S3740I"/Provide the parametrized type for this generic.(åÉ–¾J$3e1c9dc8-6442-4d16-aa61-e45b909d5b80
-k
-java:S3740o"/Provide the parametrized type for this generic.(œ‡‘˜J$cb9c5860-e349-484c-a155-4e1db1c6bedf
-k
-java:S3740z"/Provide the parametrized type for this generic.(ßµ­J$a01a36fc-328f-4769-b12d-05925de8a0fb
+java:S3740l"/Provide the parametrized type for this generic.(œ‡‘˜J$2da537f2-f64a-4ac2-88df-00d92dd01bdf
 q
-java:S3740¡"/Provide the parametrized type for this generic.(¸öŸÔÿÿÿÿÿJ$67f87fa2-e019-4298-9d39-392a7663434e
+java:S3740"/Provide the parametrized type for this generic.(¸öŸÔÿÿÿÿÿJ$4d9da1b8-13f7-4053-93ee-965b6e2e0ff0
 Å
-java:S11921"ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 5 times.( ï…üÿÿÿÿJ$e6f37af8-20c0-483c-9e39-59b8cdb66d3d
-v
-java:S1141R"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿJ$767f994f-a8c5-444c-8118-19ce4d05981e
+java:S1192."ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 3 times.( ï…üÿÿÿÿJ$c4f07c44-8e64-4583-bd97-83249352526c
 ~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$fd69f969-a73b-41b0-be59-395094904dda
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$af5febba-b78c-4397-9214-dd45b9da6584
 ~
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞJ$f3626372-aceb-412a-b633-bea97ce3e0fd
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$249e84d7-2286-470d-baa5-6f3aa104837e
 ~
-java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞJ$06f08362-95dc-439f-a1a2-c29f1f666ff9
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞJ$71682211-a378-4a8d-b671-3bd457190504
 …
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8ê‚Ä2J$4f63d271-bd7d-4f15-86d7-707b69902d02
+java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ8ê‚Ä2J$b6213b0b-4a15-47d9-9eed-24e5541d2585
 ]
-java:S11810"!Catch Exception instead of Error.(¹¨“«J$dc46f725-2b4d-4fb4-9aef-3564a632baa1
+java:S1181-"!Catch Exception instead of Error.(¹¨“«J$36e9003a-ba25-4b36-8ef2-fb703543b17a
 |
-java:S46848"@Replace this persistent entity with a simple POJO or DTO object.(Ò¬²ÛJ$8220075f-c0e8-4b7c-b583-24e30f7230a2
+java:S46845"@Replace this persistent entity with a simple POJO or DTO object.(Ò¬²ÛJ$1e97cf24-cf51-4cf4-97d6-3e7be63c237d
 ¨
-java:S11308"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Ò¬²ÛJ$ac7239ca-fd23-468e-9c53-057449a59d60
-|
-java:S4684z"@Replace this persistent entity with a simple POJO or DTO object.(ßµ­J$888d02ed-37c9-491b-b68b-7d18afe0daea
-^	java:S125“"<This block of commented-out lines of code should be removed.(÷İ§¢ıÿÿÿÿ8Ú¦é¤Ç2
-n
-java:S1481—"1Remove this unused "updatedClaim" local variable.(ï™†J$a264ca8f-e5b8-4ee8-9c1a-dc9900683126
+java:S11305"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Ò¬²ÛJ$cd777c3d-d762-482f-9777-86ebb585d15a
+ƒ	java:S125F"<This block of commented-out lines of code should be removed.(ê¦Æ©ıÿÿÿÿ8×’ó¯Ì2J$6b0eca81-c75d-4a9d-93c1-308238e77d78
+ƒ	java:S125w"<This block of commented-out lines of code should be removed.(×¨Ö®úÿÿÿÿ8Âèó¯Ì2J$0216e525-cd55-43ed-b9f9-c558838544a2

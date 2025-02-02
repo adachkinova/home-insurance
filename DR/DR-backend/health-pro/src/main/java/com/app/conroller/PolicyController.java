@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static com.app.configuration.WebPath.API_VERSION_1;
+import static com.app.service.PolicyService.buildPolicyResponse;
 
 @RestController
 @RequestMapping(API_VERSION_1)
@@ -59,33 +60,34 @@ public class PolicyController {
     @PostMapping("/policy")
     @Transactional
     public ResponseEntity createPolicy (@RequestBody UserInputData userInputData) {
-        String address = userInputData.getInsuredProperty().getAddress();
-        LocalDate startDate = userInputData.getPolicy().getStartDate();
-        LocalDate endDate = userInputData.getPolicy().getEndDate();
-        InsuredProperty insuredProperty = insuredPropertyRepository.findDuplicateRequest(address, startDate, endDate);
 
+        InsuredProperty insuredProperty = insuredPropertyRepository.findDuplicateRequest(userInputData.getInsuredProperty().getAddress(),
+                                                                                         userInputData.getPolicy().getStartDate(),
+                                                                                         userInputData.getPolicy().getEndDate());
         if(insuredProperty != null) {
-            return ResponseEntity.badRequest().body("Имотът има сключена застраховка за периода:" +
+            return ResponseEntity.badRequest().body("Имотът има сключена застраховка за периода: " +
                                                             insuredProperty.getPolicy().getStartDate() +
-                                                            "до" + insuredProperty.getPolicy().getEndDate());
+                                                            " до " + insuredProperty.getPolicy().getEndDate());
         }
         try {
             Policy policy = policyService.savePolicyData(userInputData);
-            PolicyResponse policyResponse = new PolicyResponse();
-            policyResponse.setPolicyNumber(policy.getPolicyNumber());
+            PolicyResponse policyResponse = buildPolicyResponse(policy);
             return ResponseEntity.ok(policyResponse);
         } catch(Exception error) {
             return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");
         }
     }
 
+
+
     // get policy by egn rest api
     @GetMapping("/policy-list/{egn}")
     public ResponseEntity getPolicyListByEgn(@PathVariable
                                              String egn) {
         try {
-            long personId = policyService.getPersonEGNId(egn);
-            List<PersonPolicy> policyList = personPolicyRepository.findByInsurerId(personId);
+            PropertyOwner propertyOwner = policyService.getPropertyOwnerEGN(egn);
+            List<PersonPolicy> policyList = personPolicyRepository.findPersonPoliciesByPropertyOwnerId(propertyOwner);
+
             return ResponseEntity.ok().body(policyList);
         }
         catch (Exception error){

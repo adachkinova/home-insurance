@@ -10,8 +10,8 @@
                           <p class="header-text"> Полица Nº <span>{{titularData.policyId.policyNumber}}</span></p>
                           <div class="subheader-text">от {{titularData.policyId.startDate | date: 'dd.MM.yyyy'}} до {{titularData.policyId.endDate | date: 'dd.MM.yyyy'}}</div>
                           <div type="button" (click)="toMyClaims(titular.egn)">
-                            <div  class="subheader-text claim-wrapper"> 
-                              Виж претенции 
+                            <div  class="subheader-text claim-wrapper">
+                              Виж претенции
                             <mat-icon>class</mat-icon></div>
                           </div>
                         </div>
@@ -25,13 +25,13 @@
                             <p> Име</p>
                             <p> Асоцирани <br> лица </p>
                             </div>
-                            
+
                             <div>
                                 <div class="info-data"> {{titular.egn}} </div>
                                 <div class="info-data">  {{titular.firstName}}  {{titular.lastName}}</div>
-                                <div class="kids-column" *ngFor="let insuredChild of children">
-                                    <span>{{insuredChild.insuredId.firstName}} {{insuredChild.insuredId.lastName}}</span>
-                                </div>
+<!--                                <div class="kids-column" *ngFor="let insuredChild of children">-->
+<!--                                    <span>{{insuredChild.insuredId.firstName}} {{insuredChild.insuredId.lastName}}</span>-->
+<!--                                </div>-->
                             </div>
 
                         </div>
@@ -44,7 +44,7 @@
                             <p> Адрес</p>
                             <p> Телефонен <br> номер </p>
                             </div>
-                            
+
                             <div>
                                 <div class="info-data"> {{titular.email}} </div>
                                 <div class="info-data"> {{titular.address}}, {{titular.city}}</div>
@@ -62,10 +62,9 @@
       </div>
   </section>
 
-    <div *ngFor="let insuredData of children">
-      <app-profile-card-item
-      [insuredData]="insuredData">
-      </app-profile-card-item>
-    </div>
-  
-  
+<!--    <div *ngFor="let insuredData of children">-->
+<!--      <app-profile-card-item-->
+<!--      [insuredData]="insuredData">-->
+<!--      </app-profile-card-item>-->
+<!--    </div>-->
+

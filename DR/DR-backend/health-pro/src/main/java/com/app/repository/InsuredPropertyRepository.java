@@ -14,13 +14,14 @@ public interface InsuredPropertyRepository extends JpaRepository<InsuredProperty
 	InsuredProperty findByAddress(String address);
 
 	@Query(value = "SELECT ip.*" +
-			"FROM health_pro.insured_property as ip" +
-			"JOIN health_pro.policy ON p.id = ip.policy_id as p" +
+			"FROM health_pro.insured_property as ip " +
+			"JOIN health_pro.policy as p ON p.id = ip.policy_id " +
 			"WHERE ip.address = :address " +
 			"AND (" +
 			"(p.start_date <= :endDate AND p.end_date >= :startDate) OR " +
 			"(p.start_date >= :startDate AND p.start_date <= :endDate) OR " +
-			"(p.end_date >= :startDate AND p.end_date <= :endDate))",
+			"(p.end_date >= :startDate AND p.end_date <= :endDate)) " +
+			"LIMIT 1",
 		   nativeQuery = true)
 	InsuredProperty findDuplicateRequest(@Param("address") String address,
 								 @Param("startDate") LocalDate startDate,

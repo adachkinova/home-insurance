@@ -18,11 +18,11 @@ export class PolicyService {
   }
 
   getPoliciesByEgn(egn: string) {
-    return this.http.get('/v1/policy-list/' + egn)
+    return this.http.get('http://localhost:8099/v1/policy-list/' + egn)
   }
 
   getPolicyTitular(egn: string) {
-    return this.http.get('/v1/policy-titular/' + egn)
+    return this.http.get('http://localhost:8099/v1/policy-titular/' + egn)
   }
 
   submitPolicyForm(userInputData: any) {

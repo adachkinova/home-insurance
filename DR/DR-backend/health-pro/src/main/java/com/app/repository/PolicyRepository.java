@@ -16,7 +16,7 @@ public interface PolicyRepository extends JpaRepository<Policy, Long> {
 
     PolicyOld findByPolicyNumber(Long policyNum);
 
-    @Query(value="select p.policy_number from health_pro.policy as p order by p.id desc limit 1", nativeQuery = true)
+    @Query(value = "SELECT COALESCE((SELECT p.policy_number FROM health_pro.policy AS p ORDER BY p.id DESC LIMIT 1), 8000000000) AS policy_number", nativeQuery = true)
     long findLastPolicyNumber();
 
     @Transactional

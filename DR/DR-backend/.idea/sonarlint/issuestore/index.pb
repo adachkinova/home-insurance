@@ -23,8 +23,6 @@ j
 :health-pro/src/main/java/com/app/model/model/Validity.java,f\4\f4a3cc7e21941852ca3dade1289bad84289d4fb3
 o
 ?health-pro/src/main/java/com/app/conroller/EnumsController.java,c\0\c0e71ec30af8b3975e651ed98a0cbe193c2f5346
-t
-Dhealth-pro/src/main/java/com/app/model/enumeration/CovarageEnum.java,a\a\aa301ac5aa8b55b9b5f1c9744abf0e90e6f29683
 {
 Khealth-pro/src/main/java/com/app/model/enumeration/CovaragePackageEnum.java,1\a\1afa49769a8f1dcc30896a2bc8d6cb3eb70272ba
 k
@@ -47,8 +45,6 @@ x
 Hhealth-pro/src/main/java/com/app/repository/PropertyOwnerRepository.java,b\d\bd5fdea6654c0d2fd8c766c4758ac89607965598
 g
 7health-pro/src/main/java/com/app/model/model/Claim.java,f\2\f2709f3b60fdc67b66ae387b683ae5994021594c
-l
-<health-pro/src/main/java/com/app/model/model/PolicyData.java,0\7\0786ca7440f3055f2e92f916cb2e7d1ab351f2a7
 k
 ;health-pro/src/main/java/com/app/model/model/PolicyOld.java,a\1\a1f1606a30f2d67078d7d644e4af514975e2510d
 n
@@ -63,3 +59,17 @@ o
 ?health-pro/src/main/java/com/app/repository/UserRepository.java,6\4\64ca437bec8dc08da7edcc1719715f763b767ca3
 p
 @health-pro/src/main/java/com/app/repository/ClaimRepository.java,f\c\fc0184298145a1778070fa80e9485040d90b2f69
+s
+Chealth-pro/src/main/java/com/app/repository/CategoryRepository.java,4\e\4e04f7f667584aa7136fdaf51887b3c9c8863fb5
+p
+@health-pro/src/main/java/com/app/model/model/PolicyResponse.java,f\1\f14a829df11b8d8d48a4d3f22ebfd8b999d74798
+n
+>health-pro/src/main/java/com/app/conroller/UserController.java,7\5\75460e38ba2cf4572c9ad2ac3f14be722afd48ee
+i
+9health-pro/src/main/java/com/app/service/UserService.java,4\1\413e312c989bdee887aeb0adf85024a0a67f0feb
+i
+9health-pro/src/main/java/com/app/dto/PersonPolicyDTO.java,f\0\f07c923921121f1b771ba32c7f9e1ac285252632
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
