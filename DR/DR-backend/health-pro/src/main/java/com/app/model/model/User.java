@@ -1,12 +1,9 @@
-package com.app.model.entitites;
+package com.app.model.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -24,4 +21,8 @@ public class User {
     private String type;
 
     private String sessionToken;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "property_owner_id")
+//    private PropertyOwner propertyOwner;
 }

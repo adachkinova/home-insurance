@@ -30,9 +30,9 @@ export class FormServiceInsuranceData {
   });
 
   propertyOwner = new FormGroup({
-    name: new FormControl("", Validators.required),
+    firstName: new FormControl("", Validators.required),
     middleName: new FormControl("", Validators.required),
-    surname: new FormControl("", Validators.required),
+    lastName: new FormControl("", Validators.required),
     egn: new FormControl("", Validators.required),
     phoneNumber: new FormControl("", Validators.required),
     email: new FormControl("", Validators.required)
@@ -61,6 +61,10 @@ export class FormServiceInsuranceData {
 
   setPropertyOwner(form ){
     this.claimForm.controls.propertyOwner.patchValue(form.value)
+  }
+
+  setPropertyOwnerForm(form ){
+    this.claimForm.controls.propertyOwner.patchValue(form)
   }
 
   getPropertyOwner(){

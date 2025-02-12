@@ -69,7 +69,6 @@ export class PaymentComponent implements OnInit {
     //     //this.router.navigate(['/error'])
     //   }
     // );
-
     this.policyService.savePolicy(this.formService.getForm().value).subscribe({
       next: (response: any) => {
         this.sharedService.isLoading(false);

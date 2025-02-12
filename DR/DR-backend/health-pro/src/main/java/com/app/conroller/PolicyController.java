@@ -5,6 +5,7 @@ import com.app.model.model.*;
 import com.app.repository.*;
 import com.app.service.PolicyService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static com.app.configuration.WebPath.API_VERSION_1;
 import static com.app.service.PolicyService.buildPolicyResponse;
@@ -61,13 +63,14 @@ public class PolicyController {
     @Transactional
     public ResponseEntity createPolicy (@RequestBody UserInputData userInputData) {
 
-        InsuredProperty insuredProperty = insuredPropertyRepository.findDuplicateRequest(userInputData.getInsuredProperty().getAddress(),
-                                                                                         userInputData.getPolicy().getStartDate(),
-                                                                                         userInputData.getPolicy().getEndDate());
-        if(insuredProperty != null) {
+        Optional<InsuredProperty> insuredProperty = insuredPropertyRepository.findDuplicateRequest(userInputData.getInsuredProperty().getAddress(),
+                                                                                                  userInputData.getPolicy().getStartDate(),
+                                                                                                  userInputData.getPolicy().getEndDate());
+        if(insuredProperty.isPresent()) {
+            Policy policy = insuredProperty.get().getPolicy();
             return ResponseEntity.badRequest().body("Имотът има сключена застраховка за периода: " +
-                                                            insuredProperty.getPolicy().getStartDate() +
-                                                            " до " + insuredProperty.getPolicy().getEndDate());
+                                                            policy.getStartDate() +
+                                                            " до " + policy.getEndDate());
         }
         try {
             Policy policy = policyService.savePolicyData(userInputData);
@@ -81,14 +84,12 @@ public class PolicyController {
 
 
     // get policy by egn rest api
-    @GetMapping("/policy-list/{egn}")
+    @GetMapping("/insured-property/{egn}")
     public ResponseEntity getPolicyListByEgn(@PathVariable
                                              String egn) {
         try {
-            PropertyOwner propertyOwner = policyService.getPropertyOwnerEGN(egn);
-            List<PersonPolicy> policyList = personPolicyRepository.findPersonPoliciesByPropertyOwnerId(propertyOwner);
-
-            return ResponseEntity.ok().body(policyList);
+            List<InsuredProperty> insuredProperties = insuredPropertyRepository.findByEgn(egn);
+            return ResponseEntity.ok().body(insuredProperties);
         }
         catch (Exception error){
             return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");

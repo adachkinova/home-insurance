@@ -1,11 +1,10 @@
 package com.app.model.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -17,41 +16,41 @@ public class Claim {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @Column(name = "egn")
-    private String egn;
+    @Column(name = "assetType")
+    private String assetType;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "event")
+    private String event;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "damageCause")
+    private String damageCause;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name = "lossDescription")
+    private String lossDescription;
 
-    @Column(name = "sum")
-    private BigDecimal sum;
+    @Column(name = "damageLevel")
+    private String damageLevel;
+
+    @Column(name = "descriptionInput")
+    private String descriptionInput;
 
     @Column(name = "iban")
     private String iban;
 
-    @Column(name = "claim_date")
-    private Date claimDate;
-
-    @Column(name = "paid_sum")
-    private BigDecimal paidSum;
-
     @Column(name = "paid_date")
-    private Date paidDate;
+    private LocalDate paidDate;
 
-    @Column(name = "description")
-    private String description;
-
+    @Column(name = "claim_date")
+    private LocalDate claimDate;
 
     @Column(name="claim_number")
     private long claimNumber;
 
-    private ArrayList<Object> files;
+    @JsonProperty("egn")
+    private String egn;
 
-
+    @JsonProperty("insuredProperty")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "insured_property_id")
+    private InsuredProperty insuredProperty;
 }

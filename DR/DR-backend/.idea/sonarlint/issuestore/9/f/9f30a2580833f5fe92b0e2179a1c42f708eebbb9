@@ -1,0 +1,14 @@
+
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8º¸‡ÁÌ2J$3766d3ec-c5da-4179-be04-7343b64b6668
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8üÊ±ÁÌ2J$561ea140-cf59-4f16-a747-9ade43c82aa7
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ıÊ±ÁÌ2J$6a0f6f9a-af71-4521-bc0f-0ae45ff2663f
+r
+java:S1128"PRemove this unused import 'org.springframework.scheduling.annotation.Scheduled'.(‚¡®Üûÿÿÿÿ8‡ŞÇÃÌ2
+R
+java:S1128	"5Remove this unused import 'java.text.ParseException'.(ñ®ï•8‡ŞÇÃÌ2
+H
+java:S1128
+"+Remove this unused import 'java.util.Date'.(¸…¼ü8‡ŞÇÃÌ2

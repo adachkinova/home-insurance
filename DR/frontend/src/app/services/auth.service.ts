@@ -8,7 +8,7 @@ import { BehaviorSubject, ReplaySubject, Subject } from "rxjs";
     providedIn: 'root',
   })
 export class authService {
-    private isLoggedIn: Subject<Object> = new ReplaySubject<Object>(1);
+    isLoggedIn: Subject<Object> = new ReplaySubject<Object>(1);
     public readonly loggedIn$ = this.isLoggedIn.asObservable();
 
     private isAdmin: Subject<Object> = new ReplaySubject<Object>(1);
@@ -36,6 +36,7 @@ export class authService {
       this.isLogged(false);
       this.adminCheck(false)
       sessionStorage.removeItem('UserType');
+      sessionStorage.removeItem('InsurerData');
       this.router.navigate(['/']);
     }
 
@@ -46,5 +47,7 @@ export class authService {
     adminCheck(bool:boolean){
       this.isAdmin.next(bool);
     }
+
+
 
 }

@@ -2,8 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EMPTY, catchError, delay, of, tap } from 'rxjs';
-import { PreviewFileComponent } from 'src/app/preview-file/preview-file.component';
+import {EMPTY, catchError, delay, of, tap, forkJoin} from 'rxjs';
 import { ClaimService } from 'src/app/services/claim.service';
 import { sharedService } from 'src/app/services/sharedService.service';
 
@@ -14,7 +13,12 @@ import { sharedService } from 'src/app/services/sharedService.service';
 })
 export class MyClaimDetailsComponent implements AfterViewInit {
 
-  constructor(private router: Router, private route: ActivatedRoute,private tostrService: ToastrService, private claimsService:ClaimService, private sharedService: sharedService, private dialog: MatDialog) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private tostrService: ToastrService,
+              private claimsService:ClaimService,
+              private sharedService: sharedService,
+              private dialog: MatDialog) { }
 
   currentIndex :number = 2;
   encodedEgn: any;
@@ -22,29 +26,47 @@ export class MyClaimDetailsComponent implements AfterViewInit {
   claimdDataClosed ;
 
   ngAfterViewInit(): void {
-   this.route.paramMap.subscribe((params) => {
-      this.encodedEgn = params.get('id');
-    });
-    this.claimsService.getClaimByEgn(atob(this.encodedEgn)).pipe(
+    const egn = sessionStorage.getItem('InsurerData');
+    this.claimsService.getClaimByEgn(egn).pipe(
       delay(0),
-      tap(()=> this.sharedService.isLoading(true)),
+      tap(() => this.sharedService.isLoading(true)),
       catchError(err => {
-        if(err.status !== 200){
+        if (err.status !== 200) {
           this.sharedService.isLoading(false);
           this.tostrService.error(err.error);
-          return EMPTY
-        }
-        else{
+          return EMPTY;
+        } else {
           return of(err);
         }
       })
-    )
-    .subscribe((res: any) =>{
-      this.claimsDataOpened = res.filter((c ) => c.paidDate === null);
-      this.claimdDataClosed = res.filter((c ) => c.paidDate !== null);
-      this.sharedService.isLoading(false);
-    })
+    ).subscribe((res: any) => {
+      this.claimsDataOpened = res.filter((c) => c.paidDate === null);
+      this.claimdDataClosed = res.filter((c) => c.paidDate !== null);
+
+      if (this.claimsDataOpened.length > 0) {
+        const predictions$ = this.claimsDataOpened.map(claim =>
+          this.claimsService.predictClaimAmount(claim).pipe(
+            tap((response: any) => {
+              claim.predictedClaimAmount = response.predicted_value;
+            })
+          )
+        );
+
+        // Wait for all predictions to finish
+        forkJoin(predictions$).subscribe(() => {
+          console.log('Всички предсказания са завършени!', this.claimsDataOpened);
+          this.sharedService.isLoading(false); // Hide loading after all predictions are done
+        }, error => {
+          console.error('Грешка при изчисленията:', error);
+          this.sharedService.isLoading(false); // Hide loading in case of error
+        });
+      } else {
+        this.sharedService.isLoading(false); // Hide loading if no claims are opened
+      }
+    });
   }
+
+
 
   newClaim(){
     this.router.navigate(['/my-new-claim']);

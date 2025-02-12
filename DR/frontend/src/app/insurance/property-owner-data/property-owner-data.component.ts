@@ -20,9 +20,9 @@ export class PropertyOwnerDataComponent implements OnInit {
   ngOnInit(): void {
     this.formServiceInsurance.getForm();
     this.form = new FormGroup({
-      name: new FormControl("", Validators.required),
+      firstName: new FormControl("", Validators.required),
       middleName: new FormControl("", Validators.required),
-      surname: new FormControl("", Validators.required),
+      lastName: new FormControl("", Validators.required),
       egn: new FormControl("", Validators.required),
       phoneNumber: new FormControl("", Validators.required),
       email: new FormControl("", Validators.required)
@@ -36,4 +36,5 @@ export class PropertyOwnerDataComponent implements OnInit {
         this.router.navigate(['/preview-input-data']);
     }
   }
+
 }

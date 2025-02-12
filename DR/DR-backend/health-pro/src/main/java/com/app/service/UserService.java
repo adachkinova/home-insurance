@@ -2,10 +2,12 @@ package com.app.service;
 
 import com.app.exception.UserAuthenticationException;
 import com.app.helpers.HelperService;
-import com.app.model.entitites.User;
+import com.app.model.model.User;
 import com.app.model.mapper.UserMapper;
+import com.app.model.model.UserInputData;
 import com.app.repository.UserRepository;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.hibernate.Hibernate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -97,5 +99,14 @@ public class UserService {
 
     public User getUserById(int id) {
         return userRepository.findById(id);
+    }
+
+    public User createUser(UserInputData userInputData) {
+        User newUser = new User();
+        newUser.setIdNumber(userInputData.getPropertyOwner().getEgn());
+        newUser.setCode(generateUserCode());
+        newUser.setType("insurer");
+        userRepository.save(newUser);
+        return newUser;
     }
 }

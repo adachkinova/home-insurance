@@ -1,18 +1,14 @@
 package com.app.conroller;
 
-import com.app.dto.UserDTO;
-import com.app.model.entitites.User;
+import com.app.model.model.User;
 import com.app.repository.UserRepository;
 import com.app.service.EmailSenderService;
 import com.app.service.UserService;
 import com.app.swagger.SwaggerErrorResponses;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;

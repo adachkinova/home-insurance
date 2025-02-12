@@ -5,125 +5,115 @@
       <div class="col-lg-12 col-xl-11">
         <div class="card text-black" style="border-radius: 25px; margin: 25px">
           <div class="card-body p-md-5">
-            <p
-              class="text-center h1 fw-bold form-header"
-            >
-              Подаване на здравна претренция
+            <p class="text-center h1 fw-bold form-header">
+              Подаване на претенция за щета
             </p>
             <div class="field-wrapper">
-              <div
-                class="fw-bold form-header"
-              >
-                <label >Данни на застрахованото лице</label>
+              <div class="fw-bold form-header">
+                <label>Тип на увреденото имущество: </label>
               </div>
+              <div class="form-field">
+                <mat-form-field>
+                  <mat-label>Тип имущество</mat-label>
+                  <mat-select formControlName="assetType">
+                    <mat-option value="movable">Движимо имущество</mat-option>
+                    <mat-option value="immovable">Недвижимо имущество</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="field-wrapper">
+              <div class="fw-bold form-header">
+                <label>Тип на събитието: </label>
+              </div>
+              <div class="form-field">
+                <mat-form-field>
+                  <mat-label>Събитие</mat-label>
+                  <mat-select *ngIf="coverageRisks.length > 0" formControlName="event" (selectionChange)="onEventChange($event)">
+                    <mat-option *ngFor="let event of coverageRisks" [value]="event">{{event}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
 
-              <div
-                class="form-field "
-              >
-              <!-- <mat-form-field class="example-full-width field" >
-                <mat-label >ЕГН</mat-label>
-                <input matInput formControlName="egn" >
-                <mat-error *ngIf="this.form.controls.egn.errors?.personalId">
-                  Невалидно ЕГН
-                </mat-error>
-              </mat-form-field> -->
-              <mat-form-field>
-                <mat-label>ЕГН</mat-label>
-                <mat-select formControlName="egn" >
-                  <mat-option *ngFor="let user of userInformation" [value]="user.egn" (click)="setUser(user)">{{user.egn}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="example-full-width field" >
-                <mat-label>Име</mat-label>
-                <input matInput formControlName="name">
-              </mat-form-field>
-              <!-- <mat-form-field class="example-full-width field" >
-                <mat-label>Телефонен номер</mat-label>
-                <input matInput>
-              </mat-form-field> -->
+            <div class="field-wrapper">
+              <div class="fw-bold form-header">
+                <label>Причина за щетите спрямо отбелязания тип: </label>
+              </div>
+              <div class="form-field">
+                <mat-form-field>
+                  <mat-label>Причина</mat-label>
+                  <mat-select formControlName="damageCause">
+                    <mat-option *ngFor="let cause of damageCauses" [value]="cause">{{cause}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="field-wrapper">
+              <div class="fw-bold form-header">
+                <label>Тип на щетите: </label>
+              </div>
+              <div class="form-field">
+                <mat-form-field>
+                  <mat-label>Щета</mat-label>
+                  <mat-select formControlName="lossDescription">
+                    <mat-option *ngFor="let loss of lossDescriptions" [value]="loss">{{loss}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="field-wrapper">
+              <div class="fw-bold form-header">
+                <label>Сериозност на щетите: </label>
+              </div>
+              <div class="form-field ">
+                <mat-form-field>
+                  <mat-label>Изберете ниво на щета</mat-label>
+                  <mat-select formControlName="damageLevel">
+                    <mat-option value="insignificant">Незначително</mat-option>
+                    <mat-option value="moderate">Умерено</mat-option>
+                    <mat-option value="serious">Сериозно</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
             </div>
               <div class="field-wrapper">
-                <div
-                class="fw-bold form-header"
-                >
-                  <label >Претенцията се отнася за: </label>
+                <div class="fw-bold form-header">
+                  <label >Описание на щетата</label><br/>
+                  <i>Напишете подробно как е възникнала щетата, какви са пораженията и друга важна информация.</i>
                 </div>
-  
-                <div
-                class="form-field "
-                >
-                <mat-form-field>
-                  <mat-label>Категория на претенцията</mat-label>
-                  <mat-select formControlName="category" >
-                    <mat-option *ngFor="let cat of categories" [value]="cat.category" (click)="getTypes(cat.id)">{{cat.category}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                </div>
-              </div>
-              <div class="field-wrapper" *ngIf="types">
-                <div
-                class="fw-bold form-header"
-                >
-                  <label >Изберете типа на претенцията</label>
-                </div>
-  
-                <div
-                class="form-field "
-                >
-                <mat-form-field>
-                  <mat-label>Тип на претенцията</mat-label>
-                  <mat-select formControlName="type">
-                    <mat-option *ngFor="let type of types" [value]="type.type">{{type.type}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                </div>
-              </div>
-              <div class="field-wrapper">
-                <div
-                  class="fw-bold form-header"
-                >
-                  <label >Въведете обща сума на претенцията</label>
-                </div>
-  
-                <div
-                  class="form-field "
-                >
+                <div class="form-field ">
                 <mat-form-field class="example-full-width field" >
-                  <mat-label>Сума</mat-label>
-                  <input matInput formControlName="sum">
+                  <mat-label>Описание</mat-label>
+                  <input matInput formControlName="descriptionInput">
                 </mat-form-field>
                 </div>
               </div>
               <div class="field-wrapper">
-                <div
-                  class="fw-bold form-header"
-                >
+                <div class="fw-bold form-header">
                   <label >Въведете IBAN, на който искате <br> сумата да бъде изплатена</label>
                 </div>
-  
-                <div
-                  class="form-field "
-                >
+                <div class="form-field ">
                 <mat-form-field class="example-full-width field" >
                   <mat-label>IBAN</mat-label>
                   <input matInput formControlName="iban">
                 </mat-form-field>
                 </div>
               </div>
+<!--              <div class="field-wrapper">-->
+<!--                <div class="fw-bold form-header">-->
+<!--                <label >Прикачете документ за собственост ?!?</label>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            <div class="field-wrapper">-->
+<!--              <div class="fw-bold form-header">-->
+<!--                <label >Прикачете снимки ?!?</label>-->
+<!--              </div>-->
+<!--            </div>-->
 
-
-              <div class="field-wrapper">
-                <div
-                  class="fw-bold form-header"
-                >
-                <label >Прикачете вашия файл</label>
-                </div>
-              </div>
-              
-              <div style="margin-top: 10px; padding-left: 50px; padding-right: 50px;">
-                <app-file-uploader (updatedFiles)="updatedFiles($event)"></app-file-uploader>
-              </div>
+<!--              <div style="margin-top: 10px; padding-left: 50px; padding-right: 50px;">-->
+<!--                <app-file-uploader (updatedFiles)="updatedFiles($event)"></app-file-uploader>-->
+<!--              </div>-->
 
               <div class="button-wrapper">
                 <button type="button" class="btn submit" (click)="sendNewClaim()">

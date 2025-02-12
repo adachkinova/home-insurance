@@ -1,15 +1,13 @@
 package com.app.service;
 
-import com.app.model.entitites.User;
+import com.app.model.model.User;
 import com.app.model.model.*;
 import com.app.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Service
@@ -26,6 +24,9 @@ public class PolicyService {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private PropertyOwnerService propertyOwnerService;
 
 	@Autowired
 	private EmailSenderService senderService;
@@ -124,7 +125,7 @@ public class PolicyService {
 	public void saveConnectionPersonPolicy(Policy policy, PropertyOwner propertyOwner) {
 		PersonPolicy personPolicyConnection = new PersonPolicy();
 		personPolicyConnection.setPolicyId(policy);
-		personPolicyConnection.setPropertyOwnerId(propertyOwnerRepository.findByEgn(propertyOwner.getEgn()));
+		personPolicyConnection.setPropertyOwnerId(propertyOwner);
 		personPolicyRepository.save(personPolicyConnection);
 	}
 
@@ -132,30 +133,26 @@ public class PolicyService {
 		InsuredProperty insuredProperty = userInputData.getInsuredProperty();
 		Policy policy = userInputData.getPolicy();
 		PropertyOwner propertyOwner = userInputData.getPropertyOwner();
-		long policyLast = policyRepository.findLastPolicyNumber(); //
+		long policyLast = policyRepository.findLastPolicyNumber(); //TODO
 
 		if(insuredProperty != null && policy != null && propertyOwner != null) {
+			PropertyOwner owner = propertyOwnerService.savePropertyOwner(userInputData);
+			insuredProperty.setPropertyOwner(owner);
+
 			policy.setPolicyNumber(policyLast + 1);
 			Policy savedPolicy = policyRepository.save(policy);
 			insuredProperty.setPolicy(savedPolicy);
-			PropertyOwner savedOwner = propertyOwnerRepository.save(propertyOwner);
-			insuredProperty.setPropertyOwner(savedOwner);
+
 			insuredPropertyRepository.save(insuredProperty);
-			saveConnectionPersonPolicy(policy, propertyOwner);
-			User newUser = new User();
-			newUser.setIdNumber(userInputData.getPropertyOwner().getEgn());
-			newUser.setCode(userService.generateUserCode());
-			newUser.setType("insurer");
-			userRepository.save(newUser);
-			senderService.sendEmail(userInputData.getPropertyOwner().getEmail(),
-									"Вход в системата",
-									newUser.getCode(),
-									userInputData.getPropertyOwner().getName());
+
+//			saveConnectionPersonPolicy(policy, propertyOwner);
 			return policy;
 		} else {
 			throw new IllegalArgumentException("Input data contains null values!");
 		}
 	}
+
+
 
 	public static PolicyResponse buildPolicyResponse(Policy policy) {
 		PolicyResponse policyResponse = new PolicyResponse();

@@ -1,28 +1,34 @@
 
-	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(Ò¬²ÛJ$957d2811-b21f-4ce9-9d9a-7f839897c565
-p
-java:S3740("/Provide the parametrized type for this generic.(ÁÕÖ„ùÿÿÿÿJ$296ceedd-1404-4cad-86fb-a3dd5bde00f3
-k
-java:S37405"/Provide the parametrized type for this generic.(Ò¬²ÛJ$9155a4ae-4474-47b4-a8ad-970bfc0f708c
-k
-java:S3740l"/Provide the parametrized type for this generic.(œ‡‘˜J$2da537f2-f64a-4ac2-88df-00d92dd01bdf
-q
-java:S3740"/Provide the parametrized type for this generic.(¸öŸÔÿÿÿÿÿJ$4d9da1b8-13f7-4053-93ee-965b6e2e0ff0
-Å
-java:S1192."ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 3 times.( ï…üÿÿÿÿJ$c4f07c44-8e64-4583-bd97-83249352526c
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$af5febba-b78c-4397-9214-dd45b9da6584
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$249e84d7-2286-470d-baa5-6f3aa104837e
-~
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞJ$71682211-a378-4a8d-b671-3bd457190504
+ˆ	java:S112F"FDefine and throw a dedicated exception instead of using a generic one.(Ò¬²Û8º¢°ÖÍ2J$5c1cb4fc-7f45-4079-b8b1-2bcf8b15a2be
+w
+java:S37409"/Provide the parametrized type for this generic.(ÁÕÖ„ùÿÿÿÿ8öÅ£ÖÍ2J$da077854-944e-42b3-9b19-f01e0ab6cce3
+r
+java:S3740F"/Provide the parametrized type for this generic.(Ò¬²Û8÷Å£ÖÍ2J$8883b8dc-8847-4627-b122-e2c9d0c8ee90
+x
+java:S3740´"/Provide the parametrized type for this generic.(¸öŸÔÿÿÿÿÿ8÷Å£ÖÍ2J$debb9f9b-8bb6-4262-9c4e-ee6dbcc01e2f
+Ì
+java:S1192?"ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 3 times.( ï…üÿÿÿÿ8øÅ£ÖÍ2J$f1e46c9e-63cf-41f1-93f8-08b30bc85bb3
 …
-java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ8ê‚Ä2J$b6213b0b-4a15-47d9-9eed-24e5541d2585
-]
-java:S1181-"!Catch Exception instead of Error.(¹¨“«J$36e9003a-ba25-4b36-8ef2-fb703543b17a
-|
-java:S46845"@Replace this persistent entity with a simple POJO or DTO object.(Ò¬²ÛJ$1e97cf24-cf51-4cf4-97d6-3e7be63c237d
-¨
-java:S11305"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Ò¬²ÛJ$cd777c3d-d762-482f-9777-86ebb585d15a
-ƒ	java:S125F"<This block of commented-out lines of code should be removed.(ê¦Æ©ıÿÿÿÿ8×’ó¯Ì2J$6b0eca81-c75d-4a9d-93c1-308238e77d78
-ƒ	java:S125w"<This block of commented-out lines of code should be removed.(×¨Ö®úÿÿÿÿ8Âèó¯Ì2J$0216e525-cd55-43ed-b9f9-c558838544a2
+java:S6813%"BRemove this field injection and use constructor injection instead.(êæÄŞ8üÅ£ÖÍ2J$02efc8e6-45a1-4e08-86f1-990e0038a8df
+…
+java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8ıÅ£ÖÍ2J$e6e2b483-3730-4b4b-894f-0b4aa452098e
+…
+java:S6813+"BRemove this field injection and use constructor injection instead.(êæÄŞ8ıÅ£ÖÍ2J$71ece22e-2416-4c9d-bdb4-9c43fcb9f3ed
+…
+java:S6813."BRemove this field injection and use constructor injection instead.(êæÄŞ8ıÅ£ÖÍ2J$6dd48925-22dc-474b-8c8f-82b93a56fe6d
+…
+java:S68131"BRemove this field injection and use constructor injection instead.(êæÄŞ8ıÅ£ÖÍ2J$294300ad-0b84-4334-a921-88c44ca32149
+…
+java:S68134"BRemove this field injection and use constructor injection instead.(êæÄŞ8ıÅ£ÖÍ2J$c6a429a5-c9e4-460a-848d-908e6ffc85fe
+d
+java:S1181>"!Catch Exception instead of Error.(¹¨“«8ß¢°ÖÍ2J$ee539dfc-1f98-428d-9f63-d7c7c3dfdf5d
+ƒ
+java:S4684F"@Replace this persistent entity with a simple POJO or DTO object.(Ò¬²Û8á¢°ÖÍ2J$540c7cb5-4ccc-4572-ad35-bfe4a3c61bc9
+¯
+java:S1130F"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Ò¬²Û8â¢°ÖÍ2J$6a9354cc-7752-4cce-8cd5-a906bfeac380
+n
+java:S1452"&Remove usage of generic wildcard type.(è¬›‡ÿÿÿÿÿ8…Æ£ÖÍ2J$75aa6508-49c2-45b8-ad0c-4413dcb5a766
+ƒ	java:S125Y"<This block of commented-out lines of code should be removed.(ê¦Æ©ıÿÿÿÿ8‡Æ£ÖÍ2J$1a95b3f5-4ce3-4c72-8123-0a6fc261267e
+„	java:S125"<This block of commented-out lines of code should be removed.(×¨Ö®úÿÿÿÿ8ˆÆ£ÖÍ2J$8895351f-850f-4e0c-8765-591c95ce4d6f
+ƒ
+java:S1128"@Remove this unused import 'org.springframework.http.HttpEntity'.(ÂéÓ8øìÈ×Í2J$8a1acffb-9342-4525-8184-23829d45ec9a

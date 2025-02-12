@@ -25,4 +25,10 @@ export class ClaimsListItemComponent implements OnInit {
     });
   }
 
+  translateAssetType(type) {
+    return type === 'movable' ? 'Движимо имущество' :
+      type === 'immovable' ? 'Недвижимо имущество' :
+        type;
+  }
+
 }

@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface PersonPolicyMapper {
-    PersonPolicy personPolicyDTOToPersonPolicy(PersonPolicyDTO personPolicyDTO);
-
-    PersonPolicyDTO PersonPolicyToPersonPolicyDTO(PersonPolicy personPolicy);
+//    PersonPolicy personPolicyDTOToPersonPolicy(PersonPolicyDTO personPolicyDTO);
+//
+//    PersonPolicyDTO PersonPolicyToPersonPolicyDTO(PersonPolicy personPolicy);
 }

@@ -1,18 +1,29 @@
 package com.app.conroller;
 
+import com.app.dto.ClaimDTO;
+import com.app.dto.PredictionInputDTO;
+import com.app.model.mapper.ClaimMapper;
 import com.app.model.model.Claim;
+import com.app.model.model.InsuredProperty;
 import com.app.model.model.Person;
-import com.app.repository.ClaimRepository;
-import com.app.repository.PersonPolicyRepository;
-import com.app.repository.PersonRepository;
-import com.app.repository.PolicyRepository;
+import com.app.repository.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.app.configuration.WebPath.API_VERSION_1;
 
@@ -35,6 +46,12 @@ public class ClaimController {
     @Autowired
     private PolicyRepository policyRepository;
 
+    @Autowired
+    private InsuredPropertyRepository insuredPropertyRepository;
+
+    @Autowired
+    private ClaimMapper claimMapper;
+
     // get all claims
     @GetMapping("/claims")
     public ResponseEntity getAllClaims(){
@@ -54,8 +71,10 @@ public class ClaimController {
         try {
             long claimLast = claimRepository.findLastClaimNumber();
             claim.setClaimNumber(claimLast+1);
-
+            InsuredProperty insuredProperty = insuredPropertyRepository.findByEgn(claim.getEgn()).get(0);
+            claim.setInsuredProperty(insuredProperty);
             claimRepository.save(claim);
+
 
             return new ResponseEntity<>("Претенцията е успешно заявена",HttpStatus.OK);
         }
@@ -105,11 +124,14 @@ public class ClaimController {
 
     // get claim by user
     @GetMapping("/claims-user/{egn}")
-    public ResponseEntity getClaimsByEgn(@PathVariable String egn) {
+    public ResponseEntity<?> getClaimsByEgn(@PathVariable String egn) {
         try {
-            return new ResponseEntity<>(claimRepository.findAllByEgn(egn), HttpStatus.OK);
-        }
-        catch (Exception error){
+            List<Claim> claims = claimRepository.findByEgn(egn);
+            List<ClaimDTO> claimDTOs = claims.stream()
+                    .map(claimMapper::toDto)
+                    .collect(Collectors.toList());
+            return new ResponseEntity<>(claimDTOs, HttpStatus.OK);
+        } catch (Exception error) {
             return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");
         }
     }
@@ -164,8 +186,29 @@ public class ClaimController {
             else {
             return ResponseEntity.badRequest().body("Не същесвува в базата данни потребител с такова ЕГН");
              }
+    }
 
+    @PostMapping("/predictClaimValue")
+    public ResponseEntity<String> predict(@RequestBody PredictionInputDTO predictionInputDTO) {
+        String urlString = "https://e812-34-19-110-22.ngrok-free.app/predict";
 
+        try (CloseableHttpClient client = HttpClients.createDefault()) {
+            HttpPost post = new HttpPost(urlString);
+            post.setHeader("Content-Type", "application/json");
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonInputString = objectMapper.writeValueAsString(predictionInputDTO);
+
+            post.setEntity(new StringEntity(jsonInputString, StandardCharsets.UTF_8));
+
+            try (CloseableHttpResponse response = client.execute(post)) {
+                String responseString = EntityUtils.toString(response.getEntity());
+                return ResponseEntity.ok(responseString);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Error during the request");
+        }
     }
 
 }

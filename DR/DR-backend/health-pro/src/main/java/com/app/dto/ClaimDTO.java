@@ -1,51 +1,53 @@
 package com.app.dto;
 
+import com.app.model.model.InsuredProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
 
 @Data
 public class ClaimDTO {
 
-    @Schema(example = "0")
+    @Schema(example = "id")
     private Long id;
 
-    @Schema(example = "0049137550")
-    private String egn;
+    @Schema(example = "assetType")
+    private String assetType;
 
-    @Schema(example = "Гери Христозова")
-    private String name;
+    @Schema(example = "event")
+    private String event;
 
-    @Schema(example = "Дентална помощ")
-    private String category;
+    @Schema(example = "damageCause")
+    private String damageCause;
 
-    @Schema(example = "Профилактика")
-    private String type;
+    @Schema(example = "lossDescription")
+    private String lossDescription;
 
-    @Schema(example = "150")
-    private BigDecimal sum;
+    @Schema(example = "damageLevel")
+    private String damageLevel;
 
-    @Schema(example = "")
+    @Schema(example = "descriptionInput")
+    private String descriptionInput;
+
+    @Schema(example = "iban")
     private String iban;
 
-    @Schema(example = "")
-    private Date claimDate;
+    @Schema(example = "paid_date")
+    private LocalDate paidDate;
 
-    @Schema(example = "150")
-    private BigDecimal paidSum;
+    @Schema(example = "claim_date")
+    private LocalDate claimDate;
 
-    @Schema(example = "")
-    private Date paidDate;
-
-    @Schema(example = "")
-    private String description;
-
-    @Schema(example = "123456")
+    @Schema(example="claim_number")
     private long claimNumber;
 
-    private ArrayList<Object> files;
+    @Schema(example="egn")
+    private String egn;
+
+    private BigDecimal predictedClaimAmount;
+
+    @Schema(example = "insured_property_id")
+    private InsuredPropertyDTO insuredProperty;
 }

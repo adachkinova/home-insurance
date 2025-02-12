@@ -1,37 +1,41 @@
-<section class="vh-100" class="wrapper" *ngIf="titular">
+<section class="vh-100" class="wrapper">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-12 col-xl-11">
-          <div class="card text-black" style="border-radius: 25px; margin: 25px">
+        <div class="col-lg-12 col-xl-11" >
+          <div class="card text-black" style="border-radius: 25px; margin: 25px" *ngFor="let property of propertyData">
             <div class="card-body p-md-5">
               <div class="row justify-content-center">
-                <div class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 form-header">
-                        <div *ngIf="titularHasPolicy == true">
-                          <p class="header-text"> Полица Nº <span>{{titularData.policyId.policyNumber}}</span></p>
-                          <div class="subheader-text">от {{titularData.policyId.startDate | date: 'dd.MM.yyyy'}} до {{titularData.policyId.endDate | date: 'dd.MM.yyyy'}}</div>
-                          <div type="button" (click)="toMyClaims(titular.egn)">
+                <div class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 form-header" >
+                        <div>
+                          <p class="header-text"> Полица Nº <span>{{property.policy.policyNumber}}</span></p>
+                          <div class="subheader-text">от {{property.policy.startDate | date: 'dd.MM.yyyy'}} до {{property.policy.endDate | date: 'dd.MM.yyyy'}}</div>
+                          <div type="button" (click)="toMyClaims(property.propertyOwner.egn)">
                             <div  class="subheader-text claim-wrapper">
                               Виж претенции
                             <mat-icon>class</mat-icon></div>
                           </div>
                         </div>
-                        <p class="header-text" *ngIf="titularHasPolicy !== true"> Данни на титуляр</p>
+                        <p class="header-text" *ngIf="ownerHasPolicy !== true"> Данни на титуляр</p>
                 </div>
-                  <div class="info-box">
+                  <div class="info-box" >
                     <div >
                         <div class="info-line">
                             <div>
-                            <p> ЕГН  </p>
-                            <p> Име</p>
-                            <p> Асоцирани <br> лица </p>
+                              <p> Име</p>
+                              <p> ЕГН</p>
+                              <p> Имейл  </p>
+                              <p> Телефонен номер </p>
+                            <p> Населено място</p>
+                            <p> Адрес на имота</p>
                             </div>
 
                             <div>
-                                <div class="info-data"> {{titular.egn}} </div>
-                                <div class="info-data">  {{titular.firstName}}  {{titular.lastName}}</div>
-<!--                                <div class="kids-column" *ngFor="let insuredChild of children">-->
-<!--                                    <span>{{insuredChild.insuredId.firstName}} {{insuredChild.insuredId.lastName}}</span>-->
-<!--                                </div>-->
+                              <div class="info-data">  {{property.propertyOwner.firstName}}  {{property.propertyOwner.lastName}} </div>
+                              <div class="info-data"> {{property.propertyOwner.egn}} </div>
+                              <div class="info-data"> {{property.propertyOwner.email}} </div>
+                              <div class="info-data"> {{property.propertyOwner.phoneNumber}} <br></div>
+                              <div class="info-data"> {{property.city}}</div>
+                              <div class="info-data"> {{property.address}}</div>
                             </div>
 
                         </div>
@@ -40,15 +44,21 @@
                      <div class="not-editing">
                         <div class="info-line">
                             <div>
-                            <p> Имелй  </p>
-                            <p> Адрес</p>
-                            <p> Телефонен <br> номер </p>
+                              <p> Тип на имота</p>
+                              <p> Размер на имота</p>
+                              <p> Покритие на застраховката</p>
+                              <p> Застрахователна сума на имуществото</p>
+                              <p> Застрахователна сума на недвижимо имущество</p>
+                              <p> Застрахователна премия на годишна база</p>
                             </div>
 
                             <div>
-                                <div class="info-data"> {{titular.email}} </div>
-                                <div class="info-data"> {{titular.address}}, {{titular.city}}</div>
-                                <div class="info-data"> {{titular.phoneNumber}}</div>
+                              <div class="info-data"> {{property.propertyType}}</div>
+                              <div class="info-data"> {{property.size}} </div>
+                              <div class="info-data"> {{property.policy.coveragePackage}} </div>
+                              <div class="info-data"> {{property.policy.insuranceAmount}} <br> </div>
+                              <div class="info-data"> {{property.policy.insuranceMovablePropertyAmount}}<br> </div>
+                              <div class="info-data"> {{property.policy.policyPrice}}<br></div>
                             </div>
 
                         </div>
@@ -61,6 +71,7 @@
         </div>
       </div>
   </section>
+
 
 <!--    <div *ngFor="let insuredData of children">-->
 <!--      <app-profile-card-item-->

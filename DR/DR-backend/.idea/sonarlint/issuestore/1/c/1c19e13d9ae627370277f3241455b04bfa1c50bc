@@ -1,24 +1,25 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ïøê¯Ì2J$30778209-c071-4730-8d5e-92f537394e6c
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ğİÁÌ2J$451ed616-95e1-40e1-a39d-bced283ee018
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ïøê¯Ì2J$d3e12d49-f5da-410d-96a4-a3e9adc0e69e
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ñİÁÌ2J$457a41db-7743-4564-b640-6be97356da59
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ïøê¯Ì2J$6c27e4b9-6a48-44ca-8d8e-a01408f5c317
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ñİÁÌ2J$4cc43094-e783-4451-a8a3-d492d5952dd5
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ïøê¯Ì2J$8c60e524-1277-4f96-aabe-89cce7338cfb
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ñİÁÌ2J$ee6b7a7b-555e-487c-9d3d-c468af0fe61b
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ïøê¯Ì2J$eb767905-7171-4b66-9234-4e5ce7ef6ec2
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8òİÁÌ2J$db6d5ae0-8767-4905-a42e-7b516029afce
 …
-java:S6813!"BRemove this field injection and use constructor injection instead.(êæÄŞ8ïøê¯Ì2J$01a87854-4c0b-4906-8929-f2713513863b
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8òİÁÌ2J$31352dd7-335f-4d9f-b014-83854045c55a
 …
-java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8ïøê¯Ì2J$aa52f66e-bf7b-4013-a6fe-2ba1c4265c11
-ƒ	java:S125+"<This block of commented-out lines of code should be removed.(£Åšøÿÿÿÿ8óøê¯Ì2J$e2ac579a-6421-46e3-8b64-8b5db8a551bf
-~	java:S1254"<This block of commented-out lines of code should be removed.(ÓÃÁÚ8õøê¯Ì2J$890c7726-ee6a-4ca9-9e62-fcb1b1e8c736
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8òİÁÌ2J$a96b5fc4-c090-4acb-8a4c-a2e259de04a5
+…
+java:S6813%"BRemove this field injection and use constructor injection instead.(êæÄŞ8òİÁÌ2J$dac978a8-c6b3-4a06-92a8-7976748a90e9
+ƒ	java:S125,"<This block of commented-out lines of code should be removed.(£Åšøÿÿÿÿ8üİÁÌ2J$bf62cc3c-26b7-4285-be20-0e351e311277
+~	java:S1255"<This block of commented-out lines of code should be removed.(ÓÃÁÚ8ÿİÁÌ2J$35ad8933-3ba5-49fc-a76f-620cbb716c99
 ¹
-java:S1130P"qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(¾îâÃøÿÿÿÿ8õøê¯Ì2J$bc988974-a02b-49c8-a9fd-4dc18405e0f4
-ƒ	java:S125U"<This block of commented-out lines of code should be removed.(ú±ôÇıÿÿÿÿ8÷øê¯Ì2J$edf41be8-ef8f-47b7-b44c-d37f4562b540
-Œ
-java:S1128"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8â«•°Ì2J$178a3825-fec0-4531-9f46-80930a066ebe
-x
-java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8ã«•°Ì2J$e5cf6ead-8396-48d2-a0af-503c946b0fb2
+java:S1130Q"qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(¾îâÃøÿÿÿÿ8‚ŞÁÌ2J$ff736e53-9c4c-42c5-9388-6b8c08a5b790
+ƒ	java:S125V"<This block of commented-out lines of code should be removed.(ú±ôÇıÿÿÿÿ8ˆŞÁÌ2J$2009db01-41d4-4bbc-9bda-285940dbb170
+~	java:S125”"<This block of commented-out lines of code should be removed.(şí¹98™‡¥ÁÌ2J$3a5117ba-c7a7-4dd4-a674-7ef04837263e
+R
+java:S1128"5Remove this unused import 'com.app.model.model.User'.(ôÚÇê8ÆÜÇÃÌ2

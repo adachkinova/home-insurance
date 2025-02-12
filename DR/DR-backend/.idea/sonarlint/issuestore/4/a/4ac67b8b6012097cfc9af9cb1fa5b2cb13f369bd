@@ -1,27 +1,29 @@
 
 w
-java:S3740/"/Provide the parametrized type for this generic.(˜µÙÑûÿÿÿÿ8­ãï³Ì2J$af20cb80-b759-4089-b347-37b0e9f387e1
+java:S37401"/Provide the parametrized type for this generic.(˜µÙÑûÿÿÿÿ8ó­é¼Ì2J$3de471be-27d5-467c-9435-3ccb0101fb34
 w
-java:S3740>"/Provide the parametrized type for this generic.(Éğ«§ÿÿÿÿÿ8­ãï³Ì2J$a5b7a6e6-88e4-4e6a-9c5f-70f563814aed
+java:S3740@"/Provide the parametrized type for this generic.(Éğ«§ÿÿÿÿÿ8ó­é¼Ì2J$d010d1bc-4dc9-46ee-859a-8f2b476a8d03
 w
-java:S3740U"/Provide the parametrized type for this generic.(Ì‡ø°øÿÿÿÿ8®ãï³Ì2J$e41e0df2-55a1-45b2-af18-a6c4bf9d53a3
+java:S3740X"/Provide the parametrized type for this generic.(Ì‡ø°øÿÿÿÿ8ó­é¼Ì2J$e9c24afc-5092-4ad1-9758-787fc8961ad6
 Ì
-java:S11926"ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 3 times.( ï…üÿÿÿÿ8¯ãï³Ì2J$ce4af488-1021-47ee-ae78-edb90662903d
+java:S11928"ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 3 times.( ï…üÿÿÿÿ8õ­é¼Ì2J$976a88d9-38d3-4a70-b3fb-ba2ca3066d98
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ßãï³Ì2J$bb402a83-0c7b-4693-be30-a999289eff29
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8‹®é¼Ì2J$9b13153b-fc0f-4eae-aca0-e956d3a03dc0
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8àãï³Ì2J$106b0d30-54bf-4281-85ba-2eb81bb3643c
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8‹®é¼Ì2J$4c479040-91b4-4303-9c82-6becf5a7a394
 …
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8àãï³Ì2J$e696a4dd-687a-4089-9bb1-b44c07f11a1d
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8Œ®é¼Ì2J$faa3ae4a-00df-4425-b314-0850057974b5
 …
-java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ8àãï³Ì2J$a9b032f9-b540-483c-9d29-45350364c751
+java:S6813%"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œ®é¼Ì2J$bc383559-af5f-4af0-b4ee-83f21b96e430
 …
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8àãï³Ì2J$84c4a197-57ed-4ebf-b7ab-006202742518
+java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8Œ®é¼Ì2J$5ff67b64-c155-4e2d-a582-7f973b57b950
 …
-java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8áãï³Ì2J$b7f506b4-7b70-4249-866e-440592a3cc05
+java:S6813+"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œ®é¼Ì2J$f5b0313c-24f0-4edd-92fb-4b5299f5762d
 ˆ
-java:S46840"@Replace this persistent entity with a simple POJO or DTO object.(•«‚‰üÿÿÿÿ8ìãï³Ì2J$aebcdc59-ed94-4e7b-84de-96d23d34188a
+java:S46842"@Replace this persistent entity with a simple POJO or DTO object.(•«‚‰üÿÿÿÿ8®é¼Ì2J$0d1971dc-a173-4bd6-b986-b1a2f477c5fa
+w
+java:S1128"4Remove this unused import 'org.hibernate.Hibernate'.(óñ‹è8¨Ì­¿Ì2J$a02b5722-8cbd-4240-ae03-91afb5db073b
 x
-java:S1128"5Remove this unused import 'java.text.ParseException'.(ñ®ï•8ô–¿¹Ì2J$8a382d97-bce1-418d-bd3a-d82b487e0c4e
+java:S1128"5Remove this unused import 'java.text.ParseException'.(ñ®ï•8¨Ì­¿Ì2J$daf5e165-8572-4e62-9d0c-deddb9020225
 x
-java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8õ–¿¹Ì2J$e3a1b744-95fe-46b8-9e68-9d698f8850c8
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8¨Ì­¿Ì2J$357d363a-01e6-450b-a38e-510918474ff5

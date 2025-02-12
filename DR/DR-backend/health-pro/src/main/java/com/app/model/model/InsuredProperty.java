@@ -39,12 +39,12 @@ public class InsuredProperty {
     private String address;
 
     @JsonProperty("propertyOwner")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "property_owner_id")
     private PropertyOwner propertyOwner;
 
     @JsonProperty("policy")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "policy_id")
     private Policy policy;
 }

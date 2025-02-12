@@ -15,10 +15,12 @@ export class MyProfileComponent implements OnInit, AfterViewInit {
 
   personalData : any;
   isEditing = false;
-  titular: any;
+  owner: any;
+  policy: any;
   // children : any;
-  titularHasPolicy: any;
-  titularData ;
+  ownerHasPolicy: any;
+  propertyData ;
+  policyList ;
 
   constructor(private router: Router,private tostrService: ToastrService, private policyService: PolicyService, public sharedService: sharedService) { }
 
@@ -43,59 +45,58 @@ export class MyProfileComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/my-claims',  btoa(egn) ]);
   }
 
-  getPolicyList(){
-    let egn : any = sessionStorage.getItem("InsurerData");
-    this.policyService.getPoliciesByEgn(egn).pipe(
+  getPolicyList() {
+    let egn: any = sessionStorage.getItem("InsurerData");
+    this.policyService.getInsuredPropertyByEgn(egn).pipe(
       delay(0),
-      tap(()=> this.sharedService.isLoading(true)),
+      tap(() => this.sharedService.isLoading(true)),
       catchError(err => {
-        if(err.status !== 200){
+        if (err.status !== 200) {
           this.sharedService.isLoading(false);
           this.tostrService.error(err.error);
-          return EMPTY
-        }
-        else{
+          return EMPTY;
+        } else {
           return of(err);
         }
       })
     )
-    .subscribe(
-      (res ) => {
-        this.titularData = res.filter((p ) => p.propertyOwnerId.egn === egn);
-        // this.children = res.filter((p ) => p.insuredId.egn !== egn);
-        this.sharedService.setUserClaimsInformation(res);
+      .subscribe(
+        (res) => {
+          // Filter properties by the given EGN
+          this.propertyData = res.filter((p) => p.propertyOwner.egn === egn);
+          this.sharedService.setUserClaimsInformation(res);
 
-        if(this.titularData.length==0){
-          this.titularHasPolicy = false;
-          this.policyService.getPolicyTitular(egn).pipe(
-            catchError(err => {
-              if(err.status !== 200){
-                this.sharedService.isLoading(false);
-                this.tostrService.error(err.error);
-
-                return EMPTY
-              }
-              else{
-                return of(err);
-              }
-            })
-          )
-          .subscribe(
-            (res ) => {
-            this.titular = res;
+          if (this.propertyData.length === 0) {
+            // No policies found
+            this.ownerHasPolicy = false;
+            this.policyService.getPolicyTitular(egn).pipe(
+              catchError(err => {
+                if (err.status !== 200) {
+                  this.sharedService.isLoading(false);
+                  this.tostrService.error(err.error);
+                  return EMPTY;
+                } else {
+                  return of(err);
+                }
+              })
+            )
+              .subscribe(
+                (res) => {
+                  this.owner = res;
+                  this.sharedService.isLoading(false);
+                }
+              );
+          } else {
+            this.ownerHasPolicy = true;
+            this.owner = this.propertyData[0].propertyOwner;
             this.sharedService.isLoading(false);
-            }
-          )
+          }
         }
-        else{
-          this.titularHasPolicy = true;
-          this.titularData=this.titularData[0]
-          this.titular = this.titularData.propertyOwnerId;
-          this.sharedService.isLoading(false);
-        }
-      }
-    )
+      );
   }
 
+  navigateToInsuredProperty(): void {
+    this.router.navigate(['/insured-property']);
+  }
 
 }

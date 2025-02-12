@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {FormServiceInsuranceData} from "../../services/formServiceInsuranceData.service";
 import {sharedService} from "../../services/sharedService.service";
+import {PolicyService} from "../../services/policy.service";
+import {catchError, delay, EMPTY, tap} from "rxjs";
 
 
 @Component({
@@ -11,7 +13,10 @@ import {sharedService} from "../../services/sharedService.service";
   styleUrls: ['./calculate-price.component.css'],
 })
 export class CalculatePriceComponent implements OnInit {
-  constructor(private router: Router, private formService: FormServiceInsuranceData, private sharedService: sharedService) {}
+  constructor(private router: Router,
+              private formService: FormServiceInsuranceData,
+              private policyService: PolicyService,
+              private sharedService: sharedService) {}
   form ;
   policyPrice ;
   coveragePackage ;
@@ -20,7 +25,6 @@ export class CalculatePriceComponent implements OnInit {
   // Стандартно покритие
   private standardCoverage = [
     'Пожар', 'Мълния', 'Експлозия', 'Имплозия',
-    'Удар от летателен апарат или предмет, паднал от него',
     'Буря', 'Пороен дъжд', 'Градушка', 'Наводнение'
   ];
 
@@ -66,7 +70,28 @@ export class CalculatePriceComponent implements OnInit {
   isActive = false;
 
   continue() {
-    this.router.navigate(['/property-owner']);
+    const egn = sessionStorage.getItem('InsurerData');
+    if (egn) {
+      this.policyService.getInsuredPropertyByEgn(egn).pipe(
+        delay(0),
+        tap(() => this.sharedService.isLoading(true)),
+        catchError(err => {
+          if (err.status !== 200) {
+            this.sharedService.isLoading(false);
+            return EMPTY;
+          }
+          return EMPTY;
+        })
+      ).subscribe(
+        (propertyData) => {
+          this.formService.setPropertyOwnerForm(propertyData[0].propertyOwner);
+          this.sharedService.isLoading(false);
+          this.router.navigate(['/preview-input-data']);
+        }
+      );
+    } else {
+      this.router.navigate(['/property-owner']);
+    }
   }
 }
 

@@ -48,7 +48,7 @@ public class Policy {
     @Column(name = "insurance_movable_property_amount")
     private Integer insuranceMovablePropertyAmount;
 
-    @JsonProperty("price")
+    @JsonProperty("policyPrice")
     @Column(name = "price")
     private BigDecimal price;
 }

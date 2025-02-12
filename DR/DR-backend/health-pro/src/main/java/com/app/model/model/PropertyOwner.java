@@ -17,17 +17,17 @@ public class PropertyOwner {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @JsonProperty("name")
-    @Column(name = "name")
-    private String name;
+    @JsonProperty("firstName")
+    @Column(name = "firstName")
+    private String firstName;
 
     @JsonProperty("middleName")
     @Column(name = "middleName")
     private String middleName;
 
-    @JsonProperty("surname")
-    @Column(name = "surname")
-    private String surname;
+    @JsonProperty("lastName")
+    @Column(name = "lastName")
+    private String lastName;
 
     @JsonProperty("egn")
     @Column(name = "egn")

@@ -17,8 +17,8 @@ export class PolicyService {
     });
   }
 
-  getPoliciesByEgn(egn: string) {
-    return this.http.get('http://localhost:8099/v1/policy-list/' + egn)
+  getInsuredPropertyByEgn(egn: string) {
+    return this.http.get('http://localhost:8099/v1/insured-property/' + egn)
   }
 
   getPolicyTitular(egn: string) {
