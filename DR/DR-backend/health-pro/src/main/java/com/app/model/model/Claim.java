@@ -37,9 +37,6 @@ public class Claim {
     @Column(name = "iban")
     private String iban;
 
-    @Column(name = "paid_date")
-    private LocalDate paidDate;
-
     @Column(name = "claim_date")
     private LocalDate claimDate;
 
@@ -48,6 +45,15 @@ public class Claim {
 
     @JsonProperty("egn")
     private String egn;
+
+    @Column(name = "paidDate")
+    private LocalDate paidDate;
+
+    @Column(name = "paidSum")
+    private Double paidSum;
+
+    @Column(name = "declineDescription")
+    private String declineDescription ;
 
     @JsonProperty("insuredProperty")
     @ManyToOne(fetch = FetchType.EAGER)

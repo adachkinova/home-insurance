@@ -26,7 +26,7 @@ body { margin: 0; font-family: "Helvetica Neue", sans-serif;
     cursor: pointer !important;
       border-radius: 5em !important;
       color: #fff !important;
-      background-color: #EF814F !important;
+      background-color: #6A4C93 !important;
       border: 0 !important;
       padding-left: 40px !important;
       padding-right: 40px !important;
@@ -36,16 +36,16 @@ body { margin: 0; font-family: "Helvetica Neue", sans-serif;
       font-size: 14px !important;
       box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04) !important;
       z-index: 10;
-    
+
   }
 
   .submit:disabled{
-    background-color: #EF814F !important;
+    background-color: #6A4C93 !important;
     opacity: 0.5 !important;
   }
 
   .submit:hover{
     background-color: white !important;
-    color: #EF814F !important;
-    border: 1px solid #EF814F !important
+    color: #6A4C93 !important;
+    border: 1px solid #6A4C93 !important
   }

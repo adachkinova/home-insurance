@@ -18,12 +18,12 @@ export class ClaimApprovedComponent implements OnInit {
   maxLimitSum:number = 0;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-   private claimsService: ClaimService, 
-   private dialog: MatDialog, 
+   private claimsService: ClaimService,
+   private dialog: MatDialog,
    private tostrService: ToastrService,
    private router: Router,
-   private sharedService: sharedService ) { 
-    
+   private sharedService: sharedService ) {
+
   }
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class ClaimApprovedComponent implements OnInit {
     this.form = new FormGroup({
       paidDate: new FormControl (""),
       paidSum: new FormControl ("", Validators.required),
-      description: new FormControl ("")
+      declineDescription: new FormControl ("")
   });
   }
 

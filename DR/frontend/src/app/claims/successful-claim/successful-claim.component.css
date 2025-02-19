@@ -2,20 +2,20 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
 
 .bg-white{
-    border: solid #ee7843 2px;
+    border: solid #A277C7 2px;
     width: 500px;
 }
 .continue{
-    color: #ee7843;
-    border-color: #ee7843
+    color: #A277C7;
+    border-color: #A277C7
 }
 .continue:hover {
-    color: #ee7843;
+    color: #A277C7;
     background-color: #fef8f5;
-    border-color: #ee7843
+    border-color: #A277C7
 }
 i {
-    color: #eb5d1e;
+    color: #6A4C93;
     font-size: 100px;
     line-height: 200px;
   }

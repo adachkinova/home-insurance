@@ -1,37 +1,42 @@
 <section class="section">
     <div class="mat-elevation-z8" >
         <table mat-table [dataSource]="dataSource">
-      
+
           <!-- Position Column -->
           <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef> No. </th>
             <td mat-cell *matCellDef="let element" class="data-td"> {{element.id}} </td>
           </ng-container>
-      
+
           <!-- Name Column -->
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let element" class="data-td"> {{element.name}} </td>
+            <th mat-header-cell *matHeaderCellDef> Заявител на щетата </th>
+            <td mat-cell *matCellDef="let element" class="data-td"> {{element.insuredProperty.propertyOwner.firstName}} {{element.insuredProperty.propertyOwner.lastName}} </td>
           </ng-container>
-      
+
           <!-- egn Column -->
-          <ng-container matColumnDef="egn">
-            <th mat-header-cell *matHeaderCellDef> egn </th>
-            <td mat-cell *matCellDef="let element" class="data-td"> {{element.egn}} </td>
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Адрес на имота </th>
+            <td mat-cell *matCellDef="let element" class="data-td"> {{element.insuredProperty.address}}, {{element.insuredProperty.city}} </td>
           </ng-container>
-      
+
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Дата на подаване </th>
+            <td mat-cell *matCellDef="let element" class="data-td"> {{element.claimDate}} </td>
+          </ng-container>
+
           <!-- Symbol Column -->
           <ng-container matColumnDef="claimID">
             <th mat-header-cell *matHeaderCellDef> claimID </th>
             <td mat-cell *matCellDef="let element" class="data-td"> {{element.claimNumber}} </td>
           </ng-container>
-      
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header-row"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"
           (click)="goToDetails(row)"
           ></tr>
         </table>
-      
+
         <mat-paginator pageSize="10"
                        showFirstLastButtons>
         </mat-paginator>

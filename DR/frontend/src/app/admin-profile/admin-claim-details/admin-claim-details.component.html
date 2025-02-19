@@ -12,24 +12,33 @@
                     <div >
                         <div class="info-line">
                             <div>
-                            <p> Подадена на  </p>
-                            <p> Име</p>
-                            <p>ЕГН </p>
-                            <p>Вид на претенцията </p>
-                            <p>Детайли на претенцията </p>
-                            <p>Заявена сума</p>
-                            <p>Остаъчна сума</p>
+                            <p>Подадена на  </p>
+                            <p>Собственик на имота</p>
+                            <p>Адрес на имота</p>
+                            <p>Тип на имота</p>
+                            <p>Настъпило събитие</p>
+                            <p>Засегнато имущество</p>
+                            <p>Причина за щетата</p>
+                            <p>Щета</p>
+                            <p>Степен на щетата</p>
+                            <p>Описание</p>
+                            <p>AI оценка на щетата</p>
+                            <p>Снимки</p>
+
                             <p  *ngIf="claimData.files">Прикачени файлове ({{ file_store.length }})</p>
                             </div>
-                            
+
                             <div *ngIf="claimData">
                                 <div class="info-data">{{claimData.claimDate | date: 'dd.MM.yyyy'}}</div>
-                                <div class="info-data"> {{claimData.name}}</div>
-                                <div class="info-data"> {{claimData.egn}}</div>
-                                <div class="info-data"> {{claimData.category}}</div>
-                                <div class="info-data"> {{claimData.type}}</div>
-                                <div class="info-data"> {{claimData.sum}} </div>
-                                <div class="info-data"> {{maxLimit}} </div>
+                                <div class="info-data"> {{claimData.insuredProperty.propertyOwner.firstName}} {{claimData.insuredProperty.propertyOwner.lastName}}</div>
+                                <div class="info-data"> {{claimData.insuredProperty.address}}, {{claimData.insuredProperty.city}}</div>
+                                <div class="info-data"> {{claimData.insuredProperty.propertyType}}</div>
+                                <div class="info-data"> {{claimData.event}}</div>
+                                <div class="info-data">{{ claimData.assetType === 'movable' ? 'Движимо имущество' : 'Недвижимо имущество' }}</div>
+                                <div class="info-data"> {{claimData.damageCause}} </div>
+                                <div class="info-data"> {{claimData.lossDescription}} </div>
+                                <div class="info-data"> {{claimData.damageLevel}} </div>
+                                <div class="info-data"> {{claimData.descriptionInput}} </div>
                                 <div *ngIf="claimData.files">
                                   <div *ngFor="let file of file_store, let i=index" class="info-data" style="display: flex;">
                                     <mat-icon mat-list-icon (click)="previewFile(file)" class="icon" style="margin-right: 10px">insert_drive_file</mat-icon>
@@ -54,5 +63,4 @@
         </div>
       </div>
   </section>
-  
-  
+

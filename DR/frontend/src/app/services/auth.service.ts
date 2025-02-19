@@ -21,15 +21,15 @@ export class authService {
     }
 
     getAdmins(){
-      return this.http.get('/v1/get-admins')
+      return this.http.get('http://localhost:8099/v1/get-admins')
     }
 
     addAdmin(newAdmin ){
-      return  this.http.post('/v1/new-admin', newAdmin )
+      return  this.http.post('http://localhost:8099/v1/new-admin', newAdmin )
     }
 
     deleteAdmin(id ){
-      return  this.http.post('/v1/delete-admin', id )
+      return  this.http.post('http://localhost:8099/v1/delete-admin', id )
     }
 
     logout(){

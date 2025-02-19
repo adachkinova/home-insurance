@@ -40,7 +40,7 @@
 }
 
 .card-suggestions{
-    border: 1px solid #ef7f4d;
+    border: 1px solid #6A4C93;
 }
 
 .datepickers{
@@ -52,7 +52,7 @@
     cursor: pointer;
       border-radius: 5em;
       color: #fff;
-      background: #EF814F;
+      background: #A277C7;
       border: 0;
       padding-left: 40px;
       padding-right: 40px;
@@ -64,8 +64,8 @@
 
   .submit:hover{
     background-color: white;
-    color: #EF814F;
-    border: 1px solid #EF814F
+    color: #A277C7;
+    border: 1px solid #A277C7
 
   } */
 
@@ -73,7 +73,7 @@
     cursor: pointer;
     border-radius: 5em;
     color: #fff;
-    background: #EF814F;
+    background: #A277C7;
     border: 0;
     padding-top: 10px;
     font-size: 14px;
@@ -82,8 +82,8 @@
 
   .add:hover{
     background-color: white;
-    color: #EF814F;
-    border: 1px solid #EF814F
+    color: #A277C7;
+    border: 1px solid #A277C7
   }
 
 

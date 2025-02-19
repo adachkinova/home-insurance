@@ -30,11 +30,11 @@ export class ClaimService {
     }
 
     getClaims(){
-        return  this.http.get('/v1/claims' )
+        return  this.http.get('http://localhost:8099/v1/claims' )
     }
 
     getClaimById(id ){
-        return  this.http.get('/v1/claim/'+id )
+        return  this.http.get('http://localhost:8099/v1/claim/'+id )
     }
 
     getClaimByEgn(egn ){
@@ -42,7 +42,7 @@ export class ClaimService {
     }
 
     updateClaimStatus(claimStatusForm , id ){
-        return  this.http.put('/v1//claim-status/'+id, claimStatusForm )
+        return  this.http.put('http://localhost:8099/v1/claim-status/'+id, claimStatusForm )
     }
 
     setCurrentClaimdId(id ){

@@ -13,7 +13,7 @@ import { sharedService } from 'src/app/services/sharedService.service';
   styleUrls: ['./admin-page-claims.component.css']
 })
 export class AdminPageClaimsComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'egn', 'claimID'];
+  displayedColumns: string[] = ['position', 'name', 'address', 'date' ,'claimID'];
 
   ELEMENT_DATA  = [];
 
@@ -43,7 +43,7 @@ export class AdminPageClaimsComponent implements AfterViewInit {
       this.ELEMENT_DATA = res.filter((c )=> c.paidDate==null);
       this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
       this.dataSource.paginator = this.paginator;
-      this.sharedService.isLoading(false);   
+      this.sharedService.isLoading(false);
 
     })
   }
