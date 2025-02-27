@@ -50,7 +50,7 @@ mat-slider {
   justify-content: space-between;
   margin-top: 8px;
   font-size: 14px;
-  color: #1976d2;  /* Color for the values */
+  color: #6a4c93;  /* Color for the values */
 }
 
 /* Minimum value */
@@ -69,7 +69,7 @@ mat-slider {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #1976d2;
+  background-color: #6a4c93;
   color: white;
   font-size: 18px;
   font-weight: bold;

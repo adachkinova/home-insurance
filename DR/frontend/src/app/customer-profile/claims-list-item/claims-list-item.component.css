@@ -83,6 +83,14 @@
     opacity: 1;
   }
 
+.declined-claim {
+  background-color: rgba(255, 230, 230, 0.42);
+}
+
+.paid-claim {
+  background-color: rgba(230, 255, 230, 0.35);
+}
+
 
   .data-text{
     text-align: left;

@@ -19,7 +19,6 @@ import { NewClaimComponent } from './claims/new-claim/new-claim.component';
 import { SuccessfulClaimComponent } from './claims/successful-claim/successful-claim.component';
 import { MyProfileComponent } from './customer-profile/my-profile/my-profile.component';
 import { MyClaimDetailsComponent } from './customer-profile/my-claim-details/my-claim-details.component';
-import { InsurerDataComponent } from './insurance/insurer-data/insurer-data.component';
 import { InsuredPropertyComponent } from './insurance/insured-property/insured-property.component';
 import { ClaimsListItemComponent } from './customer-profile/claims-list-item/claims-list-item.component';
 import { ProfileCardItemComponent } from './customer-profile/profile-card-item/profile-card-item.component';
@@ -54,7 +53,6 @@ import {PreviewInputDataComponent} from "./insurance/preview-input-data/preview-
     ContactsComponent,
     GetInsuranceComponent,
     GuardianDataComponent,
-    InsurerDataComponent,
     InsuredPropertyComponent,
     PropertyOwnerDataComponent,
     PreviewInputDataComponent,

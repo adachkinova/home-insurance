@@ -1,66 +1,79 @@
 <section class="vh-100" class="wrapper" *ngIf="claimData">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-12 col-xl-11">
-          <div class="card text-black" style="border-radius: 25px; margin: 25px">
-            <div class="card-body p-md-5">
-              <div class="row justify-content-center">
-                <div class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 form-header">
-                    <p class="header-text"> Претенция Nº{{claimData.claimNumber}}</p>
-                </div>
-                  <div class="info-box">
-                    <div >
-                        <div class="info-line">
-                            <div>
-                            <p>Подадена на  </p>
-                            <p>Собственик на имота</p>
-                            <p>Адрес на имота</p>
-                            <p>Тип на имота</p>
-                            <p>Настъпило събитие</p>
-                            <p>Засегнато имущество</p>
-                            <p>Причина за щетата</p>
-                            <p>Щета</p>
-                            <p>Степен на щетата</p>
-                            <p>Описание</p>
-                            <p>AI оценка на щетата</p>
-                            <p>Снимки</p>
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px; margin: 25px">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 form-header">
+                <p class="header-text">Претенция Nº{{claimData.claimNumber}}</p>
+              </div>
+              <div class="info-box">
+                <div>
+                  <div class="info-line">
+                    <div>
+                      <p>Подадена на</p>
+                      <p>Собственик на имота</p>
+                      <p>Адрес на имота</p>
+                      <p>Тип на имота</p>
+                      <p>Настъпило събитие</p>
+                      <p>Засегнато имущество</p>
+                      <p>Причина за щетата</p>
+                      <p>Щета</p>
+                      <p>Степен на щетата</p>
+                      <p>Описание</p>
+                      <p>AI оценка на щетата</p>
+                      <br/><br/><br/>
+                      <p>Снимки</p>
 
-                            <p  *ngIf="claimData.files">Прикачени файлове ({{ file_store.length }})</p>
-                            </div>
+                      <p *ngIf="claimData.files">Прикачени файлове ({{file_store.length}})</p>
+                    </div>
 
-                            <div *ngIf="claimData">
-                                <div class="info-data">{{claimData.claimDate | date: 'dd.MM.yyyy'}}</div>
-                                <div class="info-data"> {{claimData.insuredProperty.propertyOwner.firstName}} {{claimData.insuredProperty.propertyOwner.lastName}}</div>
-                                <div class="info-data"> {{claimData.insuredProperty.address}}, {{claimData.insuredProperty.city}}</div>
-                                <div class="info-data"> {{claimData.insuredProperty.propertyType}}</div>
-                                <div class="info-data"> {{claimData.event}}</div>
-                                <div class="info-data">{{ claimData.assetType === 'movable' ? 'Движимо имущество' : 'Недвижимо имущество' }}</div>
-                                <div class="info-data"> {{claimData.damageCause}} </div>
-                                <div class="info-data"> {{claimData.lossDescription}} </div>
-                                <div class="info-data"> {{claimData.damageLevel}} </div>
-                                <div class="info-data"> {{claimData.descriptionInput}} </div>
-                                <div *ngIf="claimData.files">
-                                  <div *ngFor="let file of file_store, let i=index" class="info-data" style="display: flex;">
-                                    <mat-icon mat-list-icon (click)="previewFile(file)" class="icon" style="margin-right: 10px">insert_drive_file</mat-icon>
-                                    <div mat-line>{{file.type}} - {{file.name}} <span></span></div>
-                                  </div>
-                                </div>
-                            </div>
+                    <div *ngIf="claimData">
+                      <div class="info-data">{{claimData.claimDate | date: 'dd.MM.yyyy'}}</div>
+                      <div class="info-data">{{claimData.insuredProperty.propertyOwner.firstName}} {{claimData.insuredProperty.propertyOwner.lastName}}</div>
+                      <div class="info-data">{{claimData.insuredProperty.address}}, {{claimData.insuredProperty.city}}</div>
+                      <div class="info-data">{{claimData.insuredProperty.propertyType}}</div>
+                      <div class="info-data">{{claimData.event}}</div>
+                      <div class="info-data">{{claimData.assetType === 'movable' ? 'Движимо имущество' : 'Недвижимо имущество'}}</div>
+                      <div class="info-data">{{claimData.damageCause}}</div>
+                      <div class="info-data">{{claimData.lossDescription}}</div>
+                      <div class="info-data">{{claimData.damageLevel}}</div>
+                      <div class="info-data">{{claimData.descriptionInput}}</div>
+                      <br/><br/><br/>
+                      <div *ngIf="claimData.files">
+                        <div *ngFor="let file of file_store, let i=index" class="info-data" style="display: flex;">
+                          <mat-icon mat-list-icon (click)="previewFile(file)" class="icon" style="margin-right: 10px">insert_drive_file</mat-icon>
+                          <div mat-line>{{file.type}} - {{file.name}} <span></span></div>
                         </div>
+                      </div>
 
+                      <!-- Slideshow for images -->
+                      <div *ngIf="imageUrls && imageUrls.length">
+                        <div class="slideshow-container">
+                          <div *ngFor="let imageUrl of imageUrls; let i = index" class="slide" [class.active]="currentIndex === i">
+                            <img [src]="imageUrl" alt="Claim" class="slideshow-image">
+                          </div>
+                          <button class="prev" (click)="changeSlide(-1)">
+                            <mat-icon>arrow_back</mat-icon>
+                          </button>
+                          <button class="next" (click)="changeSlide(1)">
+                            <mat-icon>arrow_forward</mat-icon>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="button-wrapper">
-                    <button mat-raised-button color="warn" (click)="sendAnswerDeclined()">Откажи претенцията</button>
-                    <button mat-raised-button style="background-color: green; color: white;" (click)="sendAnswerApproved()">Потвърди претенцията</button>
-
-                </div>
-
+              </div>
+              <div class="button-wrapper">
+                <button mat-raised-button color="warn" (click)="sendAnswerDeclined()">Откажи претенцията</button>
+                <button mat-raised-button style="background-color: green; color: white;" (click)="sendAnswerApproved()">Потвърди претенцията</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-  </section>
-
+    </div>
+  </div>
+</section>

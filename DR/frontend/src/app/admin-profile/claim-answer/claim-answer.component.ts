@@ -16,19 +16,19 @@ export class ClaimAnswerComponent implements OnInit {
   declined:boolean = false;
   form ;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-  private claimsService: ClaimService, 
-  private dialog: MatDialog, 
+  private claimsService: ClaimService,
+  private dialog: MatDialog,
   private router: Router,
   private tostrService: ToastrService,
-  private sharedService: sharedService) { 
-   
+  private sharedService: sharedService) {
+
  }
 
   ngOnInit(): void {
     this.form = new FormGroup({
       paidDate: new FormControl (""),
       paidSum: new FormControl ("", Validators.required),
-      description: new FormControl ("")
+      declineDescription: new FormControl ("")
   });
   }
 

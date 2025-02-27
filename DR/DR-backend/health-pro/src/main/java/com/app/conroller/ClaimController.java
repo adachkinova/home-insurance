@@ -2,13 +2,11 @@ package com.app.conroller;
 
 import com.app.dto.ClaimByIdDTO;
 import com.app.dto.ClaimDTO;
+import com.app.dto.ImageDTO;
 import com.app.dto.PredictionInputDTO;
 import com.app.exception.ResourceNotFoundException;
 import com.app.model.mapper.ClaimMapper;
-import com.app.model.model.Claim;
-import com.app.model.model.InsuredProperty;
-import com.app.model.model.Person;
-import com.app.model.model.PolicyOld;
+import com.app.model.model.*;
 import com.app.repository.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,14 +17,22 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.math.BigDecimal;
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.app.configuration.WebPath.API_VERSION_1;
@@ -56,6 +62,9 @@ public class ClaimController {
     @Autowired
     private ClaimMapper claimMapper;
 
+    @Autowired
+    private ImageRepository imageRepository;
+
     // get all claims
     @GetMapping("/claims")
     public ResponseEntity getAllClaims(){
@@ -69,26 +78,50 @@ public class ClaimController {
 
     }
 
-    // create claim rest api
     @PostMapping("/claim")
-    public ResponseEntity createClaim(@RequestBody Claim claim) throws Exception {
+    public ResponseEntity createClaim(@RequestBody ClaimDTO claimDTO) {
+        if (claimDTO == null) {
+            return ResponseEntity.badRequest().body("Invalid claim data");
+        }
+
         try {
+            Claim claim = claimMapper.toClaim(claimDTO);
             long claimLast = claimRepository.findLastClaimNumber();
-            claim.setClaimNumber(claimLast+1);
+            claim.setClaimNumber(claimLast + 1);
             InsuredProperty insuredProperty = insuredPropertyRepository.findByEgn(claim.getEgn()).get(0);
             claim.setInsuredProperty(insuredProperty);
             claimRepository.save(claim);
-
-
-            return new ResponseEntity<>("Претенцията е успешно заявена",HttpStatus.OK);
-        }
-        catch (Exception error){
-            return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");
+        } catch (Error error) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
         }
 
+        return ResponseEntity.ok("Claim created successfully");
     }
 
-//    // get claim by id rest api
+    @PostMapping(value = "/uploadImages" , consumes = "multipart/form-data")
+    public ResponseEntity<List<String>> uploadImages(@RequestParam("files") List<MultipartFile> files) {
+        List<String> savedFilePaths = new ArrayList<>();
+        String uploadDir = "C:\\Users\\a.dachkinova\\Desktop\\images\\";
+
+        for (MultipartFile file : files) {
+            try {
+                String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+                String filePath = uploadDir + fileName;
+                File destinationFile = new File(filePath);
+
+                // Save file to disk
+                file.transferTo(destinationFile);
+                savedFilePaths.add(filePath);
+
+            } catch (IOException e) {
+                // Log the exception for debugging
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
+            }
+        }
+        return ResponseEntity.ok(savedFilePaths);
+    }
+
     @GetMapping("/claim/{id}")
     public ResponseEntity getClaimById(@PathVariable Long id) {
         Claim claim = claimRepository.findById(id)
@@ -96,32 +129,54 @@ public class ClaimController {
         try {
             ClaimByIdDTO claimData = new ClaimByIdDTO();
             claimData.setClaim(claim);
-
-//            BigDecimal newLimit = null;
-//            try{
-//            PolicyOld policyOld = personPolicyRepository.findByInsuredId(personRepository.findByEgn(claim.getEgn())).getPolicyId();
-
-//                if (claim.getCategory().equalsIgnoreCase("Дентална помощ")) {
-//                    newLimit = policyOld.getDentalLimit();
-//                } else if (claim.getCategory().equalsIgnoreCase("Болнична помощ")) {
-//                    newLimit = policyOld.getHospitalLimit();
-//                } else if (claim.getCategory().equalsIgnoreCase("Здравни стоки")) {
-//                    newLimit = policyOld.getHealthGoodsLimit();
-//                } else if (claim.getCategory().equalsIgnoreCase("Извънболнична помощ")) {
-//                    newLimit = policyOld.getOutOfHospitalLimit();
-//                }
-
-//                claimData.setMaxLimitValue(newLimit);
-                return ResponseEntity.ok().body(claimData);
-
-//            }
-//            catch (Exception error){
-//                claimRepository.deleteById(id);
-//                return ResponseEntity.badRequest().body("Полицата на застрахованото лице е изтекла. Претенцията не може да бъде разгледана");
-//            }
+//            ClaimDTO claimDTO = claimMapper.toDto(claim);
+            return ResponseEntity.ok().body(claimData);
         }
         catch (Exception error){
             return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");
+        }
+    }
+
+    @GetMapping("/v1/claim/{claimId}/images")
+    public ResponseEntity<List<String>> getClaimImages(@PathVariable Long claimId) {
+        Optional<Claim> claimOpt = claimRepository.findById(claimId);
+
+        if (claimOpt.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
+        }
+
+        ClaimDTO claimDTO = claimMapper.toDto(claimOpt.get());
+
+        List<String> imagePaths = claimDTO.getImages();
+        List<String> imageUrls = imagePaths.stream()
+                .map(path -> path.substring(path.lastIndexOf("\\") + 1)) // Extract filename
+                .map(fileName -> "http://localhost:8099/v1/claim/image/" + fileName) // Construct URL
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(imageUrls);
+    }
+
+    @GetMapping("/claim-image")
+    public ResponseEntity<Resource> getImage(@RequestParam String fileName) {
+        try {
+            Path imagePath = Paths.get("C:/Users/a.dachkinova/Desktop/images/" + fileName);
+            Resource resource = new UrlResource(imagePath.toUri());
+
+            if (resource.exists() && resource.isReadable()) {
+                // Detect file type dynamically
+                String contentType = Files.probeContentType(imagePath);
+                if (contentType == null) {
+                    contentType = "application/octet-stream"; // Default fallback
+                }
+
+                return ResponseEntity.ok()
+                        .contentType(MediaType.parseMediaType(contentType))
+                        .body(resource);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
@@ -158,15 +213,16 @@ public class ClaimController {
 
     // check if user exists in order to file a claim
     @GetMapping("/check-user/{egn}")
-    public ResponseEntity checkUser(@PathVariable String egn) {
+    public ResponseEntity checkUser(
+            @PathVariable
+            String egn) {
 
-            Person person = personRepository.findByEgn(egn);
-            if(person!=null){
-                return ResponseEntity.ok().body(person);
-            }
-            else {
+        Person person = personRepository.findByEgn(egn);
+        if(person != null) {
+            return ResponseEntity.ok().body(person);
+        } else {
             return ResponseEntity.badRequest().body("Не същесвува в базата данни потребител с такова ЕГН");
-             }
+        }
     }
 
     @PostMapping("/predictClaimValue")

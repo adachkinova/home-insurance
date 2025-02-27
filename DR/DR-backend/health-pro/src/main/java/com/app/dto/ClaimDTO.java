@@ -1,11 +1,11 @@
 package com.app.dto;
 
-import com.app.model.model.InsuredProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public class ClaimDTO {
@@ -37,6 +37,9 @@ public class ClaimDTO {
     @Schema(example = "paid_date")
     private LocalDate paidDate;
 
+    @Schema(example = "paidSum")
+    private Double paidSum;
+
     @Schema(example = "claim_date")
     private LocalDate claimDate;
 
@@ -46,8 +49,18 @@ public class ClaimDTO {
     @Schema(example="egn")
     private String egn;
 
+    @Schema
     private BigDecimal predictedClaimAmount;
+
+    @Schema
+    private String declineDescription ;
+
+    @Schema
+    private List<String> images;
 
     @Schema(example = "insured_property_id")
     private InsuredPropertyDTO insuredProperty;
+
+
+
 }

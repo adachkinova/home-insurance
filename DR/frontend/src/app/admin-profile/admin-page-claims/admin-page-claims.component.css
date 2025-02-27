@@ -7,7 +7,7 @@ table {
 }
 
 tr:hover{
-    background-color: #f8c6b0;
+    background-color: rgba(194, 169, 229, 0.55);
     cursor: pointer;
 }
 

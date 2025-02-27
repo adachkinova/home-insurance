@@ -1,13 +1,13 @@
 <div class="section">
 
-<div class="card">
+  <div class="card" [ngClass]="{'declined-claim': opened == false && claim.declineDescription, 'paid-claim': opened == false && !claim.declineDescription}">
     <div class="wrapper header">
     <div class="wrapper-text header-text">
         Статус
     </div>
     <div class="bubble-wrapper ">
-      <span class="bubble-text"  *ngIf="opened==false && claim.description===''">Платена</span>
-      <span class="bubble-text" *ngIf="opened==false && claim.description!==''">Отказана</span>
+      <span class="bubble-text" *ngIf="opened == false && (!claim.declineDescription)">Платена</span>
+      <span class="bubble-text" *ngIf="opened == false && claim.declineDescription">Отказана</span>
       <span class="bubble-text" *ngIf="opened==true">Отворена</span>
 
     </div>
@@ -80,7 +80,10 @@
 
 
       <div class="content" *ngIf="opened==false">
-        <div class="column">
+        <div class="column" *ngIf="claim.declineDescription!==''">
+          Дата на отказ
+        </div>
+        <div class="column" *ngIf="claim.paidSum">
           Дата на плащане
         </div>
         <div class="column">
@@ -89,16 +92,16 @@
       </div>
 
 
-      <div class="content" *ngIf="opened==false && claim.description===''">
-        <div class="column">
-          Платена сума
-        </div>
-        <div class="column">
-          {{claim.paidSum}}
-        </div>
-      </div>
+<!--      <div class="content" *ngIf="opened==false && claim.declineDescription===''">-->
+<!--        <div class="column">-->
+<!--          Платена сума-->
+<!--        </div>-->
+<!--        <div class="column">-->
+<!--          {{claim.paidSum}}-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <div class="content" *ngIf="opened==false && claim.description!==''">
+      <div class="content" *ngIf="opened==false && claim.declineDescription!==''">
         <div class="column">
          Отказана поради
         </div>
@@ -108,16 +111,32 @@
         </div>
       </div>
       <div class="column" style="padding-top:0px" *ngIf="opened==false && claim.description!=='' && showStatus">
-        {{claim.description}}
+        {{claim.declineDescription}}
       </div>
 
-  <div class="wrapper content">
+  <div class="wrapper content" *ngIf="opened == false && claim.paidSum">
     <div class="column" style="color: white">
-      Предсказана оценка
+      Изплатена сума
     </div>
     <div class="column" style="color: white">
-      {{claim.predictedClaimAmount}} лв.
+      {{claim.paidSum}} лв.
     </div>
+  </div>
+<!--  <div class="wrapper content" *ngIf="opened == false && claim.declineDescription!==''">-->
+<!--&lt;!&ndash;    <div class="column" style="color: white">&ndash;&gt;-->
+<!--&lt;!&ndash;      Прогнозна оценка&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="column" style="color: white">&ndash;&gt;-->
+<!--&lt;!&ndash;      {{claim.predictedClaimAmount}} лв.&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  </div>-->
+  <div class="wrapper content" *ngIf="opened == true">
+        <div class="column" style="color: white">
+          Прогнозна оценка
+        </div>
+        <div class="column" style="color: white">
+          {{claim.predictedClaimAmount}} лв.
+        </div>
   </div>
 
 <!--    <div class="wrapper content">-->

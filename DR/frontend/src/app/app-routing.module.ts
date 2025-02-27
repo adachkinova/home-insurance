@@ -6,7 +6,6 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { GuardianDataComponent } from './insurance/guardian-data/guardian-data.component';
 import { PaymentComponent } from './insurance/payment/payment.component';
 import { StartInsuranceComponent } from './insurance/start-insurance/start-insurance.component';
-import { InsurerDataComponent } from './insurance/insurer-data/insurer-data.component';
 import { SuccessfulPaymentComponent } from './insurance/successful-payment/successful-payment.component';
 import { NewClaimComponent } from './claims/new-claim/new-claim.component';
 import { MyProfileComponent } from './customer-profile/my-profile/my-profile.component';
@@ -28,7 +27,6 @@ import {PreviewInputDataComponent} from "./insurance/preview-input-data/preview-
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'insurerData', component: InsurerDataComponent, canActivate: [AuthGuard]},
   {path: 'insured-property', component: InsuredPropertyComponent, canActivate: [AuthGuard]},
   {path: 'property-owner', component: PropertyOwnerDataComponent, canActivate: [AuthGuard]},
   {path: 'preview-input-data', component: PreviewInputDataComponent, canActivate: [AuthGuard]},

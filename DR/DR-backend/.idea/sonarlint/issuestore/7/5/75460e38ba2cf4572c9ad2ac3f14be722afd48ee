@@ -1,17 +1,17 @@
 
 p
-java:S3740/"/Provide the parametrized type for this generic.(•Ÿ¼ÄùÿÿÿÿJ$31d29315-38a4-48ee-bb0f-6e0b1763ca12
+java:S3740/"/Provide the parametrized type for this generic.(•Ÿ¼ÄùÿÿÿÿJ$1fefbe6e-5d49-4eff-b5b4-b54b0b843b18
 p
-java:S3740A"/Provide the parametrized type for this generic.(æ…³ÂüÿÿÿÿJ$b4c92179-f75e-47de-a830-a4af4879b625
+java:S3740A"/Provide the parametrized type for this generic.(æ…³ÂüÿÿÿÿJ$0b56cd54-dc46-4dd0-b897-6019fd3d19dd
 k
-java:S3740F"/Provide the parametrized type for this generic.(êûõ‰J$de41e437-9b68-4f17-9e3e-118e9414f4b9
+java:S3740F"/Provide the parametrized type for this generic.(êûõ‰J$99ee60c6-3a6d-4331-8f2c-10022e65e3f0
 p
-java:S3740L"/Provide the parametrized type for this generic.(Å¡æ÷ÿÿÿÿÿJ$e1a068dd-2a7e-4f4d-85d1-83c2649fcbfa
-š
-java:S1488:"^Immediately return this expression instead of assigning it to the temporary variable "result".(Š¶ºJ$4468a127-4225-4451-aa74-2d2075620ef9
+java:S3740L"/Provide the parametrized type for this generic.(Å¡æ÷ÿÿÿÿÿJ$3dffb6b5-9705-4b21-8e5c-2d8e9d5d840c
+{
+java:S1488:"^Immediately return this expression instead of assigning it to the temporary variable "result".(Š¶º8®şìœÔ2
 ~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$985b5a72-eef5-444e-8c06-106a9cffe234
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$f1f35355-4552-4525-995c-56574963c508
 ~
-java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞJ$59397ef7-8c74-4a8a-88f9-9e0e968b6a49
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞJ$35038d6f-5230-42e5-88bd-74867bdc7685
 g
-java:S1068,"+Remove this unused "encoder" private field.(ñÂáŸJ$84d11395-98ca-4580-bb7d-e63065595028
+java:S1068,"+Remove this unused "encoder" private field.(ñÂáŸJ$930596b1-5302-4ff4-b20e-bc67779d8f5a

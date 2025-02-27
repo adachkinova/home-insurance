@@ -28,7 +28,7 @@
     margin-bottom: 27px;
     font-family: "Helvetica Neue", sans-serif;
   }
-    
+
     /* .submit {
         cursor: pointer;
           border-radius: 5em;
@@ -43,12 +43,12 @@
           font-size: 14px;
           box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
       }
-    
+
       .submit:hover{
         background-color: white;
         color: #EF814F;
         border: 1px solid #EF814F
-    
+
       } */
       .form-header{
         color: #4e4039;
@@ -106,3 +106,46 @@
         display: flex;
         justify-content: space-evenly;
       }
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  margin-top: 20px; /* Adds space between the other fields and the images */
+}
+
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slideshow-image {
+  width: 300px;  /* Fixed width for the images */
+  height: 200px; /* Fixed height for the images */
+  object-fit: cover; /* Ensures the image covers the fixed dimensions */
+  border-radius: 10px; /* Optional: adds rounded corners */
+}
+
+button.prev,
+button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+button.prev {
+  left: 10px;
+}
+
+button.next {
+  right: 10px;
+}

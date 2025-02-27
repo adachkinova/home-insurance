@@ -20,8 +20,6 @@ export class FileUploaderComponent implements OnInit{
   file_list  = [];
   file_test =[];
   imageUrl ;
-  
-  fileTypes = ['Aмбулаторен лист','Mедицинско направление','Платежен документ', 'Резултати от изследване', 'Епикриза', 'Процедурен картон', 'Ренегнография'];
 
   ngOnInit(): void {
     this.file_store =[];
@@ -70,7 +68,7 @@ export class FileUploaderComponent implements OnInit{
       };
     });
 }
-  
+
 
   removeFile(removedFileIndex ){
     this.file_list.splice(removedFileIndex, 1);
@@ -87,7 +85,7 @@ export class FileUploaderComponent implements OnInit{
     }
     this.updatedFiles.emit({ files: this.file_store });
   }
-  
-  
+
+
 }
 

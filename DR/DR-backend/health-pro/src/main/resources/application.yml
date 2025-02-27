@@ -33,11 +33,18 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         default_schema: health_pro
         jdbc.lob.non_contextual_creation: true
+        batch_size: 50
+        order_inserts: true
+        order_updates: true
+        flush:
+          mode: COMMIT
     hibernate.ddl-auto: update
   servlet:
     multipart:
-      max-request-size: 2MB
-      max-file-size: 2MB
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+
   # Profiling configuration
   profiles.active: local
   # Database configurations

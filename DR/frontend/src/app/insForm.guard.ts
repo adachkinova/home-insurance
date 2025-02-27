@@ -9,13 +9,14 @@ import {
 } from '@angular/router';
 import {Observable, of} from 'rxjs';
 import { FormServiceInsurance } from './services/formServiceInsurance.service';
+import {FormServiceInsuranceData} from "./services/formServiceInsuranceData.service";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class InsFormGurard implements CanActivate {
-  constructor(public insFormService: FormServiceInsurance, private router: Router) {
+  constructor(public insFormService: FormServiceInsuranceData, private router: Router) {
   }
 
 
@@ -23,7 +24,7 @@ export class InsFormGurard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (!this.insFormService?.claimForm) {
-      return of(this.router.createUrlTree(['/insurerData']));
+      return of(this.router.createUrlTree(['/insured-property']));
     }
     return true;
   }

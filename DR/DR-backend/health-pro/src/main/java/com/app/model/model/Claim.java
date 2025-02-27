@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 import java.time.LocalDate;
 
 @Entity
@@ -59,4 +60,7 @@ public class Claim {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "insured_property_id")
     private InsuredProperty insuredProperty;
+
+    @JsonProperty("images")
+    private String images;
 }

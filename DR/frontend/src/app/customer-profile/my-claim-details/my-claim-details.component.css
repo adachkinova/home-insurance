@@ -8,14 +8,14 @@
     margin-right: 50px;
     font-weight: bold;
   }
-  
-  
+
+
   .inner-wrapper{
     display: flex;
     flex-wrap: wrap;
   }
-  
-  
+
+
   .tab{
     text-align: left;
     font-size: 20px;
@@ -23,38 +23,38 @@
     margin-right: 20px;
     cursor: pointer;
   }
-  
-  
-  
-  
+
+
+
+
   .active{
     border-bottom: 4px solid #414141;
     color: #414141;
   }
-  
-  
+
+
   .unactive{
     border-bottom: 2px solid #414141;
     color: #414141;
     opacity: 0.5;
   }
-  
-  
-  
-  
+
+
+
+
   .teab-wrapper{
     display: flex;
   }
-  
-  
+
+
   .list-wrapper{
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
   }
-  
-  
+
+
   .header-wrapper{
     display: flex;
     flex-wrap: wrap;
@@ -66,20 +66,20 @@
     margin-bottom: 19px;
     border-bottom: 2px solid #414141;
   }
-  
-  
+
+
   .header-button{
-    background: #EF814F 0% 0% no-repeat padding-box;
-    border: 1px solid #EF814F;
-    background-color: #EF814F !important;
+    background: #6A4C93 0% 0% no-repeat padding-box;
+    border: 1px solid #6A4C93;
+    background-color: #6A4C93 !important;
     border-radius: 10px;
     opacity: 1;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
-  
+
+
   .button-text{
     text-align: center;
     font-size: 16px;
@@ -87,8 +87,8 @@
     color: #FFFFFF;
     opacity: 1;
   }
-  
-  
+
+
   @media only screen and (max-width: 552px) {
       .header-wrapper{
         margin-top: 0px;
@@ -98,4 +98,3 @@
         margin-bottom: 0px;
       }
     }
-  
