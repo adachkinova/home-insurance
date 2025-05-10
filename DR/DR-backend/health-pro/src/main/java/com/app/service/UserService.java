@@ -3,14 +3,11 @@ package com.app.service;
 import com.app.exception.UserAuthenticationException;
 import com.app.helpers.HelperService;
 import com.app.model.model.User;
-import com.app.model.mapper.UserMapper;
 import com.app.model.model.UserInputData;
 import com.app.repository.UserRepository;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.hibernate.Hibernate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -20,13 +17,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    private final UserMapper userMapper;
-
-    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-    public UserService(UserRepository userRepository, UserMapper userMapper) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.userMapper = userMapper;
     }
 
     public ResponseEntity createAdmin (ObjectNode usernameAndPasswordInJson){
@@ -62,10 +54,6 @@ public class UserService {
         return new ResponseEntity<>("Logout successful", HttpStatus.OK);
     }
 
-    public Iterable<User> retrieveAllUsers() {
-        return userRepository.findAll();
-    }
-
     private User authenticateAndReturnUser(String egn, String code) {
         User user = userRepository.findByIdNumber(egn);
         if (user == null) {
@@ -78,27 +66,17 @@ public class UserService {
         }
     }
 
-    public String generateUserCode () {
-        int leftLimit = 48; // numeral '0'
-        int rightLimit = 122; // letter 'z'
+    public static String generateUserCode() {
+        int leftLimit = 48;
+        int rightLimit = 122;
         int targetStringLength = 10;
         Random random = new Random();
 
-        String generatedString = random.ints(leftLimit, rightLimit + 1)
+        return random.ints(leftLimit, rightLimit + 1)
                 .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
                 .limit(targetStringLength)
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
-
-        return generatedString;
-    }
-
-    public User getUserBySessionToken(String sessionToken) {
-        return userRepository.findBySessionToken(sessionToken);
-    }
-
-    public User getUserById(int id) {
-        return userRepository.findById(id);
     }
 
     public User createUser(UserInputData userInputData) {

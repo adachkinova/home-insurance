@@ -74,19 +74,16 @@ export class AdminsListComponent implements OnInit {
   }
 
   delete(id: number, index: number): void {
-    // Отваряме диалоговия прозорец за потвърждение
     const dialogRef = this.dialog.open(ConfirmDialogComponent);
 
-    // Изчакваме отговор от потребителя
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Ако потребителят потвърди изтриването, изпълняваме логиката
         this.sharedService.isLoading(true);
         this.authService.deleteAdmin(id).pipe(
           catchError(err => {
             if (err.status !== 200) {
               this.sharedService.isLoading(false);
-              this.tostrService.error(err.error.text); // Покажете грешка
+              this.tostrService.error(err.error.text);
               return EMPTY;
             } else {
               return of(err);
@@ -94,14 +91,12 @@ export class AdminsListComponent implements OnInit {
           })
         )
           .subscribe((res) => {
-            // Премахваме елемента от масива
             this.ELEMENT_DATA.splice(index, 1);
             this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
             this.sharedService.isLoading(false);
             this.tostrService.success(res.error.text); // Успешно изтриване
           });
       } else {
-        // Ако потребителят откаже, не правим нищо
         console.log('Изтриването е отменено');
       }
     });

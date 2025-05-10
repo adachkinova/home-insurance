@@ -50,20 +50,18 @@ export class ClaimService {
   }
 
   getImage(filename) {
-    console.log('Making request for filename:', filename);  // Log the filename
-    const url = `http://localhost:8099/v1/claim-image`;  // Base URL for the image request
-    console.log('Request URL:', url);  // Log the URL being used for the request
+    console.log('Making request for filename:', filename);
+    const url = `http://localhost:8099/v1/claim-image`;
+    console.log('Request URL:', url);
 
-    // Make the HTTP request with responseType set to 'blob' to handle the image as binary data
     return this.http.get(url, {
       params: { fileName: filename },
-      responseType: 'blob'  // Important: tells Angular to expect a Blob (image data)
+      responseType: 'blob'
     }).pipe(
       map(response => {
-        // Check if the response is actually a Blob and create an object URL for it
         const objectUrl = URL.createObjectURL(response);
         console.log('Generated Object URL:', objectUrl);
-        return objectUrl;  // Return the Object URL
+        return objectUrl;
       })
     );
   }

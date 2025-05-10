@@ -1,14 +1,15 @@
 package com.app.conroller;
 
-import com.app.dto.ClaimByIdDTO;
 import com.app.dto.ClaimDTO;
-import com.app.dto.ImageDTO;
 import com.app.dto.PredictionInputDTO;
+import com.app.exception.BadRequestException;
 import com.app.exception.ResourceNotFoundException;
 import com.app.model.enumeration.ClaimStatusEnum;
 import com.app.model.mapper.ClaimMapper;
-import com.app.model.model.*;
-import com.app.repository.*;
+import com.app.model.model.Claim;
+import com.app.model.model.InsuredProperty;
+import com.app.repository.ClaimRepository;
+import com.app.repository.InsuredPropertyRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -32,7 +33,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -49,22 +49,10 @@ public class ClaimController {
     private ClaimRepository claimRepository;
 
     @Autowired
-    private PersonRepository personRepository;
-
-    @Autowired
-    private  PersonPolicyRepository personPolicyRepository;
-
-    @Autowired
-    private PolicyRepository policyRepository;
-
-    @Autowired
     private InsuredPropertyRepository insuredPropertyRepository;
 
     @Autowired
     private ClaimMapper claimMapper;
-
-    @Autowired
-    private ImageRepository imageRepository;
 
 
     @GetMapping("/claims")
@@ -73,7 +61,7 @@ public class ClaimController {
           List<Claim> listClaims = claimRepository.findAll();
           return  ResponseEntity.ok().body(listClaims);
         }
-        catch (Error error){
+        catch (BadRequestException e){
           return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");
         }
 
@@ -92,7 +80,7 @@ public class ClaimController {
             claim.setInsuredProperty(insuredProperty);
             claim.setStatus(ClaimStatusEnum.PENDING.name());
             claimRepository.save(claim);
-        } catch (Error error) {
+        } catch (BadRequestException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
         }
 
@@ -110,13 +98,10 @@ public class ClaimController {
                 String filePath = uploadDir + fileName;
                 File destinationFile = new File(filePath);
 
-                // Save file to disk
                 file.transferTo(destinationFile);
                 savedFilePaths.add(filePath);
 
-            } catch (IOException e) {
-                // Log the exception for debugging
-                e.printStackTrace();
+            } catch (BadRequestException | IOException e) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
             }
         }
@@ -128,33 +113,11 @@ public class ClaimController {
         Claim claim = claimRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Claim not exist with id :" + id));
         try {
-            ClaimByIdDTO claimData = new ClaimByIdDTO();
-            claimData.setClaim(claim);
-//            ClaimDTO claimDTO = claimMapper.toDto(claim);
-            return ResponseEntity.ok().body(claimData);
+            return ResponseEntity.ok().body(claim);
         }
-        catch (Exception error){
+        catch (BadRequestException error){
             return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");
         }
-    }
-
-    @GetMapping("/v1/claim/{claimId}/images")
-    public ResponseEntity<List<String>> getClaimImages(@PathVariable Long claimId) {
-        Optional<Claim> claimOpt = claimRepository.findById(claimId);
-
-        if (claimOpt.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
-        }
-
-        ClaimDTO claimDTO = claimMapper.toDto(claimOpt.get());
-
-        List<String> imagePaths = claimDTO.getImages();
-        List<String> imageUrls = imagePaths.stream()
-                .map(path -> path.substring(path.lastIndexOf("\\") + 1))
-                .map(fileName -> "http://localhost:8099/v1/claim/image/" + fileName)
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(imageUrls);
     }
 
     @GetMapping("/claim-image")
@@ -175,7 +138,7 @@ public class ClaimController {
             } else {
                 return ResponseEntity.notFound().build();
             }
-        } catch (Exception e) {
+        } catch (BadRequestException | IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -189,7 +152,7 @@ public class ClaimController {
                     .map(claimMapper::toDto)
                     .collect(Collectors.toList());
             return new ResponseEntity<>(claimDTOs, HttpStatus.OK);
-        } catch (Exception error) {
+        } catch (BadRequestException error) {
             return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");
         }
     }
@@ -207,22 +170,8 @@ public class ClaimController {
             claimRepository.save(claim);
             return new ResponseEntity<>("Статуса на претенцията беше обновен успешно", HttpStatus.OK);
         }
-        catch (Exception error){
+        catch (BadRequestException error){
             return ResponseEntity.badRequest().body("Нещо се обърка. Моля опитайте отново");
-        }
-    }
-
-    // check if user exists in order to file a claim
-    @GetMapping("/check-user/{egn}")
-    public ResponseEntity checkUser(
-            @PathVariable
-            String egn) {
-
-        Person person = personRepository.findByEgn(egn);
-        if(person != null) {
-            return ResponseEntity.ok().body(person);
-        } else {
-            return ResponseEntity.badRequest().body("Не същесвува в базата данни потребител с такова ЕГН");
         }
     }
 
@@ -243,10 +192,8 @@ public class ClaimController {
                 String responseString = EntityUtils.toString(response.getEntity());
                 return ResponseEntity.ok(responseString);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (BadRequestException | IOException e) {
             return ResponseEntity.status(500).body("Error during the request");
         }
     }
-
 }

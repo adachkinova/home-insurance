@@ -1,13 +1,13 @@
-import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ClaimService } from 'src/app/services/claim.service';
-import { sharedService } from 'src/app/services/sharedService.service';
-import { ClaimAnswerComponent } from '../claim-answer/claim-answer.component';
-import { ClaimApprovedComponent } from '../claim-approved/claim-approved.component';
-import { catchError, delay, tap } from 'rxjs/operators';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {ActivatedRoute} from '@angular/router';
+import {ClaimService} from 'src/app/services/claim.service';
+import {sharedService} from 'src/app/services/sharedService.service';
+import {ClaimAnswerComponent} from '../claim-answer/claim-answer.component';
+import {ClaimApprovedComponent} from '../claim-approved/claim-approved.component';
+import {catchError, delay, tap} from 'rxjs/operators';
 import {EMPTY, forkJoin, map, of} from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
@@ -37,17 +37,6 @@ export class AdminClaimDetailsComponent implements OnInit, AfterViewInit{
     this.route.paramMap.subscribe((params) => {
       this.claimId = params.get('id');
     });
-    // let claimId=this.claimsService.getCurrentClaimdId();
-    // if(claimId!==undefined){
-    //   this.claimsService.getClaimById(claimId).subscribe(res=>{
-    //     this.claimData=res;
-    //     console.log(this.claimData)
-    //   })
-    // }
-    // else{
-    //   this.router.navigate(['/admin-claims'])
-    // }
-
   }
 
   ngAfterViewInit() {
@@ -64,33 +53,27 @@ export class AdminClaimDetailsComponent implements OnInit, AfterViewInit{
         }
       })
     ).subscribe((res: any) => {
-      this.claimData = res.claim;
-      this.file_store = res.claim.files;
-      this.maxLimit = res.maxLimitValue;
-      this.images = res.claim.images
+      this.claimData = res;
+      this.images = res.images
       this.sharedService.isLoading(false);
-      if (res.claim.images) {
-        this.processImages(res.claim.images);
+      if (res.images) {
+        this.processImages(res.images);
       }
     });
-
-
   }
 
   processImages(imagePaths: string) {
     console.log('imagePaths:', imagePaths);
 
     const imageArray = imagePaths.split(',').map(imagePath => {
-      const fileName = imagePath.trim().substring(imagePath.lastIndexOf("\\") + 1); // Extract filename
+      const fileName = imagePath.trim().substring(imagePath.lastIndexOf("\\") + 1);
       console.log('Extracted filename:', fileName);
 
-      // Subscribe to the getImage request and map the response
       return this.claimsService.getImage(fileName).pipe(
-        map(imageUrl => this.sanitizer.bypassSecurityTrustUrl(imageUrl))  // Sanitize the URL
+        map(imageUrl => this.sanitizer.bypassSecurityTrustUrl(imageUrl))
       );
     });
 
-    // Wait for all requests to complete and then update imageUrls
     forkJoin(imageArray).subscribe((imageUrls: SafeUrl[]) => {
       this.imageUrls = imageUrls;
       console.log('Final imageUrls:', this.imageUrls);
@@ -122,7 +105,6 @@ export class AdminClaimDetailsComponent implements OnInit, AfterViewInit{
     if (this.imageUrls) {
       this.currentIndex += direction;
 
-      // Loop the slideshow
       if (this.currentIndex >= this.imageUrls.length) {
         this.currentIndex = 0;
       } else if (this.currentIndex < 0) {

@@ -1,18 +1,9 @@
 
 p
-java:S3740 "/Provide the parametrized type for this generic.( Ë¬íøÿÿÿÿJ$800e1fca-46f2-4c92-b33b-5c3c00a4152c
+java:S3740"/Provide the parametrized type for this generic.( Ë¬íøÿÿÿÿJ$20c7b9cb-8592-49b6-8389-d03db69ef58d
 k
-java:S3740)"/Provide the parametrized type for this generic.(ûö¯ÃJ$609b10da-aa1d-4a30-a091-139e737396f3
+java:S3740!"/Provide the parametrized type for this generic.(ûö¯ÃJ$7fb9012b-1fa5-48ca-9b4e-9b7970c96222
 p
-java:S37407"/Provide the parametrized type for this generic.(óÄŒÔýÿÿÿÿJ$1e35715c-7aaf-4c2e-9dcf-534d2a78bc50
-ª
-java:S1488W"gImmediately return this expression instead of assigning it to the temporary variable "generatedString".(¸á‚î8ÜåíœÔ2J$82f2c805-fc7d-4161-96c7-871b2bbedcea
+java:S3740/"/Provide the parametrized type for this generic.(óÄŒÔýÿÿÿÿJ$37096c50-2563-4e99-86ec-2cb6381e2b6f
 Y
-java:S2119U"Save and re-use this "Random".(¼ÝÅfJ$5e1c5363-b091-466e-8b5d-06702955c7cd
-w
-java:S1128
-"4Remove this unused import 'org.hibernate.Hibernate'.(óñ‹è8ÉÐ™ÁÌ2J$3511fcf5-afbe-49b5-8db3-f84116184e97
-j
-java:S1068".Remove this unused "userMapper" private field.(áŽç÷J$31875622-4854-4030-884a-d4065fd8183e
-g
-java:S1068"+Remove this unused "encoder" private field.(ñÂáŸJ$92405aa7-a3a4-496f-96bf-44c1a015d19f
+java:S2119I"Save and re-use this "Random".(¼ÝÅfJ$c31f2e09-364f-412e-99bb-6c9f69a2af9a

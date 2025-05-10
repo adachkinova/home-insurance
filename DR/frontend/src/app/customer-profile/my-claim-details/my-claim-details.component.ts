@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import {EMPTY, catchError, delay, of, tap, forkJoin} from 'rxjs';
-import { ClaimService } from 'src/app/services/claim.service';
-import { sharedService } from 'src/app/services/sharedService.service';
+import {AfterViewInit, Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {catchError, delay, EMPTY, forkJoin, of, tap} from 'rxjs';
+import {ClaimService} from 'src/app/services/claim.service';
+import {sharedService} from 'src/app/services/sharedService.service';
 
 @Component({
   selector: 'app-my-claim-details',
@@ -14,14 +13,11 @@ import { sharedService } from 'src/app/services/sharedService.service';
 export class MyClaimDetailsComponent implements AfterViewInit {
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
               private tostrService: ToastrService,
               private claimsService:ClaimService,
-              private sharedService: sharedService,
-              private dialog: MatDialog) { }
+              private sharedService: sharedService) { }
 
   currentIndex :number = 2;
-  encodedEgn: any;
   claimsDataOpened ;
   claimdDataClosed ;
 
@@ -55,13 +51,13 @@ export class MyClaimDetailsComponent implements AfterViewInit {
         // Wait for all predictions to finish
         forkJoin(predictions$).subscribe(() => {
           console.log('Всички предсказания са завършени!', this.claimsDataOpened);
-          this.sharedService.isLoading(false); // Hide loading after all predictions are done
+          this.sharedService.isLoading(false);
         }, error => {
           console.error('Грешка при изчисленията:', error);
-          this.sharedService.isLoading(false); // Hide loading in case of error
+          this.sharedService.isLoading(false);
         });
       } else {
-        this.sharedService.isLoading(false); // Hide loading if no claims are opened
+        this.sharedService.isLoading(false);
       }
     });
   }

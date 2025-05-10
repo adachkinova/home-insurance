@@ -44,14 +44,15 @@ table {
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  margin-top: 30px;
 }
 
 .btn.continue:hover {
-  background-color: #45a049; /* Тъмно зелен при hover */
-  transform: scale(1.05); /* Леко увеличение при hover */
+  background-color: #45a049;
+  transform: scale(1.05);
 }
 
 .btn.continue:active {
-  background-color: #388e3c; /* Още по-тъмен зелен при натискане */
-  transform: scale(1); /* Връща бутона в първоначалния размер */
+  background-color: #388e3c;
+  transform: scale(1);
 }

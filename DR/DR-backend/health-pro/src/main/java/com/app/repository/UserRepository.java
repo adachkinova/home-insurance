@@ -9,7 +9,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     User findByIdNumber(String egn);
 
-    User findById(int id);
-
     User findBySessionToken(String sessionToken);
 }

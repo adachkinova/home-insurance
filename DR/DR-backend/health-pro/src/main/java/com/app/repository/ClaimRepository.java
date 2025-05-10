@@ -23,6 +23,6 @@ public interface ClaimRepository extends JpaRepository<Claim, Long> {
 
     List<Claim> findAllByEgn( String egn);
 
-    @Query(value = "SELECT COALESCE((SELECT c.claim_number FROM health_pro.claim AS c ORDER BY c.id DESC LIMIT 1), 3000000000) AS claim_number", nativeQuery = true)
+    @Query(value = "SELECT COALESCE((SELECT c.claim_number FROM home_safe.claim AS c ORDER BY c.id DESC LIMIT 1), 3000000000) AS claim_number", nativeQuery = true)
     long findLastClaimNumber();
 }

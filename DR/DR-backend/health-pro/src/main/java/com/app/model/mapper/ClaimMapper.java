@@ -2,12 +2,8 @@ package com.app.model.mapper;
 
 import com.app.dto.ClaimDTO;
 import com.app.dto.InsuredPropertyDTO;
-import com.app.dto.PolicyDTO;
-import com.app.dto.PropertyOwnerDTO;
 import com.app.model.model.Claim;
 import com.app.model.model.InsuredProperty;
-import com.app.model.model.Policy;
-import com.app.model.model.PropertyOwner;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -35,6 +31,5 @@ public interface ClaimMapper {
         return (images != null && !images.isEmpty()) ? Arrays.asList(images.split(",")) : Collections.emptyList();
     }
     InsuredPropertyDTO insuredPropertyToDTO(InsuredProperty insuredProperty);
-    PolicyDTO policyToDTO(Policy policy);
-    PropertyOwnerDTO propertyOwnerToDTO(PropertyOwner propertyOwner);
+
 }

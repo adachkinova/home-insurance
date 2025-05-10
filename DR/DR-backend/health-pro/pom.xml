@@ -11,7 +11,7 @@
     <groupId>com.app</groupId>
     <artifactId>app</artifactId>
     <version>0.0.1</version>
-    <description>HealthPro Application</description>
+    <description>HomeSafe Application</description>
     <properties>
         <java.version>11</java.version>
         <coverage.exclusions>

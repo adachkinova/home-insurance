@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { FormServiceInsurance } from 'src/app/services/formServiceInsurance.service';
 import { PolicyService } from 'src/app/services/policy.service';
 import { sharedService } from 'src/app/services/sharedService.service';
 import {FormServiceInsuranceData} from "../../services/formServiceInsuranceData.service";
@@ -15,7 +14,6 @@ import {FormServiceInsuranceData} from "../../services/formServiceInsuranceData.
 export class PaymentComponent implements OnInit {
   form;
   paymentForm;
-  licenseInputMask;
   constructor(
     private router: Router,
     private toastrService: ToastrService,
@@ -56,19 +54,6 @@ export class PaymentComponent implements OnInit {
 
   continue() {
     this.sharedService.isLoading(true);
-    // this.router.navigate(['/successful', 1]);
-    // this.policyService.savePolicy(this.formService.getForm()).subscribe(
-    //   (res: any) => {
-    //     this.sharedService.isLoading(false);
-    //     this.sharedService.setPolicy(res);
-    //     this.router.navigate(['/successful', res.policyNumber]);
-    //   },
-    //   (err) => {
-    //     this.sharedService.isLoading(false);
-    //     this.toastrService.error(err.error);
-    //     //this.router.navigate(['/error'])
-    //   }
-    // );
     this.policyService.savePolicy(this.formService.getForm().value).subscribe({
       next: (response: any) => {
         this.sharedService.isLoading(false);

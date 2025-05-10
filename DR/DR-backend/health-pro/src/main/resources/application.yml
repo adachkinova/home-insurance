@@ -31,7 +31,7 @@ spring:
         jdbc:
         lob: non_contextual_creation = true
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        default_schema: health_pro
+        default_schema: home_safe
         jdbc.lob.non_contextual_creation: true
         batch_size: 50
         order_inserts: true
@@ -53,7 +53,8 @@ spring:
     username: postgres
     password: postgre
 #  banner:
-  location: classpath:/logo/logo.txt
+  banner:
+    location: classpath:/logo/logo.txt
 # Swagger-UI configurations
 springdoc:
   api-docs.enabled: true

@@ -1,6 +1,5 @@
 package com.app.dto;
 
-import com.app.model.enumeration.ClaimStatusEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

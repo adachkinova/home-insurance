@@ -49,7 +49,6 @@ export class AdminPageClaimsComponent implements AfterViewInit {
   }
 
   goToDetails(claim ){
-    // this.claimsService.setCurrentClaimdId(claim.id);
     this.router.navigate(['/admin-claim-details', claim.id]);
   }
 

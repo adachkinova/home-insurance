@@ -1,7 +1,5 @@
 package com.app.configuration;
 
-import com.app.model.mapper.*;
-import com.app.storage.CityStorage;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.servers.Server;
@@ -11,7 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.IOException;
 import java.util.List;
 
 @Configuration
@@ -23,11 +20,6 @@ public class ApplicationConfig {
     private final SwaggerProperties swaggerProperties;
 
     @Bean
-    public UserMapper userMapper() {
-        return new UserMapperImpl();
-    }
-
-    @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI().info(getInfo()).servers(getServers());
     }
@@ -36,11 +28,6 @@ public class ApplicationConfig {
         return new Info()
                 .title(swaggerProperties.getProperties().getTitle())
                 .description(swaggerProperties.getProperties().getDescription());
-    }
-
-    @Bean
-    public CityStorage cityStorage() throws IOException {
-        return new CityStorage();
     }
 
     private List<Server> getServers() {

@@ -1,6 +1,5 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -21,9 +20,9 @@ export class PolicyService {
     return this.http.get('http://localhost:8099/v1/insured-property/' + egn)
   }
 
-  getPolicyTitular(egn: string) {
-    return this.http.get('http://localhost:8099/v1/policy-titular/' + egn)
-  }
+  // getPolicyTitular(egn: string) {
+  //   return this.http.get('http://localhost:8099/v1/policy-titular/' + egn)
+  // }
 
   submitPolicyForm(userInputData: any) {
     return this.http.post(`http://localhost:8099/v1/calculate-policy`, userInputData, {

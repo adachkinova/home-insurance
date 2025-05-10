@@ -21,8 +21,4 @@ public class User {
     private String type;
 
     private String sessionToken;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "property_owner_id")
-//    private PropertyOwner propertyOwner;
 }

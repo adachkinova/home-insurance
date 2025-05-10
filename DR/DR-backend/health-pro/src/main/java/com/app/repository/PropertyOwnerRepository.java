@@ -1,6 +1,5 @@
 package com.app.repository;
 
-import com.app.model.model.Person;
 import com.app.model.model.PropertyOwner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

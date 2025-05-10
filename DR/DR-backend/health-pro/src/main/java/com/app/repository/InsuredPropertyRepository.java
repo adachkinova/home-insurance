@@ -1,7 +1,6 @@
 package com.app.repository;
 
 import com.app.model.model.InsuredProperty;
-import com.app.model.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,7 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface InsuredPropertyRepository extends JpaRepository<InsuredProperty, Long> {
-	InsuredProperty findByAddress(String address);
 
 	@Query("SELECT ip FROM InsuredProperty ip " +
 			"JOIN FETCH ip.policy p " +
