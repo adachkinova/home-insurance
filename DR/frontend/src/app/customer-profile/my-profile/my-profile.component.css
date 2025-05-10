@@ -105,4 +105,8 @@
 
       .info-data{
         margin-bottom: 12px;
+        max-width: 300px; /* или каквато ширина пасва на дизайна ти */
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }

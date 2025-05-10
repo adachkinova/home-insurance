@@ -1,5 +1,6 @@
 package com.app.dto;
 
+import com.app.model.enumeration.ClaimStatusEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -45,6 +46,9 @@ public class ClaimDTO {
 
     @Schema(example="claim_number")
     private long claimNumber;
+
+    @Schema(example = "claim")
+    private String status;
 
     @Schema(example="egn")
     private String egn;

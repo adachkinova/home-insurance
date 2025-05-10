@@ -22,14 +22,8 @@ export class InsuredPropertyComponent implements OnInit {
   citySuggestions: any[] = [];  // To store city suggestions
 
   ngOnInit(): void {
-    this.formServiceInsurance.getForm();
-    this.form = new FormGroup({
-      size: new FormControl("", Validators.required),
-      propertyType: new FormControl("", Validators.required),
-      city: new FormControl("", Validators.required),
-      risk: new FormControl(""),
-      address: new FormControl("", Validators.required)
-    });
+    this.formServiceInsurance.getForm(); // създава формата ако я няма
+    this.form = this.formServiceInsurance.insuredProperty;
 
     this.form.controls.city.valueChanges.subscribe((selectedCity: string) => {
       const cityData = this.cities.cities.find(city => city.name === selectedCity);

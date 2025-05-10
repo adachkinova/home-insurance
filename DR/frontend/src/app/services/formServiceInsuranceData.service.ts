@@ -123,8 +123,12 @@ export class FormServiceInsuranceData {
     });
   }
 
-  getValidity(){
-    return this.claimForm.controls.policy.startDate.value
+  getStartDate() {
+    return this.claimForm.controls['policy'].get('startDate').value;
+  }
+
+  getEndDate() {
+    return this.claimForm.controls['policy'].get('endDate').value;
   }
 
   setPolicyPrice(policyPrice ){

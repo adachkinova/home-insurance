@@ -18,20 +18,31 @@ export class StartInsuranceComponent implements OnInit {
               private sharedService: sharedService) {}
 
   minDate:Date=new Date();
-  maxDate:Date = new Date(new Date().getFullYear()+0,11,31)
+  maxDate:Date = new Date(new Date().getFullYear(),11,31)
   form ;
-
 
   ngOnInit(): void {
     this.form = new FormGroup({
       startDate: new FormControl ("", Validators.required),
       endDate: new FormControl (null , Validators.required)
-  });
+    });
+
+    const savedStartDate = this.formService.getStartDate();
+    const savedEndDate = this.formService.getEndDate();
+
+    if (savedStartDate && savedEndDate) {
+      this.form.controls['startDate'].setValue(savedStartDate);
+      this.form.controls['endDate'].setValue(savedEndDate);
+    }
+
+    const savedCoverage = this.formService.getCoveragePackage();
+    if (savedCoverage) {
+      this.coveragePackage = savedCoverage;
+      this.isActive = savedCoverage === 'STANDART';
+    }
   }
 
   chosenDate($event ){
-    // this.form.controls.endDate.setValue($event.value);
-    // let startDate = $event.value
     const aYearFromStart = new Date($event.value);
     aYearFromStart.setFullYear(aYearFromStart.getFullYear() + 1);
     this.form.controls.endDate.setValue(aYearFromStart);
@@ -69,8 +80,6 @@ export class StartInsuranceComponent implements OnInit {
         console.error("Error submitting policy form:", err);
       }
     });
-
-    // this.router.navigate(['/calculate-price']);
   }
 }
 

@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { EMPTY, catchError, delay, of, tap } from 'rxjs';
-import { ClaimService } from 'src/app/services/claim.service';
-import { sharedService } from 'src/app/services/sharedService.service';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {catchError, delay, EMPTY, of, tap} from 'rxjs';
+import {ClaimService} from 'src/app/services/claim.service';
+import {sharedService} from 'src/app/services/sharedService.service';
 
 @Component({
   selector: 'app-admin-page-claims',

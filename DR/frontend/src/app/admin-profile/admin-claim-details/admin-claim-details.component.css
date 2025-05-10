@@ -1,116 +1,96 @@
-.wrapper{
-    background-color: #fef8f5;
+.wrapper {
+  background-color: #fef8f5;
 }
 
-.image-wrapper{
+.image-wrapper {
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-end;
 }
 
-
 .un {
-    width: 76%;
-    color: rgb(38, 50, 56);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 1px;
-    background: rgba(136, 126, 126, 0.04);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, 0.02);
-    margin-bottom: 50px;
-    margin-left: 46px;
-    text-align: center;
-    margin-bottom: 27px;
-    font-family: "Helvetica Neue", sans-serif;
-  }
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: "Helvetica Neue", sans-serif;
+}
 
-    /* .submit {
-        cursor: pointer;
-          border-radius: 5em;
-          color: #fff;
-          background: #EF814F;
-          border: 0;
-          padding-left: 40px;
-          padding-right: 40px;
-          padding-bottom: 10px;
-          padding-top: 10px;
-          font-family: "Helvetica Neue", sans-serif;
-          font-size: 14px;
-          box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-      }
+.form-header {
+  color: #4e4039;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-      .submit:hover{
-        background-color: white;
-        color: #EF814F;
-        border: 1px solid #EF814F
+.mat-form-field {
+  text-align: center;
+  width: 300px;
+  margin-top: -20px;
+}
 
-      } */
-      .form-header{
-        color: #4e4039;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .mat-form-field{
-        text-align: center;
-        width: 300px;
-        margin-top: -20px;
-      }
+.info-box {
+  margin-bottom: 32.5px;
+  width: 100%;
+  font-size: 16px;
+  color: #414141;
+}
 
-      .info-box{
-        margin-bottom: 32.5px;
-        /* display: flex; */
-        width: 100%;
-        /* justify-content: space-around; */
-        font-size: 16px;
-        color: #414141;
-      }
+.info-line {
+  display: flex;
+  gap: 20px;
+  justify-content: space-evenly;
+}
 
-      .info-line{
-        display: flex;
-        gap: 20px;
-        justify-content: space-evenly;
-      }
+p {
+  font-weight: bold;
+}
 
-      p{
-        font-weight: bold;
-      }
+.header-text {
+  font-size: 25px;
+}
 
-      .header-text{
-        font-size: 25px;
-      }
+.subheader-text {
+  font-size: 16px;
+}
 
-      .subheader-text{
-        font-size: 16px;
-      }
+.kids-column {
+  display: flex;
+  flex-direction: column;
+}
 
-      .kids-column{
-        display: flex;
-        flex-direction: column;
-      }
+.editing {
+  justify-content: space-between;
+}
 
-      .editing{
-        justify-content: space-between;
-      }
+.info-data {
+  margin-bottom: 12px;
+}
 
-      .info-data{
-        margin-bottom: 12px;
-      }
+.button-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
 
-      .button-wrapper{
-        display: flex;
-        justify-content: space-evenly;
-      }
 .slideshow-container {
   position: relative;
   max-width: 100%;
   margin: auto;
   margin-top: 20px; /* Adds space between the other fields and the images */
+  display: flex;
+  justify-content: center;
 }
 
 .slide {
@@ -122,8 +102,9 @@
 }
 
 .slideshow-image {
-  width: 300px;  /* Fixed width for the images */
-  height: 200px; /* Fixed height for the images */
+  width: 100%; /* Makes the images responsive */
+  max-width: 500px; /* Sets a maximum width for images */
+  height: auto; /* Ensures the height is proportional */
   object-fit: cover; /* Ensures the image covers the fixed dimensions */
   border-radius: 10px; /* Optional: adds rounded corners */
 }
@@ -136,10 +117,11 @@ button.next {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  font-size: 18px;
+  font-size: 24px;
   padding: 10px;
   cursor: pointer;
   z-index: 1;
+  border-radius: 50%; /* Makes the buttons circular */
 }
 
 button.prev {
@@ -148,4 +130,9 @@ button.prev {
 
 button.next {
   right: 10px;
+}
+
+button.prev:hover,
+button.next:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
 }

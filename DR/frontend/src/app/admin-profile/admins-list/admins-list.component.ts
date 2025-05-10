@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { Toast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { EMPTY, catchError, of } from 'rxjs';
 import { authService } from 'src/app/services/auth.service';
 import { sharedService } from 'src/app/services/sharedService.service';
+import {ConfirmDialogComponent} from "../../confirm-dialog/confirm-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-admins-list',
@@ -13,14 +15,14 @@ import { sharedService } from 'src/app/services/sharedService.service';
 })
 export class AdminsListComponent implements OnInit {
 
-  
+
  ELEMENT_DATA  = [];
 
   displayedColumns: string[] = [ 'id_number', 'symbol'];
   dataSource ;
   showAddAdminForm:boolean=false;
-  form 
-  constructor(private authService: authService, private sharedService: sharedService, private tostrService: ToastrService) { }
+  form
+  constructor(private authService: authService, private sharedService: sharedService, private tostrService: ToastrService, private dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.getAdmins();
@@ -71,26 +73,38 @@ export class AdminsListComponent implements OnInit {
     }
   }
 
-  delete(id , index ){
-    this.sharedService.isLoading(true)
-    this.authService.deleteAdmin(id).pipe(
-      catchError(err => {
-        if(err.status !== 200){
-          this.sharedService.isLoading(false);
-          this.tostrService.error(err.error.text);
-          return EMPTY
-        }
-        else{
-          return of(err);
-        }
-      })
-    )
-    .subscribe((res )=>{
-      this.ELEMENT_DATA.splice(index,1);
-      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-      this.sharedService.isLoading(false);
-      this.tostrService.success(res.error.text);
-    })
+  delete(id: number, index: number): void {
+    // Отваряме диалоговия прозорец за потвърждение
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    // Изчакваме отговор от потребителя
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Ако потребителят потвърди изтриването, изпълняваме логиката
+        this.sharedService.isLoading(true);
+        this.authService.deleteAdmin(id).pipe(
+          catchError(err => {
+            if (err.status !== 200) {
+              this.sharedService.isLoading(false);
+              this.tostrService.error(err.error.text); // Покажете грешка
+              return EMPTY;
+            } else {
+              return of(err);
+            }
+          })
+        )
+          .subscribe((res) => {
+            // Премахваме елемента от масива
+            this.ELEMENT_DATA.splice(index, 1);
+            this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+            this.sharedService.isLoading(false);
+            this.tostrService.success(res.error.text); // Успешно изтриване
+          });
+      } else {
+        // Ако потребителят откаже, не правим нищо
+        console.log('Изтриването е отменено');
+      }
+    });
   }
 
 }

@@ -5,6 +5,7 @@ import com.app.dto.ClaimDTO;
 import com.app.dto.ImageDTO;
 import com.app.dto.PredictionInputDTO;
 import com.app.exception.ResourceNotFoundException;
+import com.app.model.enumeration.ClaimStatusEnum;
 import com.app.model.mapper.ClaimMapper;
 import com.app.model.model.*;
 import com.app.repository.*;
@@ -65,7 +66,7 @@ public class ClaimController {
     @Autowired
     private ImageRepository imageRepository;
 
-    // get all claims
+
     @GetMapping("/claims")
     public ResponseEntity getAllClaims(){
         try {
@@ -83,13 +84,13 @@ public class ClaimController {
         if (claimDTO == null) {
             return ResponseEntity.badRequest().body("Invalid claim data");
         }
-
         try {
             Claim claim = claimMapper.toClaim(claimDTO);
             long claimLast = claimRepository.findLastClaimNumber();
             claim.setClaimNumber(claimLast + 1);
             InsuredProperty insuredProperty = insuredPropertyRepository.findByEgn(claim.getEgn()).get(0);
             claim.setInsuredProperty(insuredProperty);
+            claim.setStatus(ClaimStatusEnum.PENDING.name());
             claimRepository.save(claim);
         } catch (Error error) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
@@ -149,8 +150,8 @@ public class ClaimController {
 
         List<String> imagePaths = claimDTO.getImages();
         List<String> imageUrls = imagePaths.stream()
-                .map(path -> path.substring(path.lastIndexOf("\\") + 1)) // Extract filename
-                .map(fileName -> "http://localhost:8099/v1/claim/image/" + fileName) // Construct URL
+                .map(path -> path.substring(path.lastIndexOf("\\") + 1))
+                .map(fileName -> "http://localhost:8099/v1/claim/image/" + fileName)
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(imageUrls);
@@ -163,10 +164,9 @@ public class ClaimController {
             Resource resource = new UrlResource(imagePath.toUri());
 
             if (resource.exists() && resource.isReadable()) {
-                // Detect file type dynamically
                 String contentType = Files.probeContentType(imagePath);
                 if (contentType == null) {
-                    contentType = "application/octet-stream"; // Default fallback
+                    contentType = "application/octet-stream";
                 }
 
                 return ResponseEntity.ok()
@@ -203,6 +203,7 @@ public class ClaimController {
             claim.setPaidDate(claimDetails.getPaidDate());
             claim.setPaidSum(claimDetails.getPaidSum());
             claim.setDeclineDescription(claimDetails.getDeclineDescription());
+            claim.setStatus(!Objects.equals(claimDetails.getDeclineDescription(), "") ? ClaimStatusEnum.REJECTED.name() : ClaimStatusEnum.APPROVED.name());
             claimRepository.save(claim);
             return new ResponseEntity<>("Статуса на претенцията беше обновен успешно", HttpStatus.OK);
         }

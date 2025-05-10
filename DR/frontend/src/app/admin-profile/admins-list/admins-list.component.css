@@ -1,16 +1,16 @@
 table {
     width: 100%;
   }
-  
+
   .mat-elevation-z8{
       padding-top: 10px;
   }
-  
+
   tr:hover{
       background-color: #f8c6b0;
       cursor: pointer;
   }
-  
+
   .header-row{
       background-color: white !important;
   }
@@ -31,3 +31,27 @@ table {
     background-color: white;
     border-radius: 11px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}
+
+.btn.continue {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn.continue:hover {
+  background-color: #45a049; /* Тъмно зелен при hover */
+  transform: scale(1.05); /* Леко увеличение при hover */
+}
+
+.btn.continue:active {
+  background-color: #388e3c; /* Още по-тъмен зелен при натискане */
+  transform: scale(1); /* Връща бутона в първоначалния размер */
+}

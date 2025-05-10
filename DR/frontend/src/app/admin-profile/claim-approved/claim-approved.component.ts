@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import { FormControl, FormGroup, MaxValidator, Validators } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { Route, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { EMPTY, catchError, of } from 'rxjs';
-import { ClaimService } from 'src/app/services/claim.service';
-import { sharedService } from 'src/app/services/sharedService.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {catchError, EMPTY, of} from 'rxjs';
+import {ClaimService} from 'src/app/services/claim.service';
+import {sharedService} from 'src/app/services/sharedService.service';
 
 @Component({
   selector: 'app-claim-approved',

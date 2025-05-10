@@ -34,10 +34,10 @@ export class InsuranceMovablePropertyAmount implements OnInit {
 
   ngOnInit(): void {
     this.formServiceInsurance.getForm();
+    this.form = this.formServiceInsurance.policy;
 
-    this.form = new FormGroup({
-      insuranceMovablePropertyAmount: new FormControl(this.sliderValue, Validators.required)
-    })
+    const existingValue = this.form.controls['insuranceMovablePropertyAmount'].value;
+    this.sliderValue = existingValue ?? 0;
 
   }
 

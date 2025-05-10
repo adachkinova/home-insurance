@@ -403,3 +403,13 @@ w
 G.idea/sonarlint/issuestore/7/c/7ce671596ada94a099a89eefc0217d4e2ec64451,7\4\74644435727fa715a409de350836957b7baedd27
 Å
 Q.idea/sonarlint/securityhotspotstore/7/c/7ce671596ada94a099a89eefc0217d4e2ec64451,9\7\97f1b5ec71fda869add11cd82821c6e544468a64
+w
+G.idea/sonarlint/issuestore/0/0/00be0a820fd641daf8dfe97804ce4243010084e3,e\3\e314df7dccd95286ad25e629036e99a718f2df34
+D
+health-pro/README.md,e\8\e817a80fae811e4df9da6db2a9c70dcd0e164dea
+r
+Bhealth-pro/src/main/java/com/app/model/enumeration/StatusEnum.java,b\c\bcd8ecd79a5976173420e54ef90e6d2609c65de4
+w
+Ghealth-pro/src/main/java/com/app/model/enumeration/ClaimStatusEnum.java,6\a\6a926c27effbf7e4404e37012dc9bdd47dc1ed48
+m
+=health-pro/src/main/java/com/app/swagger/SwaggerPageable.java,7\e\7ec9c319df2f0ca82a6bb3deded63d7bfe0d761d

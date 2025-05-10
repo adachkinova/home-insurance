@@ -41,14 +41,12 @@ export class InsuranceAmountComponent implements OnInit {
 
   ngOnInit(): void {
     this.formServiceInsurance.getForm();
+    this.form = this.formServiceInsurance.policy;
     this.sharedService.getPropertySize().subscribe(size => {
       this.propertySize = size;
-      // Calculate the default slider value based on property size
       this.sliderValue = this.propertySize * 1500;
+      this.form.controls['insuranceAmount'].setValue(this.sliderValue);
       this.updateSuggestedAmountMessage();
-    });
-    this.form = new FormGroup({
-      insuranceAmount: new FormControl(this.sliderValue, Validators.required)
     });
   }
 

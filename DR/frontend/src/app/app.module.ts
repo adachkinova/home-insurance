@@ -43,6 +43,7 @@ import {
 import {CalculatePriceComponent} from "./insurance/calculate-price/calculate-price.component";
 import {PropertyOwnerDataComponent} from "./insurance/property-owner-data/property-owner-data.component";
 import {PreviewInputDataComponent} from "./insurance/preview-input-data/preview-input-data.component";
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import {PreviewInputDataComponent} from "./insurance/preview-input-data/preview-
     ClaimApprovedComponent,
     FileUploaderComponent,
     PreviewFileComponent,
-    AdminsListComponent
+    AdminsListComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

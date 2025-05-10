@@ -1,9 +1,11 @@
 package com.app.model.model;
 
+import com.app.model.enumeration.ClaimStatusEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.StringReader;
 import java.util.List;
 import java.time.LocalDate;
 
@@ -55,6 +57,9 @@ public class Claim {
 
     @Column(name = "declineDescription")
     private String declineDescription ;
+
+    @Column(name = "status")
+    private String status;
 
     @JsonProperty("insuredProperty")
     @ManyToOne(fetch = FetchType.EAGER)
