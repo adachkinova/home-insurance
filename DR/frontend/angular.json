@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "digital-health-insurance": {
+    "digital-property-insurance": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/digital-health-insurance",
+            "outputPath": "dist/digital-property-insurance",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,17 +71,17 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "digital-health-insurance:build",
+            "browserTarget": "digital-property-insurance:build",
             "ssl": false,
             "sslKey": "C:/xampp/apache/cert/localhost/server.key",
             "sslCert": "C:/xampp/apache/cert/localhost/server.crt"
           },
           "configurations": {
             "production": {
-              "browserTarget": "digital-health-insurance:build:production"
+              "browserTarget": "digital-property-insurance:build:production"
             },
             "development": {
-              "browserTarget": "digital-health-insurance:build:development"
+              "browserTarget": "digital-property-insurance:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -89,7 +89,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "digital-health-insurance:build"
+            "browserTarget": "digital-property-insurance:build"
           }
         },
         "test": {
@@ -113,5 +113,5 @@
       }
     }
   },
-  "defaultProject": "digital-health-insurance"
+  "defaultProject": "digital-property-insurance"
 }

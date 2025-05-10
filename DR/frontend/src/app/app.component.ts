@@ -7,15 +7,11 @@ import { sharedService } from './services/sharedService.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'digital-health-insurance';
+  title = 'digital-property-insurance';
 
   constructor(
     public sharedService: sharedService
   ){}
-
-  ngOnInit(){
-   
-  }
 
   ngAfterViewInit() {
     this.sharedService.isLoading(false)

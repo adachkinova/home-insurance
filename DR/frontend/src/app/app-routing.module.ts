@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GetInsuranceComponent } from './insurance/get-insurance/get-insurance.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { GuardianDataComponent } from './insurance/guardian-data/guardian-data.component';
 import { PaymentComponent } from './insurance/payment/payment.component';
 import { StartInsuranceComponent } from './insurance/start-insurance/start-insurance.component';
 import { SuccessfulPaymentComponent } from './insurance/successful-payment/successful-payment.component';
@@ -33,9 +31,7 @@ const routes: Routes = [
   {path: 'insurance-amount', component: InsuranceAmountComponent, canActivate: [AuthGuard]},
   {path: 'calculate-price', component: CalculatePriceComponent, canActivate: [AuthGuard]},
   {path: 'insurance-movable-property-amount', component: InsuranceMovablePropertyAmount, canActivate: [AuthGuard]},
-  {path: 'guardianData', component: GuardianDataComponent, canActivate: [AuthGuard, InsFormGurard]},
   {path: 'start-insurance', component: StartInsuranceComponent, canActivate: [AuthGuard]},
-  {path: 'packageSelection', component: GetInsuranceComponent, canActivate: [AuthGuard, InsFormGurard]},
   {path: 'payment', component: PaymentComponent},
   {path: 'successful/:id', component: SuccessfulPaymentComponent, canActivate: [AuthGuard, InsFormGurard]},
   {path: 'error', component: ErrorPageComponent, canActivate: [AuthGuard]},

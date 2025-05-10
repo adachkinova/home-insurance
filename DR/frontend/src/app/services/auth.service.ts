@@ -1,8 +1,7 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { AbstractControl, ValidatorFn } from "@angular/forms";
-import { Router } from "@angular/router";
-import { BehaviorSubject, ReplaySubject, Subject } from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {Injectable} from "@angular/core";
+import {Router} from "@angular/router";
+import {ReplaySubject, Subject} from "rxjs";
 
 @Injectable({
     providedIn: 'root',
@@ -47,7 +46,4 @@ export class authService {
     adminCheck(bool:boolean){
       this.isAdmin.next(bool);
     }
-
-
-
 }

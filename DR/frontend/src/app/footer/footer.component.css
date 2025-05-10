@@ -1,0 +1,35 @@
+.footer {
+  background-color: #ffffff;
+  color: #000000;
+  margin-top: 100px;
+  padding-top: 10px; /* Намалено отстояние отгоре */
+  padding-bottom: 10px; /* Намалено отстояние отдолу */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Добавяне на сянка */
+  opacity: 0.95; /* Леко избледняване на footer-а */
+  transition: opacity 0.3s ease; /* Плавен преход за fade ефект */
+}
+
+.footer:hover {
+  opacity: 1; /* При hover сянката ще бъде по-ясна */
+}
+
+.footer h5 {
+  font-size: 16px; /* Намаляване на размера на заглавията */
+}
+
+.footer p {
+  font-size: 14px; /* Намаляване на текста в параграфите */
+}
+
+.footer i {
+  font-style: italic; /* Променя текста в курсив */
+}
+
+.footer hr {
+  border-color: #000000; /* Черна линия */
+  margin-top: 5px; /* Намалено отстояние от линията до текста */
+}
+
+.text-center {
+  padding-top: 5px; /* Намалено отстояние в долната част */
+}

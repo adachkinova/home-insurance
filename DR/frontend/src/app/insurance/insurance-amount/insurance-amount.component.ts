@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { sharedService } from 'src/app/services/sharedService.service';
-import { Cities } from 'src/app/services/bulgaria-towns';
-import { FormServiceInsurance } from 'src/app/services/formServiceInsurance.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder} from '@angular/forms';
+import {sharedService} from 'src/app/services/sharedService.service';
+import {Cities} from 'src/app/services/bulgaria-towns';
 import {FormServiceInsuranceData} from "../../services/formServiceInsuranceData.service";
 
 @Component({

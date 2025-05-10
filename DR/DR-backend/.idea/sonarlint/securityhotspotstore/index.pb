@@ -445,3 +445,11 @@ q
 Ahealth-pro/src/main/java/com/app/exception/ConflictException.java,8\7\87051f66df5b191b3b35b2877a37105917adb3f5
 {
 Khealth-pro/src/main/java/com/app/exception/UserAuthenticationException.java,4\2\42c1258e569df1801ca718d5010dfd6e4cab3345
+w
+G.idea/sonarlint/issuestore/4/2/42c1258e569df1801ca718d5010dfd6e4cab3345,b\c\bc1f4f6e3c2a439a8e50b053670b5a1a41325f59
+Å
+Q.idea/sonarlint/securityhotspotstore/4/2/42c1258e569df1801ca718d5010dfd6e4cab3345,a\8\a8827d9a53fee5c966a6cde46bd30db6c6ce216a
+w
+G.idea/sonarlint/issuestore/8/7/87051f66df5b191b3b35b2877a37105917adb3f5,5\c\5c6eae906eb560672b13fb4002f5dbc5b7c44fae
+Å
+Q.idea/sonarlint/securityhotspotstore/8/7/87051f66df5b191b3b35b2877a37105917adb3f5,9\4\9439af270216d8e0e81e9ebe7a1375c18074da4c

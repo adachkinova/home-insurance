@@ -1,15 +1,12 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { authService } from "./services/auth.service";
-import { FormServiceInsurance } from "./services/formServiceInsurance.service";
-import { of } from "rxjs";
-
 @Injectable({
    providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-   constructor(private authService: authService, private router: Router, public insFormService: FormServiceInsurance) {}
+   constructor(private authService: authService, private router: Router) {}
 
    canActivate(
    next: ActivatedRouteSnapshot,
@@ -44,14 +41,11 @@ export class AuthGuard implements CanActivate {
                return this.router.parseUrl('/login');
             }
          }
-         else{
-            if(!url.includes('admin') && !url.includes('my')){
-                return true;
-            }
-            else{
-               this.authService.logout();
-               return this.router.parseUrl('/login');
-            }
+         else if (!url.includes('admin') && !url.includes('my')) {
+           return true;
+         } else {
+           this.authService.logout();
+           return this.router.parseUrl('/login');
          }
       }
 

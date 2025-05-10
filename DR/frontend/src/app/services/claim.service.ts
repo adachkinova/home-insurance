@@ -82,13 +82,4 @@ export class ClaimService {
         return  this.http.put('http://localhost:8099/v1/claim-status/'+id, claimStatusForm )
     }
 
-    setCurrentClaimdId(id ){
-        this.currentClaimID=id;
-    }
-
-    getCurrentClaimdId(){
-       return this.currentClaimID;
-    }
-
-
 }

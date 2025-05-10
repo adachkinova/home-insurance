@@ -17,9 +17,6 @@ export class FormServiceInsuranceData {
     address: new FormControl("", Validators.required)
   });
 
-  // insuranceAmount ;
-  // insuranceMovablePropertyAmount ;
-
   policy = new FormGroup({
     insuranceAmount: new FormControl ("", Validators.required),
     insuranceMovablePropertyAmount: new FormControl ("", Validators.required),
@@ -38,8 +35,6 @@ export class FormServiceInsuranceData {
     email: new FormControl("", Validators.required)
   });
 
-  // policyPrice;
-
   getForm() {
     if (!this.claimForm) {
       this.claimForm = this.formBuilder.group({
@@ -55,20 +50,12 @@ export class FormServiceInsuranceData {
     this.claimForm.controls.insuredProperty.patchValue(form.value)
   }
 
-  getInsuredProperty(){
-    return  this.claimForm.controls.insuredProperty.value
-  }
-
   setPropertyOwner(form ){
     this.claimForm.controls.propertyOwner.patchValue(form.value)
   }
 
   setPropertyOwnerForm(form ){
     this.claimForm.controls.propertyOwner.patchValue(form)
-  }
-
-  getPropertyOwner(){
-    return  this.claimForm.controls.propertyOwner.value
   }
 
   setCoveragePackage(coveragePackage ){
@@ -89,19 +76,11 @@ export class FormServiceInsuranceData {
     this.claimForm.controls['policy'].get('insuranceAmount')?.setValue(insuranceAmount);
   }
 
-  getInsuranceAmount(){
-    return this.claimForm.controls['policy'].get('insuranceAmount').value
-  }
-
   setInsuranceMovablePropertyAmount( insuranceMovablePropertyAmount ){
     if (!this.claimForm) {
       this.getForm();
     }
     this.claimForm.controls['policy'].get('insuranceMovablePropertyAmount')?.setValue(insuranceMovablePropertyAmount);
-  }
-
-  getInsuranceMovablePropertyAmount(){
-    return this.claimForm.controls['policy'].get('insuranceMovablePropertyAmount').value
   }
 
   setValidity(form) {
