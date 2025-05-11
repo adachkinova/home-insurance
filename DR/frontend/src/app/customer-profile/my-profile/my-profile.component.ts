@@ -32,7 +32,7 @@ export class MyProfileComponent implements OnInit, AfterViewInit {
   }
 
   getPolicyList() {
-    let egn: any = sessionStorage.getItem("InsurerData");
+    let egn: any = sessionStorage.getItem("clientData");
 
     this.policyService.getInsuredPropertyByEgn(egn).pipe(
       delay(0),

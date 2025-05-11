@@ -5,7 +5,7 @@ import {ClaimService} from 'src/app/services/claim.service';
 import {sharedService} from 'src/app/services/sharedService.service';
 import {ClaimAnswerComponent} from '../claim-answer/claim-answer.component';
 import {ClaimApprovedComponent} from '../claim-approved/claim-approved.component';
-import {catchError, delay, tap} from 'rxjs/operators';
+import {catchError, delay, switchMap, tap} from 'rxjs/operators';
 import {EMPTY, forkJoin, map, of} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
@@ -51,16 +51,34 @@ export class AdminClaimDetailsComponent implements OnInit, AfterViewInit{
         } else {
           return of(err);
         }
+      }),
+      switchMap((res: any) => {
+        this.claimData = res;
+        this.images = res.images;
+
+        // Ако има изображения, ги обработваме
+        if (res.images) {
+          this.processImages(res.images);
+        }
+
+        // Връщаме предсказанието като observable
+        return this.claimsService.predictClaimAmount(res).pipe(
+          tap((response: any) => {
+            this.claimData.predictedClaimAmount = response.predicted_value;
+          }),
+          catchError(err => {
+            console.error('Грешка при предсказанието:', err);
+            // Може да зададеш стойност по подразбиране
+            this.claimData.predictedClaimAmount = null;
+            return of(null);
+          })
+        );
       })
-    ).subscribe((res: any) => {
-      this.claimData = res;
-      this.images = res.images
+    ).subscribe(() => {
       this.sharedService.isLoading(false);
-      if (res.images) {
-        this.processImages(res.images);
-      }
     });
   }
+
 
   processImages(imagePaths: string) {
     console.log('imagePaths:', imagePaths);

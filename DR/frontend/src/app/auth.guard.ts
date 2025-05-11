@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
                return this.router.parseUrl('/login');
             }
          }
-         else if(user == 'insurer'){
+         else if(user == 'client'){
             if(!url.includes('admin')){
             this.authService.adminCheck(false)
             this.authService.isLogged(true)

@@ -103,7 +103,7 @@ export class NewClaimComponent implements OnInit, AfterViewInit {
     this.sharedService.isLoading(true);
     this.form.controls.claimDate.setValue(new Date());
 
-    const egn = sessionStorage.getItem('InsurerData');
+    const egn = sessionStorage.getItem('clientData');
     this.form.controls.egn.setValue(egn);
 
     // Step 1: Upload Images & Get File Paths

@@ -22,7 +22,7 @@ export class MyClaimDetailsComponent implements AfterViewInit {
   claimdDataClosed ;
 
   ngAfterViewInit(): void {
-    const egn = sessionStorage.getItem('InsurerData');
+    const egn = sessionStorage.getItem('clientData');
     this.claimsService.getClaimByEgn(egn).pipe(
       delay(0),
       tap(() => this.sharedService.isLoading(true)),

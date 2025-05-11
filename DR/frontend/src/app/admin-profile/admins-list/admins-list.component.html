@@ -23,8 +23,7 @@
                 <input  formControlName="username" matInput minlength="3" maxlength="30">
               </mat-form-field>
               <mat-form-field class="example-full-width field" >
-                <mat-label>Парола
-                </mat-label>
+                <mat-label>Парола</mat-label>
                 <input  formControlName="password" matInput pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\W_]{5,}$">
                 <mat-error *ngIf="this.form.controls.password.errors">
                   Паролата трябва да съдържа поне една буква, една цифра и да бъде с дължина от минимум 5 символа.

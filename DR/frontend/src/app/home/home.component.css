@@ -31,6 +31,15 @@
   margin-left: auto;
 }
 
+.container-first,
+.container-second {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 1200px; /* за по-центриран и ограничен изглед */
+}
+
 .section-title{
     font-size: 48px;
     font-size: 3em;
@@ -79,22 +88,11 @@
 .container-second {
   margin-bottom: 50px;
 }
-/* .submit {
-    cursor: pointer;
-      border-radius: 5em;
-      color: #fff;
-      background: #EF814F;
-      border: 0;
-      padding-left: 40px;
-      padding-right: 40px;
-      padding-bottom: 10px;
-      padding-top: 10px;
-      font-size: 14px;
-      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-  }
-  .submit:hover{
-    background-color: white;
-    color: #EF814F;
-    border: 1px solid #EF814F
 
-  } */
+.section-home {
+  background-color: #f9f9f9;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

@@ -19,7 +19,7 @@ export class LogInComponent implements OnInit {
 
   show:boolean=false;
   form ;
-  formAdmin 
+  formAdmin
   typesArray = ["админ", "потребител"];
   isFormShowed ;
   type ;
@@ -64,15 +64,15 @@ export class LogInComponent implements OnInit {
       })
     )
     .subscribe((res )=>{
-      if(res.type === 'insurer'){
-        sessionStorage.setItem('UserType', "insurer"); 
-        sessionStorage.setItem('InsurerData', res.idNumber)
+      if(res.type === 'client'){
+        sessionStorage.setItem('UserType', "client");
+        sessionStorage.setItem('clientData', res.idNumber)
          this.authService.isLogged(true);
          this.authService.adminCheck(false)
         this.router.navigate(['/my-profile']);
       }
       else if(res.type == 'admin'){
-        sessionStorage.setItem('UserType', "admin"); 
+        sessionStorage.setItem('UserType', "admin");
          this.authService.isLogged(true);
          this.authService.adminCheck(true)
         this.router.navigate(['/admin-claims']);

@@ -1,21 +1,21 @@
 
 w
-java:S3740;"/Provide the parametrized type for this generic.(ÁÕÖ„ùÿÿÿÿ8¡¦ÖØë2J$d8298240-adc7-4c1f-82c1-ada1bc3f9812
+java:S3740;"/Provide the parametrized type for this generic.(ÁÕÖ„ùÿÿÿÿ8¡¦ÖØë2J$02428448-f1d6-4f42-a8f7-3710b6d752ed
 r
-java:S3740G"/Provide the parametrized type for this generic.(˜Ûà­8¡¦ÖØë2J$a81a2b79-e86b-4feb-8b9f-20e5b9adab38
+java:S3740G"/Provide the parametrized type for this generic.(˜Ûà­8¡¦ÖØë2J$6d03cbe8-ce64-4a83-bf2f-6a8ac99b255a
 w
-java:S3740p"/Provide the parametrized type for this generic.(ÿÚ¯ßúÿÿÿÿ8¢¦ÖØë2J$72b75dd7-cab7-4104-b1a1-533aece0b831
+java:S3740p"/Provide the parametrized type for this generic.(ÿÚ¯ßúÿÿÿÿ8¢¦ÖØë2J$8fc32a3f-560e-4f4b-b346-a8fe17eb7edb
 x
-java:S3740¢"/Provide the parametrized type for this generic.(«–ó¡úÿÿÿÿ8¢¦ÖØë2J$1ba5d3c5-1fe3-4eaa-9e26-5fa0881046dc
+java:S3740¢"/Provide the parametrized type for this generic.(«–ó¡úÿÿÿÿ8¢¦ÖØë2J$ed38f4cf-4da9-4bb4-b871-17579d0cfa59
 Ì
-java:S1192A"ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 4 times.( ï…üÿÿÿÿ8£¦ÖØë2J$93f120ed-315b-49b5-bf28-fa7a5eb683ab
+java:S1192A"ƒDefine a constant instead of duplicating this literal "ĞĞµÑ‰Ğ¾ ÑĞµ Ğ¾Ğ±ÑŠÑ€ĞºĞ°. ĞœĞ¾Ğ»Ñ Ğ¾Ğ¿Ğ¸Ñ‚Ğ°Ğ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ½Ğ¾Ğ²Ğ¾" 4 times.( ï…üÿÿÿÿ8£¦ÖØë2J$b2568185-b32f-44a7-bb7e-97958cd6cb93
 …
-java:S68130"BRemove this field injection and use constructor injection instead.(êæÄŞ8Å¦ÖØë2J$917d5615-d1f0-44c9-a44c-0de1a2d4057f
+java:S68130"BRemove this field injection and use constructor injection instead.(êæÄŞ8Å¦ÖØë2J$c5ad6c8e-de9b-40d3-a9c5-f3b5247d940f
 …
-java:S68133"BRemove this field injection and use constructor injection instead.(êæÄŞ8À¶Ùë2J$0a92b547-278e-4eb4-89b2-9dc2f7c58ca3
+java:S68133"BRemove this field injection and use constructor injection instead.(êæÄŞ8À¶Ùë2J$95986e74-519d-4df5-ad49-fe3cf8626e94
 …
-java:S68136"BRemove this field injection and use constructor injection instead.(êæÄŞ8À¶Ùë2J$657d6bdf-3236-4ed4-b94c-d30997cf0e5a
+java:S68136"BRemove this field injection and use constructor injection instead.(êæÄŞ8À¶Ùë2J$f3b8c3c3-f0b8-4070-a06d-a246700fde0b
 o
-java:S1452”"&Remove usage of generic wildcard type.(è¬›‡ÿÿÿÿÿ8å¦ÖØë2J$9c7c429e-e303-4f42-a666-97a380ef85e5
+java:S1452”"&Remove usage of generic wildcard type.(è¬›‡ÿÿÿÿÿ8å¦ÖØë2J$d49015d0-0683-4262-b60c-26f5bd16e9a5
 ‰
-java:S4684¢"@Replace this persistent entity with a simple POJO or DTO object.(«–ó¡úÿÿÿÿ8è¦ÖØë2J$436af90a-9dcd-47b3-a8e7-381fbcc94f73
+java:S4684¢"@Replace this persistent entity with a simple POJO or DTO object.(«–ó¡úÿÿÿÿ8è¦ÖØë2J$f01c8e03-a24c-46fe-924a-424dd15c2800

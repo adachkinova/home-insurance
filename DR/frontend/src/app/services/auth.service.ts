@@ -35,7 +35,7 @@ export class authService {
       this.isLogged(false);
       this.adminCheck(false)
       sessionStorage.removeItem('UserType');
-      sessionStorage.removeItem('InsurerData');
+      sessionStorage.removeItem('clientData');
       this.router.navigate(['/']);
     }
 

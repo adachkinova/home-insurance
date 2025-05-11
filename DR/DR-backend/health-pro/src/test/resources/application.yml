@@ -1,4 +1,0 @@
-# Flyway configurations
-spring:
-  flyway:
-    locations: classpath:db/local_migrations

@@ -70,7 +70,7 @@ export class CalculatePriceComponent implements OnInit {
   isActive = false;
 
   continue() {
-    const egn = sessionStorage.getItem('InsurerData');
+    const egn = sessionStorage.getItem('clientData');
     if (egn) {
       this.policyService.getInsuredPropertyByEgn(egn).pipe(
         delay(0),

@@ -58,3 +58,4 @@ export class InsuranceAmountComponent implements OnInit {
         this.router.navigate(['/insurance-movable-property-amount']);
   }
 }
+
