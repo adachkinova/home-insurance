@@ -1,0 +1,28 @@
+# Spring configuration
+spring:
+  #  mail
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: a.dachkinova@gmail.com
+    password: ehebxpmwkxukmcyh
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+  # Database configurations
+  datasource:
+    url: jdbc:postgresql://localhost:5433/
+    username: postgres
+    password: postgre
+  # Flyway configuration
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+        lob: non_contextual_creation = true
+  servlet:
+    multipart:
+      max-request-size: 2MB
+      max-file-size: 2MB
+server:
+  port: 8099
